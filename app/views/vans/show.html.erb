@@ -1,2 +1,21 @@
-<h1>Vans#show</h1>
-<p>Find me in app/views/vans/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-7" style="margin-top: 25px">
+    <%= image_tag image_url('van.jpg'), alt:"image de van" %>
+    </div>
+    <div class="col-5" style="margin-top: 20px">
+      <h1>  <%= %></h1>
+        <h2> Nom du van: <%= @van.title%> </h2>
+          <p> Description : <%= @van.description %>
+          </p>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="button-container col-7" style="margin-top: 10px">
+      <%= button_to "Réserver", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+</div>
