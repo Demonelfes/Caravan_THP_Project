@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     resources :orders
     resources :users
     resources :vans
+    resources :vans do
+      member do
+        post 'hide_van'
+      end
+    end
   end
 
   devise_for :users
