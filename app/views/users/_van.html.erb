@@ -1,0 +1,21 @@
+<hr>
+<br><br>
+<h5>Référence de l'annonce : <%= myvan.id%></h5>
+
+<div class="card border-primary mb-3">
+  <div class="card-body">
+    <h2 class="card-title"><%= link_to myvan.title, van_path(myvan) %></h2>
+    <h4>Référence de l'annonce: <%= myvan.id %></h4>
+    <div class="card-text row">
+      <div class="col-md-4">
+        <%= image_tag image_url('van.jpg'), width: 200, height: 200, alt: "image de van" %>
+      </div>
+      <div class="col-md-8">
+        <p>Ville: <%= myvan.city %></p>
+        <p>Description: <%= myvan.description %></p>
+        <p>Prix: <%= myvan.price_per_day %>€/jour</p>
+        <%= link_to "Modifier l'annonce", edit_van_path(myvan), class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>

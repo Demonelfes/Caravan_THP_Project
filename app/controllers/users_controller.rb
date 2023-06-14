@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :rent_vans, :my_van_dashboard]
+  before_action :set_user, only: [:show]
   def index
   end
 

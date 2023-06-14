@@ -1,0 +1,22 @@
+
+<hr>
+<h5>Référence de la réservation : <%= myorder.id%></h5>
+<h5>Date de la réservation : <%= myorder.created_at.strftime("%d/%m/%Y")%></h5>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Van</th>
+      <th scope="col">Date du départ</th>
+      <th scope="col">Date du retour</th>
+      <th scope="col">Prix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <td><%= link_to myorder.van.title, van_path(myorder.van) %></td>
+    <td> <%= myorder.start_date.strftime("%d/%m/%Y") %> </td>
+    <td> <%= myorder.end_date.strftime("%d/%m/%Y") %> </td>
+    <td> <%= myorder.total_price %> </td>
+  </tbody>
+</table>
+Email du propriétaire : <%= myorder.van.user.email%>
+

@@ -1,0 +1,47 @@
+<div class="container">
+  <br>
+  <div class="card border-primary mb-3" style="min-width: 20rem;">
+    <div class="card-body">
+      <h2 class="card-title">Mon Profil</h2>
+      <div class="card-text">
+        <p> Mon email : <%= current_user.email %></p>
+        <%= link_to "Modifier mes informations", edit_user_registration_path, class:"btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item col">
+      <a class="nav-link active" data-bs-toggle="tab" href="#my_rents" aria-selected="true" role="tab">Mes locations</a>
+    </li>
+    <li class="nav-item col">
+      <a class="nav-link" data-bs-toggle="tab" href="#my_vehicle" aria-selected="false" role="tab">Mon véhicule</a>
+    </li>
+  </ul>
+  <div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade active show" id="my_rents" role="tabpanel">
+      <br><br>
+      <h2> Mes locations </h2>
+      <% if current_user.order_taken.size == 0 %>
+        <p>Vous n'avez pas encore effectué de réservation.</p>
+      <% else %>
+        <% current_user.order_taken.reverse_each do |order| %>
+          <%= render partial: 'users/order', locals: { myorder: order }%>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="tab-pane fade" id="my_vehicle" role="tabpanel">
+      <br><br>
+      <h2> Mon véhicule </h2>
+      <% if current_user.vans.size == 0 %>
+        <%= link_to "Louer mon van", new_van_path, class:"btn btn-secondary" %>
+      <% else %>
+        <% current_user.vans.each do |van| %>
+          <%= render partial: 'users/van', locals: { myvan: van }%>
+      <% end %>      
+      <% end %>      
+    </div>
+  </div>
+  
+</div>

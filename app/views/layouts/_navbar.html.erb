@@ -17,7 +17,7 @@
             </li>
           <% end %>
           <li class="nav-item">
-            <%= link_to "Mon Profil", root_path, class: "nav-link text-white"%>
+            <%= link_to "Mon Profil", user_path(current_user), class: "nav-link text-white"%>
           </li>
           <li class="nav-item p-2">
             <%= button_to "Deconnexion", destroy_user_session_path, :method => :delete, class: "nav-link text-white" if user_signed_in?%>
