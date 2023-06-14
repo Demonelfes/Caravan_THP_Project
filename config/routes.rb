@@ -7,9 +7,14 @@ Rails.application.routes.draw do
   get 'static_pages/faq'
 
   resources :orders
-  resources :vans
   resources :users
   resources :rentals
+
+  resources :vans do
+    member do
+      post 'hide_van'
+    end
+  end
 
   namespace :admins do
     resources :admins
