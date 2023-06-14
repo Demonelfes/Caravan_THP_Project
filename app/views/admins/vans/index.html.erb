@@ -11,15 +11,19 @@
         <th>Immatriculation</th>
         <th>Ville</th>
         <th></th>
+        <th>
+        <%= link_to "Ajouter",  new_admins_van_path , method: :post, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" }, class: "btn btn-primary" %>
+        </th>
       </tr>
     </thead>
     <tbody>
-      <% @vans.each do |van| %>
+      <% @vans.sort.reverse.each do |van| %>
         <tr>
           <td><%= link_to van.id, van_path(van) %></td>
           <td><%= van.brand %></td>
           <td><%= van.registration %></td>
           <td><%= van.city %></td>
+          <td><%= button_to "Modifier", edit_admins_van_path(van), method: :get, class: "btn btn-primary" %></td>
           <td>
             <%if van.is_hidden == false%>
               <%= button_to "Masquer",  hide_van_admins_van_path(van) , method: :post, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" }, class: "btn btn-danger" %>

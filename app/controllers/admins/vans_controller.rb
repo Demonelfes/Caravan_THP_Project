@@ -6,22 +6,43 @@ class Admins::VansController < ApplicationController
   def show
   end
 
-  def update
-  end
-
   def edit
-  end
+    @van = Van.find(params[:id])
+  end 
+
+  def update    
+    if Van.find(params[:id]).update(van_params)
+      redirect_to admins_vans_path, notice: 'Van mis à jour avec succès.'
+    else
+      render :edit
+    end    
+  end 
 
   def new
+    @van = Van.new
   end
 
   def create
-  end
+    @van = Van.new(van_params)
+    @van.is_van_pro = true
+    if @van.save
+      redirect_to admins_vans_path, notice: "Le van à été créé avec succès."
+    else
+      flash[:alert] = @van.errors.full_messages.join(", ")
+      redirect_to new_admin_vans_path
+    end
+  end 
 
   def hide_van
-    @vans = Van.find(params[:id])
-    @vans.is_hidden = !@vans.is_hidden
-    @vans.save
+    @van = Van.find(params[:id])
+    @van.is_hidden = !@van.is_hidden
+    @van.save
     redirect_to admins_vans_path
+  end
+
+  private 
+
+  def van_params
+    params.require(:van).permit(:title, :description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day)
   end
 end
