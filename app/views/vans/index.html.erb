@@ -1,4 +1,7 @@
 <div class="container">
+  <div>
+    <%= render partial: 'layouts/banner'%>
+  
   <div class="row p-5 m-5">
     <% if @vans.count <= 6%>
       <% @vans.sort_by(&:updated_at).reverse.each do |van| %>
