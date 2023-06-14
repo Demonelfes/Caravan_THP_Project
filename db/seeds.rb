@@ -8,7 +8,6 @@
 
 require "faker"
 
-# Historic.destroy_all
 Review.destroy_all
 Order.destroy_all
 JoinVanTag.destroy_all
@@ -17,7 +16,7 @@ Van.destroy_all
 User.destroy_all
 
 User.create!(
-  email: "chadmin@admin.fr",
+  email: "caravan@pro.fr",
   password: "password",
   is_admin: true
 )
@@ -33,11 +32,14 @@ end
     title:Faker::Quote.unique.singular_siegler,
     description:Faker::Lorem.sentence,
     city:Faker::Address.city,
+    is_van_pro: Faker::Boolean.boolean,
+    energy:Faker::Vehicle.fuel_type,
     # latitude:Faker::Address.latitude,
     # longitude:Faker::Address.longitude,
     brand:"Renault",
     is_manual_transmission: Faker::Boolean.boolean,
-    year:"2020",
+    registration: Faker::Vehicle.license_plate,
+    year:Faker::Vehicle.year,
     bed_number: rand(1..8),
     has_wc: Faker::Boolean.boolean,
     has_fridge: Faker::Boolean.boolean,
