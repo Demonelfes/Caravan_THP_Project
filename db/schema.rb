@@ -69,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_094804) do
     t.string "city"
     t.string "image_url"
     t.boolean "is_van_pro"
+    t.boolean "is_hidden", default: false
     t.string "brand"
     t.string "registration"
     t.boolean "is_manual_transmission"

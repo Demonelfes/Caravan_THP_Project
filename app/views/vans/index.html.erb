@@ -1,11 +1,13 @@
-<main>
+<main>  
   <div class="product_section">
     <div class="container">
       <div class="row p-5 m-5">
         <% @vans.sort_by(&:updated_at).reverse.each do |van| %>
+          <% if van.is_hidden == false %>  
             <div class="col-md-4 mb-4">
               <%= render partial: 'vans/van_card_html', locals: { van: van}  %>
             </div>
+          <%end%>  
         <% end %>
       </div>
     </div>
