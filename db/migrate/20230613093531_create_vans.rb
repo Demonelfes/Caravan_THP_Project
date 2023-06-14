@@ -9,7 +9,7 @@ class CreateVans < ActiveRecord::Migration[7.0]
       t.boolean :is_hidden, default: "false"
 
       t.string :brand
-      t.string :registration #Plaque d'immatriculation
+      t.string :registration
       t.boolean :is_manual_transmission
       t.integer :year
       t.string :energy
