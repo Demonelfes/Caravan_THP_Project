@@ -13,12 +13,12 @@
 
   </head>
 
-  <body>
+  <body style="min-height: 100vh; display:flex ; flex-direction: column;">
     <header>
       <%= render partial: 'layouts/navbar'%>
     </header>
 
-    <main>
+    <main style="flex:1">
     <%= yield %>
     </main>
     <footer>
