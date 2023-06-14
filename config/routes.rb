@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'static_pages/company'
+  get 'static_pages/team'
+  get 'static_pages/contact'
+  get 'static_pages/faq'
   resources :historic
   resources :orders
   resources :vans
