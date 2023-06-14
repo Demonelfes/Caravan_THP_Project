@@ -9,6 +9,8 @@
         <li class="nav-item">
             <%= link_to "Home", root_path, class: "nav-link text-white" %> 
         </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
 
         <% if user_signed_in? %>
           <% if current_user.is_admin? %>
@@ -19,8 +21,8 @@
           <li class="nav-item">
             <%= link_to "Mon Profil", user_path(current_user), class: "nav-link text-white"%>
           </li>
-          <li class="nav-item p-2">
-            <%= button_to "Deconnexion", destroy_user_session_path, :method => :delete, class: "nav-link text-white" if user_signed_in?%>
+          <li class="nav-item">
+            <%= link_to 'Deconnexion', destroy_user_session_path, class: "nav-link text-white", data: {turbo_method: :delete} %>
           </li>
         <% end %>
 
