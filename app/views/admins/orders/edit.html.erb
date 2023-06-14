@@ -1,2 +1,38 @@
-<h1>Admins::Orders#edit</h1>
-<p>Find me in app/views/admins/orders/edit.html.erb</p>
+<br><br><br>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <h1>Modifier le produit</h1>
+      
+      <%= form_for([:admins, @order]) do |form| %>
+
+        <div class="form-group">
+          <%= form.label :start_date, "Date de début" %>
+          <%= form.datetime_local_field :start_date, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :end_date, "Date de fin" %>
+          <%= form.datetime_local_field :end_date, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :total_price, "Prix total" %>
+          <%= form.number_field :total_price, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :customer_id, "ID du client" %>
+          <%= form.number_field :customer_id, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :van_id, "ID du van" %>
+          <%= form.number_field :van_id, class: "form-control" %>
+        </div>
+
+        <%= form.submit "Modifier", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
