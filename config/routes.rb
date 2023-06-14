@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :historic
   resources :orders
   resources :vans
+  resources :users
 
   namespace :admins do
     resources :admins

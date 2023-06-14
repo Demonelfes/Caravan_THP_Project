@@ -1,0 +1,20 @@
+<html>
+  <div style="background-image: url(https://image.noelshack.com/fichiers/2023/23/4/1686216860-test.jpg); background-repeat: no-repeat;
+  background-size: cover; height:20em; width:auto;">
+
+    <div class="container text-center" >
+      <% if user_signed_in? %>
+        <h1 class="display-4 pt-4" >Bienvenue <%= current_user.name %></h1>
+      <%else%>
+        <h1 class="display-4 pt-4" >Bienvenue sur notre site</h1>
+      <%end%>
+      <p class="lead" >Découvre toutes nos cartes de chats ci-dessous !
+      </p><br>
+      <div class="row d-flex justify-content-center">
+        <div class="col-auto">
+          <h2>Chat commence maintenant !</h2>
+        </div>
+      </div>
+    </div>
+  </div><br>
+</html>
