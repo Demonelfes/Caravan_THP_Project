@@ -25,6 +25,7 @@ class Admins::VansController < ApplicationController
   def create
     @van = Van.new(van_params)
     @van.is_van_pro = true
+    @van.user_id = current_user.id
     if @van.save
       redirect_to admins_vans_path, notice: "Le van à été créé avec succès."
     else
