@@ -1,0 +1,23 @@
+Hello la team,
+  
+Un nouveau van de notre flotte a été réservé !
+  
+Détails de la réservation :
+
+Numéro de réservation : <%= @order.id %>
+Date de début de location : <%= @order.start_date %>
+Date de retour : <%= @order.end_date %>
+Montant total : <%= @order.total_price %>
+
+Coordonnées de contact du client :
+ID_utilisateur : <%@order.customer.id %>
+Email : <%@order.customer.email %>
+
+Informations du van :
+Id_van : <%= @order.van.id %>
+Marque : <%= @order.van.brand %>
+Titre : <%= @order.van.title %>
+Plaque d'immatriculation : <%= @order.van.registration %>
+
+A bientôt,
+L'équipe de CaraVan !
