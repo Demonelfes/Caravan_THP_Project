@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" href="#">Cara_van</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link text-white" %> 
+        </li>
+
+        <% if user_signed_in? %>
+          <% if current_user.is_admin? %>
+            <li class="nav-item">
+              <%= link_to "Dashboard", admins_admins_path, class: "nav-link text-white" %> 
+            </li>
+          <% end %>
+          <li class="nav-item">
+            <%= link_to "Mon Profil", root_path, class: "nav-link text-white"%>
+          </li>
+          <li class="nav-item p-2">
+            <%= button_to "Deconnexion", destroy_user_session_path, :method => :delete, class: "nav-link text-white" if user_signed_in?%>
+          </li>
+        <% end %>
+
+        <li class="nav-item">
+          <%= link_to "Inscription", new_user_registration_path, class: "nav-link text-white" if !user_signed_in?%>
+        </li>
+        <li class="nav-item">
+         <%= link_to "Connexion", new_user_session_path, class: "nav-link text-white" if !user_signed_in?%>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
