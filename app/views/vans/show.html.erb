@@ -1,22 +1,64 @@
 <div class="container">
   <div class="row">
-    <div class="col-7" style="margin-top: 25px">
-    <%= image_tag image_url('van.jpg'), alt:"image de van" %>
+    <div class="col-6" style="margin-top: 3em;">
+      <div>
+        <%= image_tag image_url('van.jpg'), alt:"image de van", style:"min-width: 31rem; border-radius: 30px" %>
+      </div>
     </div>
-    <div class="col-5" style="margin-top: 20px">
-      <h1>  <%= %></h1>
-        <h2> Nom du van: <%= @van.title%> </h2>
-          <p> Description : <%= @van.description %>
-          </p>
+    <div class="col-6" style="margin-top: 3em;">
+      <div class="card border-primary mb-3" style="min-width: 20rem;">
+        <div class="card-body">
+          <h4 class="card-title"><%= @van.title%></h4>
+          <div class="card-text">
+            <p>Ville : <%= @van.city %></p>
+            <p> Description : <%= @van.description %>
+          </div>
+        </div>
+      </div>
+      <div >
+        <%= image_tag image_url('calendar.png'), alt:"image de calendrier" %>
+      </div>
+      <div>
+        <button type="button" class="btn btn-secondary btn-lg" style="display: block; margin: 0 auto;">Réserver</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" >
+    <div class="card border-primary mb-3 mr-5" style="min-width: 15rem;">
+      <div class="card-header text-center">Caractéristiques</div>
+      <div class="card-body">
+        <p class="card-text">
+        <p> marque : <%= @van.brand%> </p>
+        <p> immatriculation : <%= @van.registration%> </p>
+        <p> année : <%= @van.year %>
+        <p> carburant : <%= @van.energy%></p>
+      </div>
+    </div>
+    <div class="card border-primary mb-3" style="min-width: 15rem;">
+      <div class="card-header text-center">Options</div>
+      <div class="card-body">
+        <div class="card-text">
+        <p> nombre de lits : <%= @van.bed_number%> </p>
+        <% if @van.has_wc == false%>
+          <p> wc : non </p>
+        <% else%>
+          <p> wc : oui </p>
+        <%end%>
+        <% if @van.has_fridge == false%>
+          <p> réfrigérateur : non </p>
+        <% else%>
+          <p> réfrigérateur : oui </p>
+        <%end%>
+        <% if @van.has_shower == false%>
+          <p> douche : non </p>
+        <% else%>
+          <p> douche : oui </p>
+        <%end%>
+        </div>
+      </div>
     </div>
   </div>
 
 
-  <div class="row">
-    <div class="button-container col-7" style="margin-top: 10px">
-      <%= button_to "Réserver", class: "btn btn-primary" %>
-    </div>
-  </div>
-
-  
 </div>
