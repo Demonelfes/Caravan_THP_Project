@@ -1,0 +1,49 @@
+.separator {
+    position: relative;
+    height: 500px;
+  }
+
+.separator::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 3px;
+    background-color: #41694b;
+  }
+
+.center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: -100px;
+  }
+
+.custom-btn {
+    width: 24rem;
+    height: 16rem;
+    font-size: 24px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+
+
+table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f3f7f6;
+  }
+
+th {
+    background-color: #40916c;
+    color: #ffffff;
+  }
+
+td {
+    background-color: #d0eae2;
+  }
+
