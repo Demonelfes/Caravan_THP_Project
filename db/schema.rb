@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_14_161812) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_13_094804) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,15 +24,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_161812) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.integer "total_price"
-    t.bigint "customer_id"
-    t.bigint "van_id"
+    t.bigint "rental_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_orders_on_customer_id"
-    t.index ["van_id"], name: "index_orders_on_van_id"
+    t.index ["rental_id"], name: "index_orders_on_rental_id"
   end
 
   create_table "rentals", force: :cascade do |t|
@@ -40,10 +35,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_161812) do
     t.datetime "end_date"
     t.integer "total_price"
     t.bigint "customer_id"
+    t.bigint "owner_id"
     t.bigint "van_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_rentals_on_customer_id"
+    t.index ["owner_id"], name: "index_rentals_on_owner_id"
     t.index ["van_id"], name: "index_rentals_on_van_id"
   end
 

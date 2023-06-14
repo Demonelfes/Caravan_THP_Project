@@ -4,8 +4,15 @@ class Rental < ApplicationRecord
 
   validates :start_date, presence: true
   validates :end_date, presence: true
-  private
 
+  has_one :order
+  belongs_to :van
+  belongs_to :customer, class_name: "User"
+  belongs_to :owner, class_name: "User"
+  has_one :user, through: :van #à supprimer
+
+
+  private
 
   def duplicate_rental
     Rental.all.each do |rental|

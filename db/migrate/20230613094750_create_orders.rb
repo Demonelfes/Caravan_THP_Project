@@ -1,12 +1,7 @@
 class CreateOrders < ActiveRecord::Migration[7.0]
   def change
     create_table :orders do |t|
-      t.datetime :start_date
-      t.datetime :end_date
-      t.integer :total_price
-
-      t.references :customer, index: true
-      t.references :van, index: true
+      t.references :rental, index: true
 
       t.timestamps
     end
