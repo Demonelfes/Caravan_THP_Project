@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :vans
   resources :users
+  resources :rentals
 
   namespace :admins do
     resources :admins

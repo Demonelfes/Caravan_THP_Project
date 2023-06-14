@@ -6,4 +6,6 @@ class Van < ApplicationRecord
   has_many :tags, through: :join_van_tags
   has_many :customers, through: :orders
 
+  has_many :rentals
+
 end

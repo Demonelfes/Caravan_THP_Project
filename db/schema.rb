@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_13_094804) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_14_161812) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_094804) do
     t.index ["van_id"], name: "index_orders_on_van_id"
   end
 
+  create_table "rentals", force: :cascade do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "total_price"
+    t.bigint "customer_id"
+    t.bigint "van_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_rentals_on_customer_id"
+    t.index ["van_id"], name: "index_rentals_on_van_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.bigint "order_id"
     t.text "content"
@@ -53,8 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_094804) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.boolean "is_admin", default: false
-    t.boolean "is_hidden", default: false
+    t.boolean "is_admin"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -70,7 +81,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_094804) do
     t.string "city"
     t.string "image_url"
     t.boolean "is_van_pro"
-    t.boolean "is_hidden", default: false
     t.string "brand"
     t.string "registration"
     t.boolean "is_manual_transmission"
