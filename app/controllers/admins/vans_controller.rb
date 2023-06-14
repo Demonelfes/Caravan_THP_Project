@@ -1,5 +1,6 @@
 class Admins::VansController < ApplicationController
-  def index
+  def index 
+    @vans = Van.all
   end
 
   def show
@@ -15,5 +16,12 @@ class Admins::VansController < ApplicationController
   end
 
   def create
+  end
+
+  def hide_van
+    @vans = Van.find(params[:id])
+    @vans.is_hidden = !@vans.is_hidden
+    @vans.save
+    redirect_to admins_vans_path
   end
 end

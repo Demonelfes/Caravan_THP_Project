@@ -6,6 +6,7 @@ class CreateVans < ActiveRecord::Migration[7.0]
       t.string :city
       t.string :image_url
       t.boolean :is_van_pro
+      t.boolean :is_hidden, default: "false"
 
       t.string :brand
       t.string :registration #Plaque d'immatriculation
