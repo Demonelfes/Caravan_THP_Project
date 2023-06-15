@@ -6,6 +6,9 @@ class VansController < ApplicationController
 
   def show
     @van = Van.find(params[:id])
+    @rental = @van.rentals.last
+
+    @orders = @van.orders.where(start_date: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week)
   end
 
   def update
@@ -14,7 +17,7 @@ class VansController < ApplicationController
       redirect_to van_path(@van), notice: 'Van mis à jour avec succès.'
     else
       render :edit
-    end    
+    end
   end
 
   def edit
@@ -28,6 +31,7 @@ class VansController < ApplicationController
   def create
     @van = Van.new(van_params)
     @van.is_van_pro = false
+    @van.is_hidden = false
     @van.user_id = current_user.id
     if @van.save
       redirect_to van_path(@van), notice: "Le van à été créé avec succès."
@@ -35,11 +39,18 @@ class VansController < ApplicationController
       flash[:alert] = @van.errors.full_messages.join(", ")
       redirect_to new_van_path
     end
-  end 
-  
-  private 
+  end
+
+  def hide_van
+    @van = Van.find(params[:id])
+    @van.is_hidden = !@van.is_hidden
+    @van.save
+    redirect_to user_path(current_user)
+  end
+
+  private
 
   def van_params
-    params.require(:van).permit(:title, :description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day)
+    params.require(:van).permit(:title, :description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day, :is_hidden)
   end
 end

@@ -1,0 +1,14 @@
+<div>
+      <%= month_calendar(events:@orders, attribute: :start_date, end_attribute: :end_date) do |date, orders| %>
+      <div class="day">
+          <%= date.day %>
+        </div>
+         <%orders.each do |order|%>
+          <div class="card-header">
+          </div>
+          <div class="card-body">
+               <%="Le van est deja reserve ce jour."%>
+            </div>
+        <%end%>
+      <% end %>
+</div>

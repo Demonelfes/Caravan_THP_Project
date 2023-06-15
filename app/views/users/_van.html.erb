@@ -10,11 +10,15 @@
       <div class="col-md-4">
         <%= image_tag image_url('van.jpg'), width: 200, height: 200, alt: "image de van" %>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-4">
         <p>Ville: <%= myvan.city %></p>
         <p>Description: <%= myvan.description %></p>
         <p>Prix: <%= myvan.price_per_day %>€/jour</p>
         <%= link_to "Modifier l'annonce", edit_van_path(myvan), class: "btn btn-secondary" %>
+      </div>
+      <div class="col-md-4">
+      <br><br><br><br><br>
+        <%= button_to "Supprimer l'annonce", hide_van_van_path(myvan), method: :post, class: "btn btn-danger" %>
       </div>
     </div>
   </div>
