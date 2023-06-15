@@ -1,5 +1,7 @@
 class Admins::VansController < ApplicationController
   def index 
+    @orders = Order.all
+    @users = User.all
     @vans = Van.all
   end
 
@@ -28,6 +30,7 @@ class Admins::VansController < ApplicationController
     @van.user_id = current_user.id
     if @van.save
       redirect_to admins_vans_path, notice: "Le van à été créé avec succès."
+      puts params
     else
       flash[:alert] = @van.errors.full_messages.join(", ")
       redirect_to new_admin_vans_path
@@ -44,6 +47,6 @@ class Admins::VansController < ApplicationController
   private 
 
   def van_params
-    params.require(:van).permit(:title, :description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day)
+    params.require(:van).permit(:title, :is_hidden,:description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day)
   end
 end
