@@ -74,18 +74,10 @@ end
   )
 end
 
-4.times do |count|
-  Order.create!(
-    rental_id: Rental.find(count+Rental.first.id).id
-  )
-end
-
-#
-
-1.times do
-  Review.create!(
-    order_id:rand(Order.first.id..Order.last.id),
-    content: Faker::Quote.famous_last_words,
-    rating: rand(1..5)
-  )
-end
+# 1.times do
+#   Review.create!(
+#     order_id:rand(Order.first.id..Order.last.id),
+#     content: Faker::Quote.famous_last_words,
+#     rating: rand(1..5)
+#   )
+# end

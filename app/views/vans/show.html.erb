@@ -3,6 +3,11 @@
   Le van n'est pas disponible à cette période
 </div>
 <%end%>
+<% if params[:success]%>
+<div class="alert alert-success">
+  Le van est bien disponible à cette période
+</div>
+<%end%>
 <div class="container">
   <div class="row">
 
@@ -75,7 +80,7 @@
         <div class="row d-flex justify-content-center align-items-center">
         <p class="text-secondary" style="width:80%">Dernière étape avant la réservation ! Vérifie que tes dates sont toujours disponibles :</p>
           <div class="col-6" >
-            <%= form_with(url: url_for(controller: 'rentals', action: 'create', rental_id: @van.id), data: {turbo_frame: "valid_rental"} ) do |form| %>
+            <%= form_with(url: url_for(controller: 'rentals', action: 'create', rental_id: @van.id)) do |form| %>
               <p>début : <%= form.date_field :start %></p>
               <p>fin : <%= form.date_field :end %></p>
               <%= form.submit "Vérifier les disponibilités" %>
@@ -83,7 +88,7 @@
             <% if @rental && @rental.valid? %>
               <p> Le van est bien disponible du <%= @rental.start_date%> au <%= @rental.end_date%> </p>
               <p> Souhaitez-vous le réserver ? </p>
-              <button type="button" class="btn btn-secondary btn-lg" style="display: block; margin: 0 auto;">Réserver</button>
+              <%= button_to "Réserver et payer", checkout_create_path(total: 25), class: "btn btn-danger", data: {turbo: false} %>
             <% end %>
           </div>
         </div>

@@ -23,10 +23,10 @@
     <div class="tab-pane fade active show" id="my_rents" role="tabpanel">
       <br><br>
       <h2> Mes locations </h2>
-      <% if current_user.order_taken.size == 0 %>
+      <% if current_user.taken_rentals.map{|rental| rental.order} == 0 %>
         <p>Vous n'avez pas encore effectué de réservation.</p>
       <% else %>
-        <% current_user.order_taken.reverse_each do |order| %>
+        <% current_user.taken_rentals.map{|rental| rental.order}.reverse_each do |order| %>
           <%= render partial: 'users/order', locals: { myorder: order }%>
         <% end %>
       <% end %>
@@ -39,9 +39,9 @@
       <% else %>
         <% current_user.vans.each do |van| %>
           <%= render partial: 'users/van', locals: { myvan: van }%>
-      <% end %>      
-      <% end %>      
+      <% end %>
+      <% end %>
     </div>
   </div>
-  
+
 </div>
