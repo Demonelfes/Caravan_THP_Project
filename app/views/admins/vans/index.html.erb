@@ -6,7 +6,10 @@
     <hr>
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item col">
-        <a class="nav-link active" data-bs-toggle="tab" href="#vehicles" aria-selected="true" role="tab">Vans</a>
+        <a class="nav-link active" data-bs-toggle="tab" href="#vpro" aria-selected="true" role="tab">Vans pro</a>
+      </li>
+      <li class="nav-item col">
+        <a class="nav-link" data-bs-toggle="tab" href="#vpart" aria-selected="true" role="tab">Vans particuliers</a>
       </li>
       <li class="nav-item col">
         <a class="nav-link" data-bs-toggle="tab" href="#rents" aria-selected="false" role="tab">Reservations</a>
@@ -16,21 +19,36 @@
       </li>
     </ul>
     <div id="myTabContent" class="tab-content">
-      <div class="tab-pane fade active show" id="vehicles" role="tabpanel">
+      <%#Vanspro%>
+      <div class="tab-pane fade active show" id="vpro" role="tabpanel">
         <br><br>
-        <%#Vans%>
         <div class="text-center">
-          <h2> Véhicules </h2>
+          <h2> Vans pro </h2>
         </div>
           <% 1.times do %>
             <% current_user.vans.each do |van| %>
-              <%= render partial: 'admins/vans/vans', locals: { myvan: van } %>
+              <%= render partial: 'admins/vans/vanspro', locals: { myvan: van } %>
             <% break %>
           <% end %>
         <% end %>      
       </div>
-        <%#Réservations%>
 
+        <%#Vanspart%>
+      <div class="tab-pane fade" id="vpart" role="tabpanel">
+        <br><br>
+        <div class="text-center">
+          <h2> Vans particuliers </h2>
+        </div>
+          <% 1.times do %>
+            <% current_user.vans.where(is_van_pro: false).each do |van| %>
+              <%= render partial: 'admins/vans/vanspart', locals: { myvan: van } %>
+            <% break %>
+          <% end %>
+        <% end %>      
+      </div>
+
+
+      <%#Réservations%>
       <div class="tab-pane fade" id="rents" role="tabpanel">
         <br><br>
         <div class="text-center">
