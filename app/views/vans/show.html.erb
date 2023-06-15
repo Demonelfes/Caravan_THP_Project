@@ -35,7 +35,7 @@
           <% if @rental && @rental.valid? %>
           <p> Le van est bien disponible du <%= @rental.start_date%> au <%= @rental.end_date%> </p>
           <p> Souhaitez-vous le réserver ? </p>
-          <button type="button" class="btn btn-secondary btn-lg" style="display: block; margin: 0 auto;">Réserver</button>
+          <%= button_to "Réserver", checkout_create_path(total: 25), class: "btn btn-primary", data: {turbo: false} %>
           <% end %>
       </div>
     </div>

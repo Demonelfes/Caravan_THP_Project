@@ -8,7 +8,11 @@ class VansController < ApplicationController
     @van = Van.find(params[:id])
     @rental = @van.rentals.last
 
-    @orders = @van.orders.where(start_date: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week)
+    @orders = @van.rentals.where(start_date: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week)
+
+    # @van.orders.each do |rental|
+    # @orders = rental.where(start_date: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week)
+    # end
   end
 
   def update
