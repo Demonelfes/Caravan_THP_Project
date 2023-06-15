@@ -4,6 +4,10 @@ class VansController < ApplicationController
     @vans = Van.all
   end
 
+  def full_index
+    @vans = Van.all
+  end
+
   def show
     @van = Van.find(params[:id])
     @rental = @van.rentals.last
