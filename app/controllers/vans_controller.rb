@@ -6,6 +6,8 @@ class VansController < ApplicationController
   def show
     @van = Van.find(params[:id])
     @rental = @van.rentals.last
+
+    @orders = @van.orders.where(start_date: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week)
   end
 
   def update
