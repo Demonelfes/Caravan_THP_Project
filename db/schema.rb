@@ -65,7 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_161812) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.boolean "is_admin"
+    t.boolean "is_admin", default: false
+    t.boolean "is_hidden", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -81,6 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_161812) do
     t.string "city"
     t.string "image_url"
     t.boolean "is_van_pro"
+    t.boolean "is_hidden", default: false
     t.string "brand"
     t.string "registration"
     t.boolean "is_manual_transmission"
