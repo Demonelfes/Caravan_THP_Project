@@ -20,19 +20,8 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
       <div>
-      <%= month_calendar do |date| %>
-          <%= date.day %>
-      <% end %>
-=======
-      <div >
-        <% @van.orders.each do |order|%>
-        <p> identifiant de la réservation : <%= order.id %> </p>
-        <p> début de la réservation : <%= order.start_date %> </p>
-        <p> fin de la réservation : <%= order.end_date %> </p>
-        <% end %>
->>>>>>> 7a3471974a44de4deb41927bc5b91343df55e4f1
+          <%= render partial: 'vans/calendar'%>
       </div>
       <div>
         <hr>
