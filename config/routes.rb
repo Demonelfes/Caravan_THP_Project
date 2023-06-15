@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :vans do
       member do
         post 'hide_van'
+        delete 'destroy_van'
       end
     end
   end

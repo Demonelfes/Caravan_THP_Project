@@ -2,37 +2,62 @@
   <link rel="stylesheet" href="viewsadmin.css">
 </head>
 
-<body>
-  <table class="table table-striped">
-    <thead class="bg-primary text-white">
-      <tr>
-        <th>Id</th>
-        <th>Modèle</th>
-        <th>Immatriculation</th>
-        <th>Ville</th>
-        <th></th>
-        <th>
-        <%= link_to "Ajouter",  new_admins_van_path , method: :post, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" }, class: "btn btn-primary" %>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @vans.sort.reverse.each do |van| %>
-        <tr>
-          <td><%= link_to van.id, van_path(van) %></td>
-          <td><%= van.brand %></td>
-          <td><%= van.registration %></td>
-          <td><%= van.city %></td>
-          <td><%= button_to "Modifier", edit_admins_van_path(van), method: :get, class: "btn btn-primary" %></td>
-          <td>
-            <%if van.is_hidden == false%>
-              <%= button_to "Masquer",  hide_van_admins_van_path(van) , method: :post, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" }, class: "btn btn-danger" %>
-            <%else%>
-              <%= button_to "Montrer", hide_van_admins_van_path(van), method: :post, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" }, class: "btn btn-success" %> 
-            <%end%>
-            </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</body>
+  <div class="container">
+    <hr>
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item col">
+        <a class="nav-link active" data-bs-toggle="tab" href="#vehicles" aria-selected="true" role="tab">Vans</a>
+      </li>
+      <li class="nav-item col">
+        <a class="nav-link" data-bs-toggle="tab" href="#rents" aria-selected="false" role="tab">Reservations</a>
+      </li>
+      <li class="nav-item col">
+        <a class="nav-link" data-bs-toggle="tab" href="#users" aria-selected="false" role="tab">Utilisateurs</a>
+      </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade active show" id="vehicles" role="tabpanel">
+        <br><br>
+        <%#Vans%>
+        <div class="text-center">
+          <h2> Véhicules </h2>
+        </div>
+          <% 1.times do %>
+            <% current_user.vans.each do |van| %>
+              <%= render partial: 'admins/vans/vans', locals: { myvan: van } %>
+            <% break %>
+          <% end %>
+        <% end %>      
+      </div>
+        <%#Réservations%>
+
+      <div class="tab-pane fade" id="rents" role="tabpanel">
+        <br><br>
+        <div class="text-center">
+          <h2> Réservations </h2>
+        </div>
+          <% 1.times do %>
+            <% current_user.vans.each do |van| %>
+              <%= render partial: 'admins/orders/orders', locals: { myvan: van } %>
+            <% break %>
+          <% end %>
+        <% end %>      
+      </div>
+        <%#Utilisateurs%>
+
+      <div class="tab-pane fade" id="users" role="tabpanel">
+        <br><br>
+        <div class="text-center">
+          <h2> Utilisateurs </h2>
+        </div>
+          <% 1.times do %>
+            <% current_user.vans.each do |van| %>
+              <%= render partial: 'admins/users/users', locals: { myvan: van } %>
+            <% break %>
+          <% end %>
+        <% end %>      
+      </div>
+    </div>
+  </div>
+
+  
