@@ -81,35 +81,20 @@
         <div class="row d-flex justify-content-center align-items-center">
         <p class="text-secondary" style="width:80%">Dernière étape avant la réservation ! Vérifie que tes dates sont toujours disponibles :</p>
           <div class="col-6" >
-<<<<<<< HEAD
             <% if current_user %>
               <%= form_with(url: url_for(controller: 'rentals', action: 'create', rental_id: @van.id)) do |form| %>
-                <p>début : <%= form.date_field :start %></p>
-                <p>fin : <%= form.date_field :end %></p>
-                <%= form.submit "Vérifier les disponibilités" %>
-              <% end %>
-            <% else %>
-              <%= link_to "Vérifier les disponibilités", new_user_session_path, class: "btn btn-primary" %>
-=======
-            <%= form_with(url: url_for(controller: 'rentals', action: 'create', rental_id: @van.id)) do |form| %>
               <p>début : <%= form.date_field :start %></p>
               <p>fin : <%= form.date_field :end %></p>
               <%= form.submit "Vérifier les disponibilités" %>
-            <% end %>
-            <% if @rental && @rental.valid? %>
-              <p> Le van est bien disponible du <%= @rental.start_date.strftime("%d/%m/%Y")%> au <%= @rental.end_date.strftime("%d/%m/%Y")%> </p>
-              <p> Le coût total de la réservation est de <%= @rental.total_price %> euros </p>
-              <p> Souhaitez-vous le réserver ? </p>
-              <%= button_to "Réserver et payer", checkout_create_path(total: @rental.total_price), class: "btn btn-danger", data: {turbo: false} %>
->>>>>>> 836efbf23c9ddd669798b2b45d32ff50a7b59225
-            <% end %>
-              <% if @rental && @rental.valid? %>
-                <p> Le van est bien disponible du <%= @rental.start_date%> au <%= @rental.end_date%> </p>
-                <p> La durée de la réservation est de <%= @duration %> jours </p>
-                <p> Le coût total de la réservation est de <%= @total %> euros </p>
-                <p> Souhaitez-vous le réserver ? </p>
-                <%= button_to "Réserver et payer", checkout_create_path(total: @total), class: "btn btn-danger", data: {turbo: false} %>
               <% end %>
+
+              <% if @rental && @rental.valid? %>
+                <p> Le van est bien disponible du <%= @rental.start_date.strftime("%d/%m/%Y")%> au <%= @rental.end_date.strftime("%d/%m/%Y")%> </p>
+                <p> Le coût total de la réservation est de <%= @rental.total_price %> euros </p>
+                <p> Souhaitez-vous le réserver ? </p>
+              <%= button_to "Réserver et payer", checkout_create_path(total: @rental.total_price), class: "btn btn-danger", data: {turbo: false} %>
+              <% end %>
+            <%end%>
           </div>
         </div>
       </div>
