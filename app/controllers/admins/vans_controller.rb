@@ -47,6 +47,6 @@ class Admins::VansController < ApplicationController
   private 
 
   def van_params
-    params.require(:van).permit(:title, :is_hidden,:description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day)
+    params.require(:van).permit(:title, :is_hidden,:description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day, :photo)
   end
 end
