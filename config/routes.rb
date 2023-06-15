@@ -8,12 +8,14 @@ Rails.application.routes.draw do
 
   resources :orders
   resources :users
+  resources :rentals
+
   resources :vans do
-    member do 
+    member do
       post 'hide_van'
     end
   end
-  
+
   namespace :admins do
     resources :admins
     resources :orders
