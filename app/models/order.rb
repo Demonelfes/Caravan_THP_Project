@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
   after_create :order_confirmation_to_customer_send, :order_confirmation_to_owner_send, :admin_order_confirmation_van_private_send, :admin_order_confirmation_van_pro_send
 
+  validates :rental_id, presence: true
+
   belongs_to :rental
   has_one :review
   has_one :van, through: :rental
@@ -13,8 +15,6 @@ class Order < ApplicationRecord
   delegate :customer_id, to: :rental, prefix: false
   delegate :owner_id, to: :rental, prefix: false
   delegate :van_id, to: :rental, prefix: false
-
-
 
   def order_confirmation_to_customer_send
     UserMailer.order_confirmation_to_customer_email(self.owner, self).deliver_now

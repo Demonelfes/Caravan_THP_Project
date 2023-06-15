@@ -1,6 +1,9 @@
 fr:
+  van :
+    title : "titre"
   bonjour: "Bonjour monde"
   simple_calendar:
     previous: "<<"
     next: ">>"
     week: Semaine
+    wday-0: a

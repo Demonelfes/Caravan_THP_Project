@@ -49,3 +49,28 @@
     text-decoration:line-through;
 }
 
+.navbar-wrapper {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+
+.my-caret {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.stick::after {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 35px;
+    background-color: #ffffff;
+    margin-left: 40px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+
+

@@ -11,12 +11,15 @@ class VansController < ApplicationController
   def show
     @van = Van.find(params[:id])
     @rental = @van.rentals.last
-    @orders = @van.rentals.where(start_date: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week)
 
-
-    # @van.orders.each do |rental|
-    # @orders = rental.where(start_date: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week)
-    # end
+    if @van.rentals.map{|rental| rental.order}.uniq == [nil] || @van.rentals.map{|rental| rental.order}.uniq == []
+      @check_orders = 0
+    else
+      @orders = Order.where(rental_id:Rental.all
+        .where(start_date:Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week)
+        .where(van_id:@van.id)
+        .map{|rental| rental.id})
+    end
   end
 
   def update
@@ -44,7 +47,7 @@ class VansController < ApplicationController
     if @van.save
       redirect_to van_path(@van), notice: "Le van à été créé avec succès."
     else
-      flash[:alert] = @van.errors.full_messages.join(", ")
+      flash[:alert] = @van.errors.full_messages#.join(", ")
       redirect_to new_van_path
     end
   end
