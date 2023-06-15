@@ -34,7 +34,7 @@
     <div class="tab-pane fade" id="my_vehicle" role="tabpanel">
       <br><br>
       <h2> Mon véhicule </h2>
-      <% if current_user.vans.size == 0 %>
+      <% if @visible_vans.size == 0 %>
         <%= link_to "Louer mon van", new_van_path, class:"btn btn-secondary" %>
       <% else %>
         <% current_user.vans.each do |van| %>
