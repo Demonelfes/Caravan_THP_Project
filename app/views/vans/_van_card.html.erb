@@ -1,6 +1,10 @@
 <div class="card">
   <div class="card-body text-center">
-   <%= image_tag(image_url('van.jpg'), class: "image_1", width: "100%", height: "auto") %>
+   <%if van.photo.attached?%>
+      <%= image_tag van.photo, alt: 'Photo du van' %>
+    <%else%>
+      <p>=== Il n'y a pas encore de photo lié à ce van ===</p>
+    <%end%>
     <h4 class="card-title"></h4>
     <p class="card-text"></p>
     <div class="btn_main row">
