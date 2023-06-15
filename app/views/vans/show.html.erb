@@ -27,6 +27,7 @@
               <div class="card-text">
                 <p>Ville : <%= @van.city %></p>
                 <p> Description : <%= @van.description %>
+                <p> Prix par jour : <%= @van.price_per_day %>
               </div>
             </div>
           </div>
@@ -87,8 +88,10 @@
             <% end %>
             <% if @rental && @rental.valid? %>
               <p> Le van est bien disponible du <%= @rental.start_date%> au <%= @rental.end_date%> </p>
+              <p> La durée de la réservation est de <%= @duration %> jours </p>
+              <p> Le coût total de la réservation est de <%= @total %> euros </p>
               <p> Souhaitez-vous le réserver ? </p>
-              <%= button_to "Réserver et payer", checkout_create_path(total: 25), class: "btn btn-danger", data: {turbo: false} %>
+              <%= button_to "Réserver et payer", checkout_create_path(total: @total), class: "btn btn-danger", data: {turbo: false} %>
             <% end %>
           </div>
         </div>
