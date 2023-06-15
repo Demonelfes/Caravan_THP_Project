@@ -15,8 +15,10 @@
           </div>
         </div>
       </div>
-      <div >
-        <%= image_tag image_url('calendar.png'), alt:"image de calendrier" %>
+      <div>
+      <%= month_calendar do |date| %>
+          <%= date.day %>
+      <% end %>
       </div>
       <div>
         <button type="button" class="btn btn-secondary btn-lg" style="display: block; margin: 0 auto;">Réserver</button>
