@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_15_123950) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_16_172133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,18 +105,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_123950) do
     t.string "title"
     t.text "description"
     t.string "city"
-    t.string "image_url"
-    t.boolean "is_van_pro"
+    t.boolean "is_van_pro", default: false
     t.boolean "is_hidden", default: false
     t.string "brand"
     t.string "registration"
-    t.boolean "is_manual_transmission"
+    t.boolean "is_manual_transmission", default: false
     t.integer "year"
     t.string "energy"
     t.integer "bed_number"
-    t.boolean "has_wc"
-    t.boolean "has_fridge"
-    t.boolean "has_shower"
+    t.boolean "has_wc", default: false
+    t.boolean "has_fridge", default: false
+    t.boolean "has_shower", default: false
     t.integer "price_per_day"
     t.bigint "user_id"
     t.datetime "created_at", null: false

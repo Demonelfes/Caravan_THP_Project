@@ -1,13 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
 require "faker"
 
+def generate_registration_plate
+  letters = ('A'..'Z').to_a
+  digits = ('0'..'9').to_a
+  # Format AB-123-DE
+  "#{letters.sample(2).join}-#{digits.sample(3).join}-#{letters.sample(2).join}"
+end
 
 Review.destroy_all
 Order.destroy_all
@@ -30,25 +28,28 @@ User.create!(
 end
 
 10.times do
-  Van.create!(
-    title:Faker::Quote.unique.singular_siegler,
-    description:Faker::Lorem.sentence,
-    city:Faker::Address.city,
-    is_van_pro: Faker::Boolean.boolean,
-    energy:Faker::Vehicle.fuel_type,
+  v = Van.create!(
+    title: Faker::Book.title.truncate(20),
+    description: Faker::Lorem.characters(number: rand(20..250)),
+    city: Faker::Address.city,
+    is_van_pro: [true, false].sample,
+    is_hidden: false,
+    energy: Faker::Vehicle.fuel_type.truncate(20),
     # latitude:Faker::Address.latitude,
     # longitude:Faker::Address.longitude,
-    brand:"Renault",
-    is_manual_transmission: Faker::Boolean.boolean,
-    registration: Faker::Vehicle.license_plate,
-    year:Faker::Vehicle.year,
+    brand: Faker::Vehicle.make,
+    is_manual_transmission: [true, false].sample,
+    registration: generate_registration_plate,
+    year: rand(1940..Date.current.year),
     bed_number: rand(1..8),
-    has_wc: Faker::Boolean.boolean,
-    has_fridge: Faker::Boolean.boolean,
-    has_shower: Faker::Boolean.boolean,
+    has_wc: [true, false].sample,
+    has_fridge: [true, false].sample,
+    has_shower: [true, false].sample,
     price_per_day: rand(100..1000),
-    user_id:rand(User.first.id..User.last.id)
+    user_id: rand(User.first.id..User.last.id)
   )
+  v.photo.attach(io: File.open(File.join(Rails.root, "app/assets/images/default_van.jpg")), filename: "Default")
+
 end
 
 5.times do
@@ -70,7 +71,8 @@ end
     end_date: Faker::Date.between(from: '2023-12-31', to: '2025-12-31'),
     van_id: Van.find(count+Van.first.id).id,
     customer_id: rand(User.first.id..User.last.id),
-    owner_id: rand(User.first.id..User.last.id)
+    owner_id: rand(User.first.id..User.last.id),
+    total_price: rand(500..5000),
   )
 end
 
