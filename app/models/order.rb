@@ -4,10 +4,8 @@ class Order < ApplicationRecord
   belongs_to :rental
   has_one :review
   has_one :van, through: :rental
-  # belongs_to :customer, class_name: "User"
   has_one :customer, through: :rental
   has_one :owner, through: :rental
-  has_one :user, through: :van #à supprimer
 
   delegate :start_date, to: :rental, prefix: false
   delegate :end_date, to: :rental, prefix: false

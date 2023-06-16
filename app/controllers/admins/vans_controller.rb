@@ -5,9 +5,6 @@ class Admins::VansController < ApplicationController
     @vans = Van.all
   end
 
-  def show
-  end
-
   def edit
     @van = Van.find(params[:id])
   end

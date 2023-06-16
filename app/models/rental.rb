@@ -1,7 +1,6 @@
 class Rental < ApplicationRecord
   validates :end_date, comparison: { greater_than: :start_date }
   validate :duplicate_rental
-
   validates :start_date, presence: true
   validates :end_date, presence: true
 
@@ -9,7 +8,6 @@ class Rental < ApplicationRecord
   belongs_to :van
   belongs_to :customer, class_name: "User"
   belongs_to :owner, class_name: "User"
-  has_one :user, through: :van #à supprimer
 
 
   private
@@ -24,7 +22,5 @@ class Rental < ApplicationRecord
           end
         end
     end
-
-
   end
 end

@@ -23,7 +23,7 @@
     <div class="tab-pane fade active show" id="my_rents" role="tabpanel">
       <br><br>
       <h2> Mes locations </h2>
-      <% if current_user.taken_rentals.map{|rental| rental.order} == 0 %>
+      <% if current_user.taken_rentals.map{|rental| rental.order}.uniq == [nil] %>
         <p>Vous n'avez pas encore effectué de réservation.</p>
       <% else %>
         <% current_user.taken_rentals.map{|rental| rental.order}.reverse_each do |order| %>

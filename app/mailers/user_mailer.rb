@@ -8,7 +8,7 @@ class UserMailer < ApplicationMailer
 
   def order_confirmation_to_owner_email(user, order)
     @order = order
-    @user = order.user
+    @user = order.owner
 
     mail(to: @user.email, subject: 'Nouvelle réservation sur votre van')
   end
