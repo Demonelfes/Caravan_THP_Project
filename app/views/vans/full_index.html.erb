@@ -1,0 +1,16 @@
+<%= render partial: 'layouts/small_banner'%>
+<div class="container">
+  <div class="row p-5 m-5">
+    <% @vans.sort_by(&:updated_at).reverse.each do |van| %>
+      <div class="col-md-4 mb-4">
+        <%= render partial: 'vans/van_card', locals: { van: van}  %>
+      </div>
+    <%end%>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-4 mb-4">
+      <%= link_to "Retour à la page d'accueil", vans_path, class:"btn btn-success btn-lg" %>
+    </div>
+  </div>
+</div>
