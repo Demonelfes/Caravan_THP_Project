@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "caravan-390009",
+  "private_key_id": "d12aa53521b61239423551c84ef265a12e41f99e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDFsXmPoF3E/+uv\n/bDD6XGZvA+0jlHwnyphIx+anqye+kucKWydaCbVTcae8w3KcXPIpTVcSEESK25e\nrsNHPNspTEw79WKcxoJFxNxQuBQ/3z24nqAf5J2GFJWxO6Jz2vRhuANgqIarLdMX\nrgbZE/pMbt0tVGZLOcLFfuySgcx+l57adWySlL/zAsqRI1rfNy3Tt5YfHBn4h53g\nQ5Uv7lC+PhXourcrQ0Iyj5GaBJ+UYJLNSyHX8qeNSHvPqxzOYqIMqRuO3pZ6RK5D\nJpTx4f8ddJtWDcZCUYPMppzyGwqxBKypV0jXh2rtKGwXtol4Ue11un5Nm190VE7F\ntBEeowgzAgMBAAECggEAP7Mg5TuaG0kPK2UGGQpWVV/4e4hENNFEeYo0u8CXBJ7H\n0Ci0279ci+yErGDKt8l4slUxbWvGs9EUviN3vrOINrVj9wnpXXTFMy/sgYHe3HnV\nTHCoTb5/V124oiQCA2yww+/j/rgutGeOlhm4EShTxV8Pm3SPhXu2G6b7GXYDa2Jk\ndj37dKqPmqMC3sRjUE7h1NsStjLF2k3IXXCl6ijopinYfw3hglRMgHoXRvM1xKOu\nyKU6hfJwwrApHss5sSQgUlJRfX5esUG/9RZ751nrw9TC4NKErziKTLRm7Kf0LQdR\nYk1xLDWliZ6k8UxXQy/gAI2AVNvB0QJ4g0WnLHV0CQKBgQDpLhuoeihc1A/ZnN2y\nVUkli59sY8BUruS9CF1VRkBSxYs4qqm3m3R/X39pw+RU0Vsn1hZoPcOpa6GQmrmt\noyEBX4heEhS9Yl/ohxgVUezmM866Yg4grWzoIXO47YetWQU/cM9+/49MU66YwPYO\n6L1jrkTojwMl+8GoA380CkPMHwKBgQDZCk9kdjr+vZgolsn9x2Drcb/8bNgwDasj\nVb9XxegyVF3HCNFh5oNh9wZQlMP3ma0ulua2PfoamDQB/5wxJ904StoEa8gcuDbO\nQkz31n0N+xYj/3yBwvH/Y5eczpsWxr802pFSzPa6fC9GWY+auo3qsmIwjM3+X9/9\nSHplNOcBbQKBgDwDPOUQg4DYpzenkrtKDehW1fIMfjyNQpuQIo1G5lknNFyiN8nk\nfYgmqOEspIBb3W0UQXIUq13YMJ3J5I3W1TDISI2Fc8cGIY7z7fPWwPTCUqtPfzlT\nyRq5OVJX97paleos+4pA9b18MAxqZSmTJuMXv+5mmDXXZJD8TWm0VpybAoGAcX1H\nqHN+Q8gl8Utv0cjYsCSpzDeqD+6Fx5NF24K7+N1OsA23VubvWmGOJsKzehwch5kW\niML9rbxarZTYOofq0E2rlNY7LHFTDyVyE8JPX+kkWax1kXC7k9yi4bbTN+SzBNMp\nXE+a0EaxfarFQZY9MTUXzOVDrbi6ajnk7ljsVj0CgYBScxLbdr6mLAMRqhJWSKcM\n5n7SxMI+fvp2+bT/Z/WWujjBx/gfq6e07Uaq6G/bpfVR6u/u80VRLPhOnSX+KGzk\naY0hrIbVGPPiOQZdCm7sAtEGOhJBdQeo60iNFne5mCRq9fgSJ2xTB/LCfjW1R/T3\nHHXEJowmUlet6jGsJ9Uq2g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "caravan@caravan-390009.iam.gserviceaccount.com",
+  "client_id": "102088459319403563308",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/caravan%40caravan-390009.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
