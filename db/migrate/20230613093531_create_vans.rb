@@ -5,19 +5,19 @@ class CreateVans < ActiveRecord::Migration[7.0]
       t.text :description
       t.string :city
       t.string :image_url
-      t.boolean :is_van_pro
+      t.boolean :is_van_pro, default: "false"
       t.boolean :is_hidden, default: "false"
 
       t.string :brand
       t.string :registration
-      t.boolean :is_manual_transmission
+      t.boolean :is_manual_transmission, default: "false"
       t.integer :year
       t.string :energy
 
       t.integer :bed_number
-      t.boolean :has_wc
-      t.boolean :has_fridge
-      t.boolean :has_shower
+      t.boolean :has_wc, default: "false"
+      t.boolean :has_fridge, default: "false"
+      t.boolean :has_shower, default: "false"
 
       t.integer :price_per_day
       t.references :user, index: true
