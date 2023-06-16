@@ -40,7 +40,7 @@ class VansController < ApplicationController
     if @van.save
       redirect_to van_path(@van), notice: "Le van à été créé avec succès."
     else
-      flash[:alert] = @van.errors.full_messages.join(", ")
+      flash[:alert] = @van.errors.full_messages#.join(", ")
       redirect_to new_van_path
     end
   end
