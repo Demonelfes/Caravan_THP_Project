@@ -9,13 +9,13 @@ local:
 google_dev:
   service: GCS
   project: caravan-390009
-  credentials: <%= File.expand_path(ENV['GOOGLE_APPLICATION_CREDENTIALS']) %>
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
   bucket: caravan-bucket
 
 google:
   service: GCS
   project: caravan-390009
-  credentials: <%= File.expand_path(ENV['GOOGLE_APPLICATION_CREDENTIALS']) %>
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
   bucket: caravan-bucket
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
