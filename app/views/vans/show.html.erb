@@ -81,25 +81,25 @@
         <div class="row d-flex justify-content-center align-items-center">
         <p class="text-secondary" style="width:80%">Dernière étape avant la réservation ! Vérifie que tes dates sont toujours disponibles :</p>
           <div class="col-6" >
-            <%= form_with(url: url_for(controller: 'rentals', action: 'create', rental_id: @van.id)) do |form| %>
-              <p>début : <%= form.date_field :start %></p>
-              <p>fin : <%= form.date_field :end %></p>
-              <%= form.submit "Vérifier les disponibilités" %>
+            <% if current_user %>
+              <%= form_with(url: url_for(controller: 'rentals', action: 'create', rental_id: @van.id)) do |form| %>
+                <p>début : <%= form.date_field :start %></p>
+                <p>fin : <%= form.date_field :end %></p>
+                <%= form.submit "Vérifier les disponibilités" %>
+              <% end %>
+            <% else %>
+              <%= link_to "Vérifier les disponibilités", new_user_session_path, class: "btn btn-primary" %>
             <% end %>
-            <% if @rental && @rental.valid? %>
-              <p> Le van est bien disponible du <%= @rental.start_date%> au <%= @rental.end_date%> </p>
-              <p> La durée de la réservation est de <%= @duration %> jours </p>
-              <p> Le coût total de la réservation est de <%= @total %> euros </p>
-              <p> Souhaitez-vous le réserver ? </p>
-              <%= button_to "Réserver et payer", checkout_create_path(total: @total), class: "btn btn-danger", data: {turbo: false} %>
-            <% end %>
+              <% if @rental && @rental.valid? %>
+                <p> Le van est bien disponible du <%= @rental.start_date%> au <%= @rental.end_date%> </p>
+                <p> La durée de la réservation est de <%= @duration %> jours </p>
+                <p> Le coût total de la réservation est de <%= @total %> euros </p>
+                <p> Souhaitez-vous le réserver ? </p>
+                <%= button_to "Réserver et payer", checkout_create_path(total: @total), class: "btn btn-danger", data: {turbo: false} %>
+              <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
-
-
 </div>
