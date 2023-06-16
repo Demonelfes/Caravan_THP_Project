@@ -1,4 +1,6 @@
 fr:
+  van :
+    title : "titre"
   bonjour: "Bonjour monde"
   simple_calendar:
     previous: "<<"
