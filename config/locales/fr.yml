@@ -4,3 +4,4 @@ fr:
     previous: "<<"
     next: ">>"
     week: Semaine
+    wday-0: a
