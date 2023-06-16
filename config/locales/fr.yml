@@ -1,6 +1,6 @@
 fr:
   bonjour: "Bonjour monde"
   simple_calendar:
-    previous: Précédant
-    next: Suivant
+    previous: "<<"
+    next: ">>"
     week: Semaine
