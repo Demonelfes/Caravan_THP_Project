@@ -64,7 +64,7 @@ end
   )
 end
 
-5.times do |count|
+5.times do |count| #à supprimer
   Rental.create!(
     start_date: Faker::Date.forward(days: 30),
     end_date: Faker::Date.between(from: '2023-12-31', to: '2025-12-31'),
