@@ -5,6 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 .env
+/config/gcskey.json
 
 # Ignore bundler config.
 /.bundle
@@ -31,4 +32,3 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/config/gcskey.json
