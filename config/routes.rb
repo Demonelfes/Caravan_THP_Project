@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :rentals
 
   resources :vans do
+    collection do
+      get 'full_index'
+    end
     member do
       post 'hide_van'
     end
@@ -36,5 +39,5 @@ Rails.application.routes.draw do
     get 'success', to: 'checkout#success', as: 'checkout_success'
     get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
   end
-  
+
 end

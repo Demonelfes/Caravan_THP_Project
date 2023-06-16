@@ -1,4 +1,38 @@
 <%= render partial: 'layouts/banner'%>
+
+<div class="logos-container d-flex justify-content-center">
+  <div class="logo-card">
+    <%= image_tag("flexible.png", alt: "Logo 1", class: "logo-image") %>
+    <div class="logo-text">
+      <p>Flexible</p>
+    </div>
+  </div>
+  <div class="logo-card">
+    <%= image_tag("flexible.png", alt: "Logo 2", class: "logo-image") %>
+    <div class="logo-text">
+      <p>Fiable</p>
+    </div>
+  </div>
+  <div class="logo-card">
+    <%= image_tag("flexible.png", alt: "Logo 3", class: "logo-image") %>
+    <div class="logo-text">
+      <p>Fun</p>
+    </div>
+  </div>
+    <div class="logo-card">
+    <%= image_tag("flexible.png", alt: "Logo 4", class: "logo-image") %>
+    <div class="logo-text">
+      <p>Fonctionnel</p>
+    </div>
+  </div>
+  <div class="logo-card">
+    <%= image_tag("flexible.png", alt: "Logo 5", class: "logo-image") %>
+    <div class="logo-text">
+      <p>Français</p>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="row p-5 m-5">
     <% if @vans.count <= 6%>
@@ -8,14 +42,16 @@
         </div>
       <%end%>
     <% else %>
-      <% @visible_vans[0..5].sort_by(&:updated_at).reverse.each do |van| %> 
+      <% @visible_vans[0..5].sort_by(&:updated_at).reverse.each do |van| %>
         <div class="col-md-4 mb-4">
           <%= render partial: 'vans/van_card', locals: { van: van}  %>
         </div>
       <% end %>
-    <% end %>
-    <div style="display: block; margin: 0 auto;">
-    <button type="button" class="btn btn-primary btn-lg">Voir plus de vans</button>
-    </div>
+        <div style="display: block; margin: 0 auto;">
+          <%= link_to "Voir plus de vans", full_index_vans_path, class:"btn btn-success btn-lg" %>
+        </div>
+    <%end%>
+<%= javascript_include_tag 'index' %>
+<%= stylesheet_link_tag 'van/index' %>
   </div>
 </div>
