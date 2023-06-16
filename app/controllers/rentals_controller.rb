@@ -7,14 +7,16 @@ class RentalsController < ApplicationController
       'van_id' => @van.id,
       'customer_id' => current_user.id,
       'owner_id' => @van.user.id,
-      'total_price' => 38
-    )
-    puts params
+      'total_price' => 38)
+
     if @rental.save
       redirect_to van_path(@van, success: true)
     else
       redirect_to van_path(@van, error: true)
     end
+  end
+
+  def show
   end
 
 end

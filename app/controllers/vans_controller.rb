@@ -7,11 +7,12 @@ class VansController < ApplicationController
   def show
     @van = Van.find(params[:id])
     @rental = @van.rentals.last
-    # @duration = (@rental.start_date...@rental.end_date).count
-    @duration = (@rental.end_date.to_date - @rental.start_date.to_date).to_i
-    @total = @duration * @van.price_per_day
-
     @orders = @van.rentals.where(start_date: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week)
+
+    if @rental
+      @duration = (@rental.end_date.to_date - @rental.start_date.to_date).to_i
+      @total = @duration * @van.price_per_day
+    end
 
     # @van.orders.each do |rental|
     # @orders = rental.where(start_date: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week)
