@@ -38,7 +38,7 @@
           <% if @visible_vans.size == 0 %>
             <%= link_to "Louer mon van", new_van_path, class:"btn btn-secondary" %>
           <% else %>
-            <% current_user.vans.each do |van| %>
+            <% @visible_vans.each do |van| %>
               <%= render partial: 'users/van', locals: { myvan: van }%>
             <% end %>
           <% end %>
