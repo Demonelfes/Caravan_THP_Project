@@ -1,5 +1,5 @@
 class Admins::VansController < ApplicationController
-  def index 
+  def index
     @orders = Order.all
     @users = User.all
     @vans = Van.all
@@ -10,15 +10,15 @@ class Admins::VansController < ApplicationController
 
   def edit
     @van = Van.find(params[:id])
-  end 
+  end
 
-  def update    
+  def update
     if Van.find(params[:id]).update(van_params)
       redirect_to admins_vans_path, notice: 'Van mis à jour avec succès.'
     else
       render :edit
-    end    
-  end 
+    end
+  end
 
   def new
     @van = Van.new
@@ -35,7 +35,7 @@ class Admins::VansController < ApplicationController
       flash[:alert] = @van.errors.full_messages.join(", ")
       redirect_to new_admin_vans_path
     end
-  end 
+  end
 
   def hide_van
     @van = Van.find(params[:id])
@@ -44,7 +44,7 @@ class Admins::VansController < ApplicationController
     redirect_to admins_vans_path
   end
 
-  private 
+  private
 
   def van_params
     params.require(:van).permit(:title, :is_hidden,:description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day, :photo)

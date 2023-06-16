@@ -6,6 +6,7 @@ class CreateRentals < ActiveRecord::Migration[7.0]
       t.integer :total_price
 
       t.references :customer, index: true
+      t.references :owner, index: true
       t.references :van, index: true
       t.timestamps
     end

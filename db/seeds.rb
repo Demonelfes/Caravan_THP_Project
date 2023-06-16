@@ -8,9 +8,10 @@
 
 require "faker"
 
-Rental.destroy_all
+
 Review.destroy_all
 Order.destroy_all
+Rental.destroy_all
 JoinVanTag.destroy_all
 Tag.destroy_all
 Van.destroy_all
@@ -63,30 +64,20 @@ end
   )
 end
 
-4.times do
-  Order.create!(
-    start_date: Faker::Date.forward(days: 30),
-    end_date: Faker::Date.between(from: '2023-12-31', to: '2025-12-31'),
-    van_id: rand(Van.first.id..Van.last.id),
-    customer_id: rand(User.first.id..User.last.id)
-  )
-end
-
-4.times do
+5.times do |count|
   Rental.create!(
     start_date: Faker::Date.forward(days: 30),
     end_date: Faker::Date.between(from: '2023-12-31', to: '2025-12-31'),
-    van_id: rand(Van.first.id..Van.last.id),
-    customer_id: rand(User.first.id..User.last.id)
+    van_id: Van.find(count+Van.first.id).id,
+    customer_id: rand(User.first.id..User.last.id),
+    owner_id: rand(User.first.id..User.last.id)
   )
 end
 
-#
-
-1.times do
-  Review.create!(
-    order_id:rand(Order.first.id..Order.last.id),
-    content: Faker::Quote.famous_last_words,
-    rating: rand(1..5)
-  )
-end
+# 1.times do
+#   Review.create!(
+#     order_id:rand(Order.first.id..Order.last.id),
+#     content: Faker::Quote.famous_last_words,
+#     rating: rand(1..5)
+#   )
+# end

@@ -52,15 +52,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_123950) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.integer "total_price"
-    t.bigint "customer_id"
-    t.bigint "van_id"
+    t.bigint "rental_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_orders_on_customer_id"
-    t.index ["van_id"], name: "index_orders_on_van_id"
+    t.index ["rental_id"], name: "index_orders_on_rental_id"
   end
 
   create_table "rentals", force: :cascade do |t|
@@ -68,10 +63,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_123950) do
     t.datetime "end_date"
     t.integer "total_price"
     t.bigint "customer_id"
+    t.bigint "owner_id"
     t.bigint "van_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_rentals_on_customer_id"
+    t.index ["owner_id"], name: "index_rentals_on_owner_id"
     t.index ["van_id"], name: "index_rentals_on_van_id"
   end
 

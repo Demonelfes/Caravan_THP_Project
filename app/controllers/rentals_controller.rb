@@ -5,7 +5,8 @@ class RentalsController < ApplicationController
       'start_date' => params[:start],
       'end_date' => params[:end],
       'van_id' => @van.id,
-      'customer_id' => User.last.id,
+      'customer_id' => current_user.id,
+      'owner_id' => @van.user.id,
       'total_price' => 38
     )
     puts params
