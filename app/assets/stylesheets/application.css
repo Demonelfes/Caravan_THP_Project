@@ -14,4 +14,38 @@
  *= require_self
  */
 
- *= require simple_calendar
+ .simple-calendar {
+    font-size: 16px;
+  }
+
+.day {
+}
+
+.wday-0 {}
+.wday-1 {}
+.wday-2 {}
+.wday-3 {}
+.wday-4 {}
+.wday-5 {}
+.wday-6 {}
+
+.today {}
+.past {}
+.future {}
+
+.start-date {}
+
+.prev-month {
+    background-color: rgba(106, 108, 105, 0.378);
+}
+.next-month {
+    background-color: rgba(106, 108, 105, 0.378);
+
+}
+.current-month {}
+
+.has-events {
+    background-color: rgba(18, 50, 9, 0.378);
+    text-decoration:line-through;
+}
+
