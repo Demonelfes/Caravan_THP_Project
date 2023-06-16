@@ -4,16 +4,20 @@
     <h4>Référence de l'annonce: <%= myvan.id %></h4>
     <div class="card-text row">
       <div class="col-md-4">
-        <%= image_tag image_url('van.jpg'), width: 200, height: 200, alt: "image de van" %>
+        <%if myvan.photo.attached?%>
+          <%= image_tag myvan.photo, alt: 'Photo du van' %>
+        <%else%>
+          <p>=== Il n'y a pas encore de photo lié à ce van ===</p>
+        <%end%>
       </div>
       <div class="col-md-4">
         <p>Ville: <%= myvan.city %></p>
         <p>Description: <%= myvan.description %></p>
         <p>Prix: <%= myvan.price_per_day %>€/jour</p>
-        <%= link_to "Modifier l'annonce", edit_van_path(myvan), class: "btn btn-secondary" %>
-      </div>
+        </div>
       <div class="col-md-4">
-      <br><br><br><br><br>
+        <%= link_to "Modifier l'annonce", edit_van_path(myvan), class: "btn btn-secondary" %>
+        <br><br>
         <%= button_to "Supprimer l'annonce", hide_van_van_path(myvan), method: :post, class: "btn btn-danger" %>
       </div>
     </div>
