@@ -7,7 +7,7 @@ class Van < ApplicationRecord
   validates :year, presence: true, numericality: { greater_than_or_equal_to: 1940, less_than_or_equal_to: Date.current.year , message:"-L'année de mise en service de votre véhicule doit être comprise entre 1940 et aujourd'hui." }
   validates :energy, presence: true, length: { in: 2..20, message: "-Le carburant doit avoir une longueur comprise entre 2 caractères et 20 caractères." }
   validates :bed_number, presence: true
-  validates :price_per_day, presence: true, numericality: { greater_than: 0, message: "-Le prix ne peut pas être nul - merci d'entrer un nouveau prix." }
+  validates :price_per_day, presence: true, numericality: { greater_than: 0, message: "-Le prix ne peut pas être nul - Merci d'entrer un nouveau prix." }
   validates :user_id, presence: true
 
 
