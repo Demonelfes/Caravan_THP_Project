@@ -2,16 +2,11 @@ fr:
   activerecord:
     models:
       rental: "Location"
+      van: "Van"
     attributes:
       rental:
         start_date: "La date de début"
         end_date: "La date de fin"
-
-
-  activerecord:
-    models:
-      van: "Van"
-    attributes:
       van:
         title: "Le titre"
         description: "La description"
