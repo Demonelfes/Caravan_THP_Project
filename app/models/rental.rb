@@ -1,7 +1,7 @@
 class Rental < ApplicationRecord
-  validates :start_date, presence: true, comparison: { greater_than_or_equal_to: DateTime.now , message: "-Merci de choisir une date dans le futur" }
+  validates :start_date, presence: true , comparison: { greater_than_or_equal_to: DateTime.now , message: "-Merci de choisir une date dans le futur" }
   validates :end_date, presence: true, comparison: { greater_than: :start_date, message: "-La date de retour de la location doit être ultérieure à la date de début de location." }
-  
+
   validate :duplicate_rental
   validates :total_price, presence: true
   validates :owner_id, presence: true
@@ -24,7 +24,7 @@ class Rental < ApplicationRecord
             return errors.add(:base, "-Cette période n'est pas disponible.")
           end
         end
-      end 
+      end
     end
   end
 end

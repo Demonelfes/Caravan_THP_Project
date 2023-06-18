@@ -1,6 +1,23 @@
 fr:
-  van :
-    title : "titre"
+  activerecord:
+    models:
+      rental: "Location"
+      van: "Van"
+    attributes:
+      rental:
+        start_date: "La date de début"
+        end_date: "La date de fin"
+      van:
+        title: "Le titre"
+        description: "La description"
+        city: "La ville"
+        brand: "La marque"
+        registration: "La plaque d'immatriculation"
+        year: "L'année"
+        energy: "Le carburant"
+        bed_number: "Le nombre de lit(s)"
+        price_per_day: "Le prix par jour"
+
   bonjour: "Bonjour monde"
   simple_calendar:
     previous: "<<"

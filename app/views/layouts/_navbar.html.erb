@@ -1,5 +1,5 @@
 <head>
-   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 </head>
 
 
@@ -13,7 +13,7 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <%= link_to "Home", root_path, class: "nav-link text-white" %> 
+            <%= link_to "Home", root_path, class: "nav-link text-white" %>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -26,7 +26,7 @@
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-right" aria-labelledby="userDropdown">
                   <%= link_to "Mon Profil", user_path(current_user), class: "dropdown-item" %>
                   <%= link_to "Déconnexion", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %>
-                  <%= link_to "Dashboard", admins_vans_path, class: "dropdown-item" %> 
+                  <%= link_to "Dashboard", admins_vans_path, class: "dropdown-item" %>
                 </div>
               </li>
             <% else %>
