@@ -3,6 +3,7 @@ fr:
     models:
       rental: "Location"
       van: "Van"
+      user: "Utilisateur(rice)"
     attributes:
       rental:
         start_date: "La date de début"
@@ -17,6 +18,9 @@ fr:
         energy: "Le carburant"
         bed_number: "Le nombre de lit(s)"
         price_per_day: "Le prix par jour"
+      user:
+        email: "L'email"
+        password: "Le mot de passe"
 
   bonjour: "Bonjour monde"
   simple_calendar:

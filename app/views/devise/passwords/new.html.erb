@@ -1,4 +1,5 @@
 <div class="container">
+  <%= devise_error_messages! %>
   <div class="row">
     <div class="col-4" style="display:flex; align-items:center">
       <h1>Mot de passe oublié ?</h1>
@@ -6,7 +7,6 @@
 
     <div class="col-8">
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
           <%= f.label :email, class:" form-label mt-4" %><br />
@@ -22,5 +22,5 @@
 
       <%= render "devise/shared/links" %>
     </div>
-  </div> 
+  </div>
 </div>
