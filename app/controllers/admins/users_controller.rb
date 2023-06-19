@@ -5,7 +5,8 @@ class Admins::UsersController < ApplicationController
 
   def update    
     if User.find(params[:id]).update(user_params)
-      redirect_to admins_vans_path, notice: 'Réservation mise à jour avec succès.'
+      flash[:success] = "Réservation mise à jour avec succès."
+      redirect_to admins_vans_path
     else
       render :edit
     end    

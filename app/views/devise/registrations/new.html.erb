@@ -1,13 +1,11 @@
 <div class="container">
+  <%= devise_error_messages! %>
   <div class="row">
     <div class="col-4" style="display:flex; align-items:center">
       <h1>Inscription</h1>
     </div>
-
-    <div class="col-8">
+     <div class="col-8" style="margin-top: 60px;">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-
         <div class="form-group">
           <%= f.label :email, class:" form-label mt-4" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
