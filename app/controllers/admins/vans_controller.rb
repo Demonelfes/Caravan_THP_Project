@@ -11,6 +11,7 @@ class Admins::VansController < ApplicationController
 
   def update
     if Van.find(params[:id]).update(van_params)
+      flash[:success] = "Van modifié avec succès."
       redirect_to admins_vans_path, notice: 'Van mis à jour avec succès.'
     else
       render :edit
@@ -26,8 +27,8 @@ class Admins::VansController < ApplicationController
     @van.is_van_pro = true
     @van.user_id = current_user.id
     if @van.save
-      redirect_to admins_vans_path, notice: "Le van à été créé avec succès."
-      puts params
+      flash[:success] = "Le van a bien été enregistré."
+      redirect_to admins_vans_path
     else
       flash[:alert] = @van.errors.full_messages.join(", ")
       redirect_to new_admin_vans_path
@@ -38,6 +39,7 @@ class Admins::VansController < ApplicationController
     @van = Van.find(params[:id])
     @van.is_hidden = !@van.is_hidden
     @van.save
+    flash[:info] = "Van masqué avec succès."
     redirect_to admins_vans_path
   end
 
