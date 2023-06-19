@@ -3,11 +3,6 @@ class RentalsController < ApplicationController
 
   def create
     @van = Van.find(params[:rental_id].to_i)
-    puts "X"*30
-    puts params[:start].inspect
-    puts "X"*30
-    puts params[:end].inspect
-    puts "X"*30
     if (params[:start] == "") || (params[:end] == "")
       @rental = Rental.new(
         'van_id' => @van.id,
@@ -15,7 +10,7 @@ class RentalsController < ApplicationController
         'owner_id' => @van.user.id,
         'total_price' => 1
       )
-    else 
+    else
       @rental = Rental.new(
         'start_date' => params[:start],
         'end_date' => params[:end],
@@ -30,6 +25,7 @@ class RentalsController < ApplicationController
       flash[:alert] = @rental.errors.full_messages#.join(", ")
       redirect_to van_path(@van)
     end
+
   end
 
   def show

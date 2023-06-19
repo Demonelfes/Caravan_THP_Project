@@ -3,4 +3,5 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 //= link index.js
+//= link show.js
 //= link van/index.css

@@ -3,46 +3,41 @@
 <div class="container d-flex justify-content-center">
   <div class="logo-card">
     <%= image_tag("flexible.png", alt: "Logo 1", class: "logo-image") %>
-    <div class="logo-text">
-      <p>Flexible</p>
-    </div>
+    <p class="logo-text">Flexible</p>
+    <p class="hover-text">C'est super Flexible</p>
   </div>
   <div class="logo-card">
     <%= image_tag("fiable.png", alt: "Logo 2", class: "logo-image") %>
-    <div class="logo-text">
-      <p>Fiable</p>
-    </div>
+    <p class="logo-text">Fiable</p>
+    <p class="hover-text">C'est super Fiable</p>
   </div>
   <div class="logo-card">
-    <%= image_tag("fiable.png", alt: "Logo 3", class: "logo-image") %>
-    <div class="logo-text">
-      <p>Fun</p>
-    </div>
+    <%= image_tag("fun.png", alt: "Logo 3", class: "logo-image") %>
+    <p class="logo-text">Fun</p>
+    <p class="hover-text">C'est super Fun</p>
   </div>
     <div class="logo-card">
-    <%= image_tag("fiable.png", alt: "Logo 4", class: "logo-image") %>
-    <div class="logo-text">
-      <p>Fonctionnel</p>
-    </div>
+    <%= image_tag("fonctionnel.png", alt: "Logo 4", class: "logo-image") %>
+    <p class="logo-text">Fonctionnel</p>
+    <p class="hover-text">C'est super Fonctionnel</p>
   </div>
   <div class="logo-card">
-    <%= image_tag("flexible.png", alt: "Logo 5", class: "logo-image") %>
-    <div class="logo-text">
-      <p>Français</p>
-    </div>
+    <%= image_tag("france.png", alt: "Logo 5", class: "logo-image") %>
+    <p class="logo-text">Français</p>
+    <p class="hover-text">Et c'est Français !</p>
   </div>
 </div>
 
 <div class="container">
   <div class="row p-5 m-5">
-    <% if @vans.count <= 6%>
-      <% @vans.sort_by(&:updated_at).reverse.each do |van| %>
+    <% if @visible_vans.count <= 6%>
+      <% @vanvisible_vans.sort_by(&:updated_at).reverse.each do |van| %>
         <div class="col-md-4 mb-4">
         <%= render partial: 'vans/van_card', locals: { van: van}  %>
         </div>
       <%end%>
     <% else %>
-      <% @visible_vans[0..5].sort_by(&:updated_at).reverse.each do |van| %>
+      <% @visible_vans[@visible_vans.length-6..@visible_vans.length].sort_by(&:updated_at).reverse.each do |van| %>
         <div class="col-md-4 mb-4">
           <%= render partial: 'vans/van_card', locals: { van: van}  %>
         </div>
