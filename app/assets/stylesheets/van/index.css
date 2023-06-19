@@ -23,5 +23,6 @@
 .hover-text {
   position: absolute;
   display: none;
-  top: 50%;
+  top: 10%;
+  text-align: justify;
 }
