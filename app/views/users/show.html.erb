@@ -43,7 +43,10 @@
             <% end %>
           <% end %>
         </div>
+          <%= link_to "Déconnexion", destroy_user_session_path, class: "btn btn-primary", data: { turbo_method: :delete } %>
       </div>
     </div>
   </div>
 </div>
+
+    end

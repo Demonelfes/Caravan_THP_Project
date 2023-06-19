@@ -1,3 +1,6 @@
+<head>
+  <%= stylesheet_link_tag 'van/index' %>
+</head>
 <%= render partial: 'layouts/banner'%>
 
 <div class="container d-flex justify-content-center">
@@ -51,7 +54,6 @@
           <%= link_to "Voir plus de vans", full_index_vans_path, class:"btn btn-success btn-lg" %>
         </div>
     <%end%>
-<%= javascript_include_tag 'index' %>
-<%= stylesheet_link_tag 'van/index' %>
+    <%= javascript_include_tag 'index' %>
   </div>
 </div>

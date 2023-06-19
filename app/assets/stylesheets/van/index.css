@@ -5,9 +5,42 @@
   margin: 0;
 }
 
+.card {
+  width: 100%;
+  height: 100%;
+}
+
+.card-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .logo-image {
   max-width: 100%;
   max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+@media (min-width: 576px) {
+  .logo-image {
+    max-height: 100px;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo-image {
+    max-height: 150px;
+  }
+}
+
+@media (min-width: 992px) {
+  .logo-image {
+    max-height: 230px;
+  }
 }
 
 .logo-text {
@@ -16,4 +49,18 @@
   left: 0;
   width: 100%;
   text-align: center;
+}
+
+.fixed-card {
+  width: 100%; /* Fixer la largeur de la carte */
+  height: 400px; /* Fixer la hauteur de la carte */
+  overflow: hidden; /* Masquer le contenu qui dépasse la hauteur fixée */
+}
+
+.fixed-card .card-body {
+  height: 100%; /* Fixer la hauteur du corps de la carte */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
