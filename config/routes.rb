@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   resources :orders
   resources :users
-  resources :rentals
+  resources :rentals, only: [:create]
 
-  resources :vans do
+  resources :vans, except: [:destroy] do
     collection do
       get 'full_index'
     end
@@ -21,9 +21,9 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :admins
-    resources :orders
-    resources :users
-    resources :vans
+    resources :orders, only: [:edit, :update]
+    resources :users, only: [:edit, :update]
+    resources :vans, except: [:destroy, :show]
     resources :vans do
       member do
         post 'hide_van'

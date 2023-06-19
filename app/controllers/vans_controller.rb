@@ -5,6 +5,7 @@ class VansController < ApplicationController
   end
 
   def full_index
+    @visible_vans = Van.all.where(is_hidden:false)
     @vans = Van.all
   end
 

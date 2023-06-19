@@ -1,39 +1,28 @@
-var logos = document.getElementsByClassName("logo-card");
-var texts = [
-  "C'est super Flexible",
-  "C'est super Fiable",
-  "C'est super Fun",
-  "C'est super Fonctionnel",
-  "Et c'est fait en France !"
-];
+var logoCards = document.querySelectorAll(".logo-card");
+var logoImages = document.querySelectorAll(".logo-image");
+var logoTexts = document.querySelectorAll(".logo-text");
+var hoverTexts = document.querySelectorAll(".hover-text");
 
-var words = [
-  "Flexible",
-  "Fiable",
-  "Fun",
-  "Fonctionnel",
-  "Français"
-];
-
-function replaceWithText() {
-  var index = Array.prototype.indexOf.call(logos, this);
-
-  if (index >= 0 && index < texts.length) {
-    this.querySelector(".logo-image").style.display = "none";
-    this.querySelector(".logo-text").textContent = texts[index];
-  }
+function replaceLogoWithText(index) {
+  logoImages[index].style.display = "none";
+  logoTexts[index].style.display = "none";
+  hoverTexts[index].style.display = "block";
 }
 
-function restoreLogo() {
-  var index = Array.prototype.indexOf.call(logos, this);
-
-  if (index >= 0 && index < words.length) {
-    this.querySelector(".logo-image").style.display = "block";
-    this.querySelector(".logo-text").textContent = words[index];
-  }
+function restoreLogo(index) {
+  logoImages[index].style.display = "block";
+  logoTexts[index].style.display = "block";
+  hoverTexts[index].style.display = "none";
 }
 
-for (var i = 0; i < logos.length; i++) {
-  logos[i].addEventListener('mouseover', replaceWithText);
-  logos[i].addEventListener('mouseout', restoreLogo);
+for (let index = 0; index < logoCards.length; index++) {
+  logoCards[index].addEventListener("mouseover", function() {
+    replaceLogoWithText(index);
+  });
+
+  logoCards[index].addEventListener("mouseout", function() {
+    restoreLogo(index);
+  });
 }
+
+

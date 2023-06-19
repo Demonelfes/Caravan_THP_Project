@@ -3,6 +3,9 @@
   height: 180px;
   position: relative;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo-image {
@@ -13,7 +16,13 @@
 .logo-text {
   position: absolute;
   bottom: 0;
-  left: 0;
   width: 100%;
   text-align: center;
+}
+
+.hover-text {
+  position: absolute;
+  display: none;
+  top: 10%;
+  text-align: justify;
 }
