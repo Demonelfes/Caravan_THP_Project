@@ -6,7 +6,6 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-ruby.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com)
 [![Ruby On Rails](https://img.shields.io/badge/Ruby_on_Rails-CC0000?style=for-the-badge&logo=ruby-on-rails&logoColor=white)](https://rubyonrails.org/)
-[![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 CaraVan is a final project made during the eleventh and twelfth week of *The Hacking Project* bootcamp.
@@ -84,7 +83,7 @@ Our little team is composed of
 | ---- | ---- |
 | Laurie BOUSQUET |  [@Laurie2023](@Laurie2023) |
 | Adrien CRESSON| [@Acresson](@Acresson) |
-| Solène JABAUD | [Sojabio](Sojabio)|
+| Solène JABAUD | [@Sojabio](@Sojabio)|
 | Alexis LOPEZ | [@Demonelfes](@Demonelfes) |
 | Antoine PATUREL | [@Washer34](@Washer34) |
 

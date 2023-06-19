@@ -86,7 +86,7 @@
               </div>
               <% end %>
               <div>
-                <% if @rental.valid? && params[:check_availability] == "1" %>
+                <% if @rental && @rental.valid? && params[:check_availability] == "1" %>
                   <br>
                   <p> Le van est bien disponible du <span class="text-secondary"><%= @rental.start_date.strftime("%d/%m/%Y")%> </span> au <span class="text-secondary"><%= @rental.end_date.strftime("%d/%m/%Y")%></span> </p>
                   <p> Coût total : <span class="text-secondary"><%= @rental.total_price %></span> euros </p>
