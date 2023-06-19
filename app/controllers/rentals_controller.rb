@@ -25,9 +25,9 @@ class RentalsController < ApplicationController
         'total_price' => (params[:end].to_date - params[:start].to_date).to_i * @van.price_per_day)
     end
     if @rental.save
-      redirect_to van_path(@van, success: true)
+      redirect_to van_path(@van)
     else
-      flash[:alert] = @rental.errors.full_messages#.join(", ")
+      flash[:alert] = @rental.errors.full_messages
       redirect_to van_path(@van)
     end
   end
