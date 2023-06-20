@@ -1,0 +1,12 @@
+<div class="card m-2 " style="width: 18rem;">
+  <%if van.photo.attached?%>
+      <%= image_tag van.photo.variant(resize_to_limit: [230, 230]) , alt: "photo du van" %>
+    <%else%>
+      <%= image_tag("no-picture.png", alt: "Photo indisponible") %>
+  <%end%>
+  <div class="card-body ">
+    <h5 class="card-title"><%= van.title.truncate(20)%></h5>
+    <p class="card-text"><%= van.description.truncate(32)%></p>
+    <%= link_to "En savoir plus",  van_path(van.id), class:"btn btn-outline-primary", role:"button", style:"width= 6em"%>
+  </div>
+</div>
