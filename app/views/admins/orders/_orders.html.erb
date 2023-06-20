@@ -3,30 +3,32 @@
 </head>
 
 <div class="container">
-  <table class="table table-striped">
-    <thead class="bg-primary text-white">
-      <tr>
-        <th>ID</th>
-        <th>Loueur</th>
-        <th>Véhicule</th>
-        <th>Date de débût</th>
-        <th>Date de fin</th>
-        <th>Montant total</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @orders.sort.reverse.each do |order| %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class="bg-primary text-white">
         <tr>
-          <td><%= order.id %></td>
-          <td><%= order.customer_id %></td>
-          <td><%= order.van_id %></td>
-          <td><%= order.start_date.strftime('%Y-%m-%d')[0..9] %></td>
-          <td><%= order.end_date.strftime('%Y-%m-%d')[0..9] %></td>
-          <td><%= order.total_price %></td>
-          <td><%= button_to "Modifier", edit_admins_order_path(order), method: :get, class: "btn btn-primary" %></td>
+          <th>ID</th>
+          <th>Loueur</th>
+          <th>Véhicule</th>
+          <th>Date de débût</th>
+          <th>Date de fin</th>
+          <th>Montant total</th>
+          <th></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @orders.sort.reverse.each do |order| %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= order.customer_id %></td>
+            <td><%= order.van_id %></td>
+            <td><%= order.start_date.strftime('%Y-%m-%d')[0..9] %></td>
+            <td><%= order.end_date.strftime('%Y-%m-%d')[0..9] %></td>
+            <td><%= order.total_price %></td>
+            <td><%= button_to "Modifier", edit_admins_order_path(order), method: :get, class: "btn btn-primary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

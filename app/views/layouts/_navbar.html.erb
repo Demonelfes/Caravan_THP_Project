@@ -1,11 +1,7 @@
-<head>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-</head>
-
 <nav class="navbar navbar-expand-lg bg-primary sticky-top" data-bs-theme="dark">
   <a class="navbar-brand text-white stick" href="#">CaraVan</a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon"><%= image_tag('logo_caravan.png', alt: 'Logo CaraVan', class: 'bi me-2', width: '32px', height: 'auto') %> </span>
   </button>
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav me-auto">
@@ -31,19 +27,12 @@
         <% end %>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Inscription", new_user_registration_path, class: "nav-link text-white" %>
+          <%= link_to "Connexion", new_user_session_path, class: "nav-link text-white"%>
         </li>
         <li class="nav-item">
-          <%= link_to "Connexion", new_user_session_path, class: "nav-link text-white", style: "margin-left:20px"%>
+          <%= link_to "Inscription", new_user_registration_path, class: "nav-link text-white", style: "margin-left:20px" %>
         </li>
       <% end %>
     </ul>
   </div>
 </nav>
-
-
-<script>
-  $(document).ready(function() {
-    $('.dropdown-toggle').dropdown();
-  });
-</script>

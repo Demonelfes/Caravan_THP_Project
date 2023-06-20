@@ -13,6 +13,11 @@
           <div class="card border-primary mb-3" style="width:100%">
             <div class="card-body">
               <h4 class="card-title"><%= @van.title%></h4>
+
+              <% if @van.tags.size != 0 %>
+                <p><%=@van.tags.map{|tag|"#"+tag.title}.join(" ") %></p>
+              <% end %>
+
               <div class="card-text">
                 <p>Ville : <%= @van.city %></p>
                 <p> Description : <%= @van.description %>
