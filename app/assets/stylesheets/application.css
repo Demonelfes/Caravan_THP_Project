@@ -23,26 +23,18 @@
 }
 
 .jumbotron h1 {
-  color: white;
-  font-size: min(8vw, 40px);
-  text-shadow: 1px 1px 2px #000, -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000;
+  color: #d86b12;
+  font-size: min(6vw, 60px);
 }
 
 .jumbotron h2 {
-  color: white;
-  font-size: min(6vw, 40px);
+  color: #b7c75d;
+  font-size: min(4vw, 40px);
   text-shadow: 1px 1px 2px #000, -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000;
 }
 
 .simple-calendar {
   font-size: 16px;
-}
-
-@media (max-width: 768px) {
-  .simple-calendar {
-    max-width: 100%;
-    overflow-x: auto;
-  }
 }
 
 .day {}

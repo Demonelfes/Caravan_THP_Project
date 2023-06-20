@@ -27,7 +27,7 @@ class Admins::VansController < ApplicationController
         JoinVanTag.find_by(van_id: @van.id, tag_id: Tag.find(tag).id).destroy
       end 
 
-      redirect_to admins_vans_path, notice: 'Van mis à jour avec succès.'
+      redirect_to admins_vans_path
     else
       render :edit
     end
