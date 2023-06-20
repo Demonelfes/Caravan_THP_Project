@@ -31,7 +31,7 @@ class Admins::VansController < ApplicationController
       redirect_to admins_vans_path
     else
       flash[:alert] = @van.errors.full_messages.join(", ")
-      redirect_to new_admin_vans_path
+      redirect_to new_admins_van_path
     end
   end
 

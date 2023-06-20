@@ -33,7 +33,7 @@
                 <%= render partial: 'admins/vans/vanspro', locals: { myvan: van } %>
               <% break %>
             <% end %>
-          <% end %>      
+          <% end %>
         </div>
 
         <div class="tab-pane fade" id="vpart" role="tabpanel">
@@ -42,11 +42,11 @@
             <h2> Vans particuliers </h2>
           </div>
             <% 1.times do %>
-              <% current_user.vans.where(is_van_pro: false).each do |van| %>
+              <% Van.all.where(is_van_pro: false).each do |van| %>
                 <%= render partial: 'admins/vans/vanspart', locals: { myvan: van } %>
               <% break %>
             <% end %>
-          <% end %>      
+          <% end %>
         </div>
         <div class="tab-pane fade" id="rents" role="tabpanel">
           <br>
@@ -54,11 +54,11 @@
             <h2> Réservations </h2>
           </div>
             <% 1.times do %>
-              <% current_user.vans.each do |van| %>
+              <% Van.all.each do |van| %>
                 <%= render partial: 'admins/orders/orders', locals: { myvan: van } %>
               <% break %>
             <% end %>
-          <% end %>      
+          <% end %>
         </div>
         <div class="tab-pane fade" id="users" role="tabpanel">
           <br>
@@ -66,15 +66,14 @@
             <h2> Utilisateurs </h2>
           </div>
             <% 1.times do %>
-              <% current_user.vans.each do |van| %>
+              <% Van.all.each do |van| %>
                 <%= render partial: 'admins/users/users', locals: { myvan: van } %>
               <% break %>
             <% end %>
-          <% end %>      
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-  
