@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :vans, except: [:destroy] do
     collection do
       get 'full_index'
+      get 'filter', to: 'vans#filter_vans'
     end
     member do
       post 'hide_van'

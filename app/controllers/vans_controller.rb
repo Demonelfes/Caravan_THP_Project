@@ -79,6 +79,21 @@ class VansController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def filter_vans
+    conditions = {}
+
+    conditions[:has_fridge] = true if params[:has_fridge].present?
+    conditions[:has_wc] = true if params[:has_wc].present?
+    conditions[:has_shower] = true if params[:has_shower].present?
+    conditions[:is_manual_transmission] = true if params[:is_manual_transmission].present?
+    conditions[:year] = params.dig(:van, :year) if params.dig(:van, :year).present?
+    conditions[:brand] = params.dig(:van, :brand) if params.dig(:van, :brand).present?
+    conditions[:bed_number] = params.dig(:van, :bed_number) if params.dig(:van, :bed_number).present?
+
+    @visible_vans = conditions.present? ? Van.where(conditions) : Van.all
+    render :full_index
+  end
+
   private
 
   def van_params
