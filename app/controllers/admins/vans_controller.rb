@@ -44,7 +44,7 @@ class Admins::VansController < ApplicationController
     if @van.save
       flash[:success] = "Le van a bien été enregistré."
 
-      van_params[:tag_list].each do |tag|
+      van_params[:tag_list].drop(1).each do |tag|
         JoinVanTag.create(van_id: @van.id, tag_id: Tag.find(tag).id)
       end 
 

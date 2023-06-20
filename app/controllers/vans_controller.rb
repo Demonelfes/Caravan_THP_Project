@@ -61,7 +61,7 @@ class VansController < ApplicationController
     @van.user_id = current_user.id
     if @van.save
       flash[:success] = "Le van a bien été enregistré."
-      van_params[:tag_list].each do |tag|
+      van_params[:tag_list].drop(1).each do |tag|
         JoinVanTag.create(van_id: @van.id, tag_id: Tag.find(tag).id)
       end 
       redirect_to van_path(@van)
@@ -97,6 +97,6 @@ class VansController < ApplicationController
   private
 
   def van_params
-    params.require(:van).permit(:title, :description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day, :is_hidden, :photo)
+    params.require(:van).permit(:title, :description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day, :is_hidden, :photo, tag_list:[])
   end
 end
