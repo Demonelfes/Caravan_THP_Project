@@ -1,14 +1,18 @@
-<div class="card">
-  <div class="card-body">
-    <% if van.photo.attached? %>
-      <%= image_tag van.photo.variant(resize_to_limit: [100, 100]), class: "logo-image" %>
-    <% else %>
-      <p>=== Il n'y a pas encore de photo liée à ce van ===</p>
-    <% end %>
+<div class="card ">
+  <div class="card-body text-center">
+   <%if van.photo.attached?%>
+      <%= image_tag van.photo.variant(resize_to_limit: [230, 230]) %>
+    <%else%>
+      <p>=== Il n'y a pas encore de photo lié à ce van ===</p>
+    <%end%>
     <h4 class="card-title"></h4>
     <p class="card-text"></p>
-    <div class="btn_main">
-      <%= link_to "En savoir plus", van_path(van.id), class: "btn btn-outline-primary", role: "button" %>
+    <div class="btn_main row">
+      <div class="col-md-12 text-center">
+        <%= link_to "En savoir plus",  van_path(van.id), class:"btn btn-outline-primary", role:"button", style:"width= 6em"%>
+      </div>
+      <div class="text-center">
+      </div>
     </div>
   </div>
 </div>
