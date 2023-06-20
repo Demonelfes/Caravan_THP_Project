@@ -5,7 +5,7 @@
     <div class="card-text row">
       <div class="col-md-4">
         <%if myvan.photo.attached?%>
-          <%= image_tag myvan.photo, alt: 'Photo du van - ' + myvan.title %>
+          <%= image_tag myvan.photo.variant(resize_to_limit: [230, 230]), alt: 'Photo du van - ' + myvan.title %>
         <%else%>
           <%= image_tag("no-picture.png", alt: "Photo indisponible", class: "logo-image") %>
         <%end%>
