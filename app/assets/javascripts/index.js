@@ -4,15 +4,19 @@ var logoTexts = document.querySelectorAll(".logo-text");
 var hoverTexts = document.querySelectorAll(".hover-text");
 
 function replaceLogoWithText(index) {
-  logoImages[index].style.display = "none";
-  logoTexts[index].style.display = "none";
-  hoverTexts[index].style.display = "block";
+  if (window.innerWidth > 768) {
+    logoImages[index].style.display = "none";
+    logoTexts[index].style.display = "none";
+    hoverTexts[index].style.display = "block";
+  }
 }
 
 function restoreLogo(index) {
-  logoImages[index].style.display = "block";
-  logoTexts[index].style.display = "block";
-  hoverTexts[index].style.display = "none";
+  if (window.innerWidth > 320) {
+    logoImages[index].style.display = "block";
+    logoTexts[index].style.display = "block";
+    hoverTexts[index].style.display = "none";
+  }
 }
 
 for (let index = 0; index < logoCards.length; index++) {
@@ -24,5 +28,3 @@ for (let index = 0; index < logoCards.length; index++) {
     restoreLogo(index);
   });
 }
-
-

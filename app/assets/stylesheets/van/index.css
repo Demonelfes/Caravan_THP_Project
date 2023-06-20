@@ -26,3 +26,9 @@
   top: 10%;
   text-align: justify;
 }
+
+@media (max-width: 425px) {
+  .logo-text {
+    display: none;
+  }
+}
