@@ -22,10 +22,15 @@
   height: 80vh;
 }
 
-.jumbotron h1,
-.jumbotron p.lead,
+.jumbotron h1 {
+  color: white;
+  font-size: min(8vw, 40px);
+  text-shadow: 1px 1px 2px #000, -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000;
+}
+
 .jumbotron h2 {
   color: white;
+  font-size: min(6vw, 40px);
   text-shadow: 1px 1px 2px #000, -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000;
 }
 
