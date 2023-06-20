@@ -1,4 +1,7 @@
 <%= render partial: 'layouts/small_banner'%>
+<%= render partial: 'vans/filter'%>
+
+
 <div class="container">
   <div class="row p-5 m-5">
     <% @visible_vans.sort_by(&:updated_at).reverse.each do |van| %>
