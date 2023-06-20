@@ -65,6 +65,21 @@
           <%= form.number_field :price_per_day, class: "form-control" %>
         </div>
 
+          <div class="form-group">
+            <%= form.label :tags, "Tag(s) associé(s) au van :" %><br>
+            <%= form.collection_check_boxes :tag_list, Tag.all, :id, :title do |tag| %>
+              <span>
+                <% if @van.join_van_tags.find_by(tag_id:tag.value) == nil %>
+                  <%= tag.check_box checked: false %>
+                  <%= tag.label %>
+                <% else %>
+                  <%= tag.check_box checked: true %>
+                  <%= tag.label %>
+                <% end %>
+              </span>
+            <% end %>
+          </div>
+
         <div class="form-group">
           <%= form.label :photo, "Photo" %>
           <%= form.file_field :photo, class: "form-control" %>

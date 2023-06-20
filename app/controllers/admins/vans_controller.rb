@@ -10,8 +10,23 @@ class Admins::VansController < ApplicationController
   end
 
   def update
-    if Van.find(params[:id]).update(van_params)
+    @van = Van.find(params[:id])
+    if @van.update(van_params.except(:tag_list))
       flash[:success] = "Van modifié avec succès."
+
+      @current_van_tags = @van.tags.map{|tag|tag.id}
+      @new_tags = van_params[:tag_list].drop(1)
+      @join_tags_to_create = @new_tags - @current_van_tags
+      @join_tags_to_destroy = @current_van_tags - @new_tags
+
+      @join_tags_to_create.each do |tag|
+        JoinVanTag.create(van_id: @van.id, tag_id: Tag.find(tag).id)
+      end 
+
+      @join_tags_to_destroy.each do |tag|
+        JoinVanTag.find_by(van_id: @van.id, tag_id: Tag.find(tag).id).destroy
+      end 
+
       redirect_to admins_vans_path, notice: 'Van mis à jour avec succès.'
     else
       render :edit
@@ -23,11 +38,16 @@ class Admins::VansController < ApplicationController
   end
 
   def create
-    @van = Van.new(van_params)
+    @van = Van.new(van_params.except(:tag_list))
     @van.is_van_pro = true
     @van.user_id = current_user.id
     if @van.save
       flash[:success] = "Le van a bien été enregistré."
+
+      van_params[:tag_list].each do |tag|
+        JoinVanTag.create(van_id: @van.id, tag_id: Tag.find(tag).id)
+      end 
+
       redirect_to admins_vans_path
     else
       flash[:alert] = @van.errors.full_messages.join(", ")
@@ -46,6 +66,6 @@ class Admins::VansController < ApplicationController
   private
 
   def van_params
-    params.require(:van).permit(:title, :is_hidden,:description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day, :photo)
+    params.require(:van).permit(:title, :is_hidden,:description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day, :photo, tag_list:[])
   end
 end
