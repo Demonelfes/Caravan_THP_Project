@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row d-flex justify-content-center", style="width:100%;">
           <%if @van.photo.attached?%>
-            <%= image_tag @van.photo, alt: 'Photo du van', style: "width:80%; height:auto" %>
+            <%= image_tag @van.photo, alt: 'Photo du van - ' + @van.title, style: "width:80%; height:auto" %>
           <%else%>
             <p>=== Il n'y a pas encore de photo lié à ce van ===</p>
           <%end%>
