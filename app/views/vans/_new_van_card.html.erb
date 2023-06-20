@@ -1,8 +1,8 @@
 <div class="card m-2 " style="width: 18rem;">
   <%if van.photo.attached?%>
-      <%= image_tag van.photo.variant(resize_to_limit: [230, 230]) %>
+      <%= image_tag van.photo.variant(resize_to_limit: [230, 230]) , alt: "photo du van" %>
     <%else%>
-      <p>=== Il n'y a pas encore de photo lié à ce van ===</p>
+      <%= image_tag("no-picture.png", alt: "Photo indisponible") %>
   <%end%>
   <div class="card-body ">
     <h5 class="card-title"><%= van.title.truncate(20)%></h5>

@@ -30,7 +30,7 @@ end
 10.times do
   v = Van.create!(
     title: Faker::Book.title.truncate(20),
-    description: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
+    description: Faker::Lorem.paragraph(sentence_count: rand(3..5)),
     city: Faker::Address.city,
     is_van_pro: [true, false].sample,
     is_hidden: false,
