@@ -5,7 +5,7 @@
     <div class="card-text row">
       <div class="col-md-4">
         <%if myvan.photo.attached?%>
-          <%= image_tag myvan.photo, alt: 'Photo du van' %>
+          <%= image_tag myvan.photo, alt: 'Photo du van - ' + myvan.title %>
         <%else%>
           <p>=== Il n'y a pas encore de photo lié à ce van ===</p>
         <%end%>
