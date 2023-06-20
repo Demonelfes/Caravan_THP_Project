@@ -6,7 +6,7 @@
           <%if @van.photo.attached?%>
             <%= image_tag @van.photo, alt: 'Photo du van - ' + @van.title, style: "width:80%; height:auto" %>
           <%else%>
-            <p>=== Il n'y a pas encore de photo lié à ce van ===</p>
+            <%= image_tag("no-picture.png", alt: "Photo indisponible", class: "logo-image") %>
           <%end%>
         </div><br>
         <div class="row">
