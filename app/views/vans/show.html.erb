@@ -68,21 +68,38 @@
           </div>
         </div>
         <div class="row d-flex justify-content-center align-items-center">
-        <p class="text-secondary" style="width:80%">Dernière étape avant la réservation ! Vérifie que tes dates sont toujours disponibles :</p>
           <div class="col-6" >
             <% if current_user %>
+              <p class="text-secondary" style="width:80%">Dernière étape avant la réservation ! Vérifie que tes dates sont toujours disponibles :</p>
               <%= form_with(url: url_for(controller: 'rentals', action: 'create', rental_id: @van.id)) do |form| %>
-              <p>début : <%= form.date_field :start %></p>
-              <p>fin : <%= form.date_field :end %></p>
-              <%= form.submit "Vérifier les disponibilités" %>
+              <div class="form-group">
+                <label for="start">Date de début :</label>
+                <%= form.date_field :start, class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <label for="end">Date de Fin :</label>
+                <%= form.date_field :end, class: "form-control" %>
+              </div>
+              <div>
+              <br>
+                <%= form.submit "Vérifier les disponibilités", class:"btn btn-primary btn-block" %>
+              </div>
               <% end %>
-
-              <% if @rental && @rental.valid? %>
-                <p> Le van est bien disponible du <%= @rental.start_date.strftime("%d/%m/%Y")%> au <%= @rental.end_date.strftime("%d/%m/%Y")%> </p>
-                <p> Le coût total de la réservation est de <%= @rental.total_price %> euros </p>
-                <p> Souhaitez-vous le réserver ? </p>
-              <%= button_to "Réserver et payer", checkout_create_path(total: @rental.total_price), class: "btn btn-danger", data: {turbo: false} %>
-              <% end %>
+              <div>
+                <% if @rental && @rental.valid? && params[:check_availability] == "1" %>
+                  <br>
+                  <p> Le van est bien disponible du <span class="text-secondary"><%= @rental.start_date.strftime("%d/%m/%Y")%> </span> au <span class="text-secondary"><%= @rental.end_date.strftime("%d/%m/%Y")%></span> </p>
+                  <p> Coût total : <span class="text-secondary"><%= @rental.total_price %></span> euros </p>
+                  <%= button_to "Réserver et payer", checkout_create_path(total: @rental.total_price), class: "btn btn-danger btn-block", data: {turbo: false} %>
+                <% elsif params[:check_availability] == "0" %>
+                <p> Le van n'est pas disponible à ces dates </p>
+                <% end %>
+              </div>
+            <%else%>
+              <br>
+              <p class="text-secondary" style="width:100%; font-size: larger;"> Tu dois être connecté·e pour vérifier les disponibilités de ce van </p>
+              <%= link_to "Connexion", new_user_session_path, class: "btn btn-primary btn-block"%>
+              <%= link_to "Inscription", new_user_registration_path, class: "btn btn-primary btn-block" %>
             <%end%>
           </div>
         </div>

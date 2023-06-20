@@ -3,6 +3,9 @@
   height: 180px;
   position: relative;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
@@ -46,11 +49,11 @@
 .logo-text {
   position: absolute;
   bottom: 0;
-  left: 0;
   width: 100%;
   text-align: center;
 }
 
+<<<<<<< HEAD
 .fixed-card {
   width: 100%; /* Fixer la largeur de la carte */
   height: 400px; /* Fixer la hauteur de la carte */
@@ -64,3 +67,11 @@
   justify-content: center;
   align-items: center;
 }
+=======
+.hover-text {
+  position: absolute;
+  display: none;
+  top: 10%;
+  text-align: justify;
+}
+>>>>>>> 6f8f64c5d86c97604eecaa16cdde91ea2a3eea5c
