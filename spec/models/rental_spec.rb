@@ -80,32 +80,21 @@ RSpec.describe Rental, type: :model do
 
 # DUPLICATE_RENTAL ##
     describe "duplicate_rental validation" do
-      # it "should return an error when there is an order with the same van and overlapping dates" do
-      #   van = FactoryBot.create(:van)
-      #   rental = FactoryBot.build(:rental, van: van) # Use build instead of create
-      #   order = FactoryBot.create(:order, rental: rental)
-      #   rental.start_date = order.start_date - 1
-      #   rental.end_date = order.end_date + 1
-      #   rental.save # Save the rental to trigger validations
-      #   expect(rental.errors[:base]).to include("-Cette période n'est pas disponible.")
-      # end
-
-
+      it "should return an error when there is an order with the same van and overlapping dates" do
+        van = FactoryBot.create(:van)
+        rental = FactoryBot.create(:rental, van: van)
+        order = FactoryBot.create(:order, rental: rental)
+        rental = FactoryBot.create(:rental, order: order, start_date: order.start_date - 1, end_date: order.end_date + 1)
+        expect(rental).not_to be_valid
+        expect(rental.errors[:base]).to include("-Cette période n'est pas disponible.")
+      end
 
       it "returns no errors when there is an order with a different van" do
         van = FactoryBot.create(:van)
         rental = FactoryBot.create(:rental, van: van)
         expect(rental).to be_valid
       end
-
-      # it "returns no errors when there is an order with the same van but no overlapping dates" do
-      #   order = FactoryBot.create(:order)
-      #   rental = FactoryBot.create(:rental, van: order.rental.van)
-      #   rental.start_date = order.start_date - 10
-      #   rental.end_date = order.start_date - 1
-      #   expect(rental).to be_valid
-      # end
-    # end
+    end
   end
 
 ## ** ASSOCIATIONS **##
@@ -145,5 +134,4 @@ RSpec.describe Rental, type: :model do
     end
 
   end
-end
 end

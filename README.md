@@ -10,14 +10,14 @@
 
 CaraVan is a final project made during the eleventh and twelfth week of *The Hacking Project* bootcamp.
 
-[Pitch of the project](#pitch-of-the-project)
-[Live Site & Screenshots](#live-site--screenshots)
+[Pitch of the project](#pitch-of-the-project) |
+[Live Site & Screenshots](#live-site--screenshots) |
 [Gems & APIs](#gems--apis) |
-[Features](#features)
-[Team](#team)
-[Acknowledgements](#acknowledgements)
-[The Hacking Project](#the-hacking-project)
-[Getting Started](#getting-started)
+[Features](#features) |
+[Team](#team) |
+[Acknowledgements](#acknowledgements) |
+[The Hacking Project](#the-hacking-project) |
+[Getting Started](#getting-started) 
 
 </div>
 

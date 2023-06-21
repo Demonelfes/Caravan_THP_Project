@@ -13,13 +13,49 @@ RSpec.describe Order, type: :model do
       expect(@order).to be_valid
     end
 
-    # it 'sends an order confirmation to the customer' do
+    # it 'should send an order confirmation to the customer if the van is not a van pro' do
+    #   van = FactoryBot.create(:van, is_van_pro: false)
     #   customer = FactoryBot.create(:user)
-    #   rental = FactoryBot.create(:rental, customer: customer)
+    #   rental = FactoryBot.create(:rental, customer: customer, van: van)
     #   order = FactoryBot.create(:order, rental: rental)
     #   expect(UserMailer).to receive(:order_confirmation_to_customer_email).with(customer, order).and_return(double(deliver_now: true))
     #   order.order_confirmation_to_customer_send
     # end
+
+      it 'should send an order confirmation to the owner if the van is not a van pro' do
+        van = FactoryBot.create(:van, is_van_pro: false)
+        owner = FactoryBot.create(:user)
+        rental = FactoryBot.create(:rental, owner: owner, van: van)
+        order = FactoryBot.create(:order, rental: rental)
+        expect(UserMailer).to receive(:order_confirmation_to_owner_email).with(owner, order).and_return(double(deliver_now: true))
+        order.order_confirmation_to_owner_send
+      end
+
+      it 'should not send an order confirmation to the owner if the van is a van pro' do
+        van = FactoryBot.create(:van, is_van_pro: true)
+        owner = FactoryBot.create(:user)
+        rental = FactoryBot.create(:rental, owner: owner)
+        order = FactoryBot.create(:order, rental: rental)
+        expect(UserMailer).not_to receive(:order_confirmation_to_owner_email)
+      end
+
+      it 'should send a private van order confirmation to the admin if the van is not a van pro' do
+        van = FactoryBot.create(:van, is_van_pro: false)
+        admin = FactoryBot.create(:user, is_admin: true)
+        rental = FactoryBot.create(:rental, owner: admin, van: van)
+        order = FactoryBot.create(:order, rental: rental)
+        expect(AdminMailer).to receive(:admin_order_confirmation_van_private_email).with(admin, order).and_return(double(deliver_now: true))
+        order.admin_order_confirmation_van_private_send
+      end
+
+      it 'should send a pro van order confirmation to the admin if the van is a van pro' do
+        van = FactoryBot.create(:van, is_van_pro: true)
+        admin = FactoryBot.create(:user, is_admin: true)
+        rental = FactoryBot.create(:rental, owner: admin, van: van)
+        order = FactoryBot.create(:order, rental: rental)
+        expect(AdminMailer).to receive(:admin_order_confirmation_van_pro_email).with(admin, order).and_return(double(deliver_now: true))
+        order.admin_order_confirmation_van_pro_send
+      end
 
 ## RENTAL ID ##
     describe "#rental_id" do
