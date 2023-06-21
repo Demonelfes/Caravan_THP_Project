@@ -195,63 +195,61 @@ RSpec.describe Van, type: :model do
         expect(bad_van.errors.include?(:user_id)).to eq(true)
       end
     end
-
+  end
 ## ** ASSOCIATIONS ** ##
 
-    context "associations" do
+  context "associations" do
 
-      describe "user" do
-        it "should belong to a user" do
-          user = FactoryBot.create(:user)
-          van = FactoryBot.create(:van, user: user)
-
-          expect(van.user).to eq(user)
-        end
+    describe "user" do
+      it "should belong to a user" do
+        user = FactoryBot.create(:user)
+        van = FactoryBot.create(:van, user: user)
+        expect(van.user).to eq(user)
       end
+    end
 
-      describe "rentals" do
-        it "should have_many rentals" do
-          rental = FactoryBot.create(:rental, van: @van)
-          expect(@van.rentals.include?(rental)).to eq(true)
-        end
+    describe "rentals" do
+      it "should have_many rentals" do
+        rental = FactoryBot.create(:rental, van: @van)
+        expect(@van.rentals.include?(rental)).to eq(true)
       end
+    end
 
-      describe "orders" do
-        it "should have_many orders" do
-          order = FactoryBot.create(:order, van: @van)
-          expect(@van.rentals.map{|rental| rental.order}.include?(order)).to eq(true)
-        end
+    describe "orders" do
+      it "should have_many orders" do
+        order = FactoryBot.create(:order, van: @van)
+        expect(@van.rentals.map{|rental| rental.order}.include?(order)).to eq(true)
       end
+    end
 
-      describe "join_van_tags" do
-        it "should have_many join_van_tags" do
-          join_van_tag = FactoryBot.create(:join_van_tag, van: @van)
-          expect(@van.join_van_tags.include?(join_van_tag)).to eq(true)
-        end
+    describe "join_van_tags" do
+      it "should have_many join_van_tags" do
+        join_van_tag = FactoryBot.create(:join_van_tag, van: @van)
+        expect(@van.join_van_tags.include?(join_van_tag)).to eq(true)
       end
+    end
 
-      describe "tags" do
-        it "should have_many tags" do
-          tag = FactoryBot.create(:tag)
-          join_van_tag = FactoryBot.create(:join_van_tag, van: @van, tag: tag)
-          expect(@van.tags.include?(tag)).to eq(true)
-        end
+    describe "tags" do
+      it "should have_many tags" do
+        tag = FactoryBot.create(:tag)
+        join_van_tag = FactoryBot.create(:join_van_tag, van: @van, tag: tag)
+        expect(@van.tags.include?(tag)).to eq(true)
       end
+    end
 
-      describe "customers" do
-        it "should have_many customers" do
-          customer = FactoryBot.create(:user)
-          rental = FactoryBot.create(:rental, van: @van, customer: customer )
-          orders = FactoryBot.create(:order, rental: rental )
-          expect(@van.customers.include?(customer)).to eq(true)
-        end
+    describe "customers" do
+      it "should have_many customers" do
+        customer = FactoryBot.create(:user)
+        rental = FactoryBot.create(:rental, van: @van, customer: customer )
+        orders = FactoryBot.create(:order, rental: rental )
+        expect(@van.customers.include?(customer)).to eq(true)
       end
+    end
 
-      describe "photo" do
-        it "should have an attached photo" do
-          van = FactoryBot.create(:van)
-          expect(van.photo).to be_an_instance_of(ActiveStorage::Attached::One)
-        end
+    describe "photo" do
+      it "should have an attached photo" do
+        van = FactoryBot.create(:van)
+        expect(van.photo).to be_an_instance_of(ActiveStorage::Attached::One)
       end
     end
   end
