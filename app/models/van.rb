@@ -1,4 +1,7 @@
 class Van < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  
   validates :title, presence: true, length: { in: 6..20, message: "-Le titre doit avoir une longueur comprise entre 6 caractères et 20 caractères." }
   validates :description, presence: true, length: { in: 20..250, message: "-La description doit avoir une longueur comprise entre 20 caractères et 250 caractères." }
   validates :city, presence: true

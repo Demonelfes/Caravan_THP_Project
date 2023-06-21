@@ -10,7 +10,7 @@ class VansController < ApplicationController
   end
 
   def show
-    @van = Van.find(params[:id])
+    @van = Van.friendly.find(params[:id])
     @rental = @van.rentals.last
 
     if @van.rentals.map{|rental| rental.order}.uniq == [nil] || @van.rentals.map{|rental| rental.order}.uniq == []

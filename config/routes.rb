@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  get 'static_pages/company'
-  get 'static_pages/team'
-  get 'static_pages/contact'
-  get 'static_pages/faq'
+  get '/l-equipe', to: 'static_pages#team'
+  get '/contact', to: 'static_pages#contact'
+  get '/caravan', to: 'static_pages#company'
+  get '/faq', to: 'static_pages#faq'
 
   resources :orders
   resources :users
