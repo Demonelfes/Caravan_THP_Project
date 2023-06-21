@@ -35,11 +35,11 @@ class VansController < ApplicationController
 
       @join_tags_to_create.each do |tag|
         JoinVanTag.create(van_id: @van.id, tag_id: Tag.find(tag).id)
-      end 
+      end
 
       @join_tags_to_destroy.each do |tag|
         JoinVanTag.find_by(van_id: @van.id, tag_id: Tag.find(tag).id).destroy
-      end 
+      end
 
       redirect_to van_path(@van)
     else
@@ -64,7 +64,7 @@ class VansController < ApplicationController
       flash[:success] = "Le van a bien été enregistré."
       van_params[:tag_list].drop(1).each do |tag|
         JoinVanTag.create(van_id: @van.id, tag_id: Tag.find(tag).id)
-      end 
+      end
       redirect_to van_path(@van)
     else
       flash[:alert] = @van.errors.full_messages
@@ -92,6 +92,9 @@ class VansController < ApplicationController
     conditions[:bed_number] = params.dig(:van, :bed_number) if params.dig(:van, :bed_number).present?
 
     @visible_vans = conditions.present? ? Van.where(conditions) : Van.all
+    if params[:tag_ids] != nil
+       @visible_vans = @visible_vans.where(id:Tag.all.where(id:params[:tag_ids]).map{|tag|tag.vans}.flatten.uniq.map{|van|van.id})
+    end
     render :full_index
   end
 

@@ -1,7 +1,16 @@
 <div class="container">
 
     <%= form_tag(filter_vans_path, method: :get) do %>
-    <div class="col" style="width: 15vw;">
+      <label>Tags</label>
+      <hr>
+      <% Tag.all.each do |tag| %>
+        <%= check_box_tag "tag_ids[]", tag.id %>
+        <%= tag.title.capitalize %>
+        <br>
+      <% end %>
+      <hr>
+     <label>Filtres</label>
+     <hr>
       <div class="form-check">
         <%= check_box_tag 'has_fridge', 1, params[:has_fridge], class: 'form-check-input' %>
         <%= label_tag 'has_fridge', 'Has Fridge', class: 'form-check-label' %>
@@ -21,7 +30,6 @@
      <div class="form-group">
         <%= label_tag 'van_year', 'Année' %>
         <%= select_tag 'van[year]', options_for_select((1930..Date.today.year).to_a.reverse, params.dig(:van, :year)), prompt: 'Année', class: 'form-control' %>
-    </div>
 
     <div class="form-group">
         <%= label_tag 'van_bed_number', 'Nombre de lit(s)' %>
@@ -31,6 +39,9 @@
         <%= label_tag 'van_brand', 'Marque' %>
         <%= text_field_tag 'van[brand]', params.dig(:van, :brand), prompt: 'Marque', placeholder: "Volkswagen, Renault...", class: 'form-control' %>
     </div>
+
+
+
       <%= submit_tag 'Filtrer', class: 'btn btn-primary ml-3' %>
     <% end %>
 </div>

@@ -52,13 +52,13 @@ end
 
 end
 
-5.times do
+10.times do
   Tag.create!(
     title: Faker::Verb.base
   )
 end
 
-2.times do
+7.times do
   JoinVanTag.create!(
     van_id:rand(Van.first.id..Van.last.id),
     tag_id:rand(Tag.first.id..Tag.last.id)
