@@ -204,7 +204,6 @@ RSpec.describe Van, type: :model do
       it "should belong to a user" do
         user = FactoryBot.create(:user)
         van = FactoryBot.create(:van, user: user)
-
         expect(van.user).to eq(user)
       end
     end
