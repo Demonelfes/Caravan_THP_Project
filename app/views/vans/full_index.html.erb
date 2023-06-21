@@ -6,18 +6,18 @@
 
 <div class="container">
   <div class="row">
-    <div class="row-sm-12 col-md-2 col-lg-2" style="border: solid 1px; border-color: green;">
+    <div class="row-sm-12 col-md-2 col-lg-2">
       <div class="filters">
         <%= render partial: 'vans/filter'%>
       </div>
     </div>
 
-    <div class="col-sm-12 col-md-6 col-lg-10" style="border: solid 1px; border-color: purple;">
+    <div class="col-sm-12 col-md-6 col-lg-10">
       <div class="container">
-        <div class="row justify-content-center" style="border: solid 1px; border-color: red;">
-          <div class="col-sm-12 col-md-6 col-lg-3" style="display:contents; border: solid 1px; border-color: yellow;">
+        <div class="row justify-content-center">
+          <div class="col-sm-12 col-md-6 col-lg-3" style="display:contents;">
             <% @visible_vans.sort_by(&:updated_at).reverse.each do |van| %>
-              <div class="col-sm-12 col-md-6 col-lg-3" style="display:contents; border: solid 1px; border-color: blue;">
+              <div class="col-sm-12 col-md-6 col-lg-3" style="display:contents;">
                 <%= render partial: 'vans/new_van_card', locals: { van: van}  %>
               </div>
             <%end%>
