@@ -90,10 +90,17 @@ class VansController < ApplicationController
     conditions[:year] = params.dig(:van, :year) if params.dig(:van, :year).present?
     conditions[:brand] = params.dig(:van, :brand) if params.dig(:van, :brand).present?
     conditions[:bed_number] = params.dig(:van, :bed_number) if params.dig(:van, :bed_number).present?
+    conditions[:city] = params.dig(:van, :city).capitalize if params.dig(:van, :city).present?
 
     @visible_vans = conditions.present? ? Van.where(conditions) : Van.all
     if params[:tag_ids] != nil
        @visible_vans = @visible_vans.where(id:Tag.all.where(id:params[:tag_ids]).map{|tag|tag.vans}.flatten.uniq.map{|van|van.id})
+    end
+    if params[:start_date] && params[:end_date]
+      # @visible_vans = @visible_vans.where.not(id:Order.all.where(rental_id: Rental.all.where(start_date:params[:start_date])).map{|order| order.van_id})
+      not_available_vans = @visible_vans.joins(:rentals).joins("INNER JOIN orders ON rentals.id = orders.rental_id").where("rentals.start_date >= ? AND rentals.start_date <= ? OR rentals.end_date >= ? AND rentals.end_date <= ?",
+         params[:start_date], params[:end_date], params[:start_date], params[:end_date])
+      @visible_vans = @visible_vans - not_available_vans
     end
     render :full_index
   end
