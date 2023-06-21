@@ -28,6 +28,7 @@ User.create!(
 end
 
 10.times do
+  random_photo = ["default_van1.jpg", "default_van2.jpg", "default_van3.jpg", "default_van4.jpg", "default_van5.jpg"].sample
   v = Van.create!(
     title: Faker::Book.title.truncate(20),
     description: Faker::Lorem.paragraph(sentence_count: rand(3..5)),
@@ -48,7 +49,7 @@ end
     price_per_day: rand(100..1000),
     user_id: rand(User.first.id..User.last.id)
   )
-  v.photo.attach(io: File.open(File.join(Rails.root, "app/assets/images/default_van.jpg")), filename: "Default")
+  v.photo.attach(io: File.open(File.join(Rails.root, "app/assets/images", random_photo)), filename: "Default")
 
 end
 
