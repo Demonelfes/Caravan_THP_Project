@@ -12,6 +12,8 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'simple_calendar'
 gem 'rails-i18n'
 gem 'google-cloud-storage'
+gem 'geocoder'
+gem 'mapkick-rb'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.5"

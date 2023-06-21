@@ -1,4 +1,7 @@
 class Van < ApplicationRecord
+  geocoded_by :city
+  after_validation :geocode
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 

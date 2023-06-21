@@ -7,13 +7,19 @@
 <div class="container">
   <div class="row">
     <div class="row-sm-12 col-md-2 col-lg-2">
-      <div class="filters">
-        <%= render partial: 'vans/filter'%>
-      </div>
+      <%= render partial: 'vans/filter', locals: {start_date:params[:start_date], end_date: params[:end_date] }%>
     </div>
 
     <div class="col-sm-12 col-md-6 col-lg-10">
       <div class="container">
+        <div class="row justify-content-center">
+          <%= render partial: 'vans/dates_filter'%>
+        </div>
+
+        <div class="row justify-content-center m-3">
+          <%= js_map @visible_vans.map { |van| { latitude: van.latitude, longitude: van.longitude, tooltip: "#{van.title + "<br>"} #{link_to("Voir ce van", van_path(van)) }" }}, tooltips: { hover: false, html: true }, style: "mapbox://styles/mapbox/outdoors-v12" %>
+        </div>
+
         <div class="row justify-content-center">
           <div class="col-sm-12 col-md-6 col-lg-3" style="display:contents;">
             <% @visible_vans.sort_by(&:updated_at).reverse.each do |van| %>

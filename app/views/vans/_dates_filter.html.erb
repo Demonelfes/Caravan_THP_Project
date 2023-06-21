@@ -1,0 +1,17 @@
+<div class="container">
+
+  <%= form_tag(dates_filter_vans_path, method: :get) do %>
+    <div class="form-group">
+        <%= label_tag 'order_start_date', 'Début de disponiblité' %>
+        <%= date_field_tag 'start_date', params[:start_date], class: 'form-control' %>
+        <%= label_tag 'order_end_date', 'Fin de disponibilité' %>
+        <%= date_field_tag 'end_date', params[:end_date], class: 'form-control' %>
+    </div>
+     <div class="form-group">
+        <%= label_tag 'van_city', 'Ville' %>
+        <%= text_field_tag 'van[city]', params.dig(:van, :city), prompt: 'Ville', placeholder: "Paris, Montpellier, Vallon...", class: 'form-control' %>
+    </div>
+
+    <%= submit_tag 'Filtrer', class: 'btn btn-primary ml-3' %>
+  <% end %>
+</div>

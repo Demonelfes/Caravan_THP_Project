@@ -1,6 +1,6 @@
 <div class="container">
 
-    <%= form_tag(filter_vans_path, method: :get) do %>
+    <%= form_tag(filter_vans_path, method: :get, locals: {start_date:params[:start_date], end_date: params[:end_date] }) do %>
       <label>Tags</label>
       <hr>
       <% Tag.all.each do |tag| %>
@@ -32,12 +32,6 @@
         <%= select_tag 'van[year]', options_for_select((1930..Date.today.year).to_a.reverse, params.dig(:van, :year)), prompt: 'Année', class: 'form-control' %>
     </div>
     <div class="form-group">
-        <%= label_tag 'order_start_date', 'Début de disponiblité' %>
-        <%= date_field_tag 'start_date', params[:start_date], class: 'form-control' %>
-        <%= label_tag 'order_end_date', 'Fin de disponibilité' %>
-        <%= date_field_tag 'end_date', params[:end_date], class: 'form-control' %>
-    </div>
-    <div class="form-group">
         <%= label_tag 'van_bed_number', 'Nombre de lit(s)' %>
         <%= select_tag 'van[bed_number]', options_for_select((1..10).to_a, params.dig(:van, :bed_number)), prompt: 'Nombre de lit(s)', class: 'form-control' %>
     </div>
@@ -45,14 +39,23 @@
         <%= label_tag 'van_brand', 'Marque' %>
         <%= text_field_tag 'van[brand]', params.dig(:van, :brand), prompt: 'Marque', placeholder: "Volkswagen, Renault...", class: 'form-control' %>
     </div>
-     <div class="form-group">
+     <div class="form-group" style="display:none;">
         <%= label_tag 'van_city', 'Ville' %>
         <%= text_field_tag 'van[city]', params.dig(:van, :city), prompt: 'Ville', placeholder: "Paris, Montpellier, Vallon...", class: 'form-control' %>
     </div>
 
+    <div class="form-group" style="display:none;">
+        <%= label_tag 'radius', 'Rayon (km)' %>
+        <%= number_field_tag 'radius', params.dig(:van, :radius), prompt: 'Rayon (km)', placeholder: "10", class: 'form-control' %>
+    </div>
 
+    <div class="form-group" style="display:none">
+        <%= label_tag 'order_start_date', 'Début de disponiblité' %>
+        <%= date_field_tag 'start_date', params[:start_date], class: 'form-control' %>
+        <%= label_tag 'order_end_date', 'Fin de disponibilité' %>
+        <%= date_field_tag 'end_date', params[:end_date], class: 'form-control' %>
+    </div>
 
-
-      <%= submit_tag 'Filtrer', class: 'btn btn-primary ml-3' %>
+        <%= submit_tag 'Filtrer', class: 'btn btn-primary ml-3'%>
     <% end %>
 </div>
