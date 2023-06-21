@@ -118,17 +118,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_095014) do
     t.string "title"
     t.text "description"
     t.string "city"
-    t.boolean "is_van_pro", default: false
+    t.boolean "is_van_pro"
     t.boolean "is_hidden", default: false
     t.string "brand"
     t.string "registration"
-    t.boolean "is_manual_transmission", default: false
+    t.boolean "is_manual_transmission"
     t.integer "year"
     t.string "energy"
     t.integer "bed_number"
-    t.boolean "has_wc", default: false
-    t.boolean "has_fridge", default: false
-    t.boolean "has_shower", default: false
+    t.boolean "has_wc"
+    t.boolean "has_fridge"
+    t.boolean "has_shower"
     t.integer "price_per_day"
     t.bigint "user_id"
     t.datetime "created_at", null: false
