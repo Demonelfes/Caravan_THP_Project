@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  get '/caravan', to: 'static_pages#company'
   get '/l-equipe', to: 'static_pages#team'
   get '/contact', to: 'static_pages#contact'
-  get '/caravan', to: 'static_pages#company'
   get '/faq', to: 'static_pages#faq'
+  get '/mentions_legales', to: 'static_pages#legal'
+  get '/cgu', to: 'static_pages#terms_of_use'
+  get '/confidentialite', to: 'static_pages#privacy_policy'
 
   resources :orders
   resources :users

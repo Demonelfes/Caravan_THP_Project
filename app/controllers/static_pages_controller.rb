@@ -10,4 +10,13 @@ class StaticPagesController < ApplicationController
 
   def faq
   end
+
+  def legal 
+  end 
+
+  def terms_of_use 
+  end 
+
+  def privacy_policy 
+  end 
 end
