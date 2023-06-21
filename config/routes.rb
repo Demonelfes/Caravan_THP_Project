@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'static_pages/team'
   get 'static_pages/contact'
   get 'static_pages/faq'
+  get 'static_pages/legal'
+  get 'static_pages/terms_of_use'
+  get 'static_pages/privacy_policy'
 
   resources :orders
   resources :users
