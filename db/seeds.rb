@@ -36,8 +36,6 @@ end
     is_van_pro: [true, false].sample,
     is_hidden: false,
     energy: Faker::Vehicle.fuel_type.truncate(20),
-    # latitude:Faker::Address.latitude,
-    # longitude:Faker::Address.longitude,
     brand: Faker::Vehicle.make,
     is_manual_transmission: [true, false].sample,
     registration: generate_registration_plate,
