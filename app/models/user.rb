@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   extend FriendlyId
   friendly_id :email, use: :slugged
-  
+
   after_create :welcome_send
 
   has_many :vans
@@ -19,4 +19,7 @@ class User < ApplicationRecord
   def welcome_send
    UserMailer.welcome_email(self).deliver_now
   end
+
+  
+
 end

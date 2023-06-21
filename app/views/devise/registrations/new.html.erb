@@ -12,7 +12,7 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :Mot_de_passe, class:" form-label mt-4" %>
+          <%= f.label :mot_de_passe, class:" form-label mt-4" %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> caractères minimum)</em>
           <% end %><br />
@@ -26,7 +26,7 @@
 
         <br>
         <div class="actions">
-          <%= f.submit "S'inscrire", class:"btn btn-primary" %>
+          <%= f.submit "S'inscrire", class:"btn btn-primary"%>
         </div>
       <% end %>
       <%= render "devise/shared/links" %>
