@@ -4,6 +4,8 @@ class CreateVans < ActiveRecord::Migration[7.0]
       t.string :title
       t.text :description
       t.string :city
+      t.float :latitude
+      t.float :longitude
       t.string :image_url
       t.boolean :is_van_pro, default: "false"
       t.boolean :is_hidden, default: "false"

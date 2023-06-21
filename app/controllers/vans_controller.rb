@@ -90,20 +90,39 @@ class VansController < ApplicationController
     conditions[:year] = params.dig(:van, :year) if params.dig(:van, :year).present?
     conditions[:brand] = params.dig(:van, :brand) if params.dig(:van, :brand).present?
     conditions[:bed_number] = params.dig(:van, :bed_number) if params.dig(:van, :bed_number).present?
-    conditions[:city] = params.dig(:van, :city).capitalize if params.dig(:van, :city).present?
 
-    @visible_vans = conditions.present? ? Van.where(conditions) : Van.all
+
+    if params.dig(:van, :city).present?
+      @visible_vans = conditions.present? ? Van.near(params.dig(:van, :city),10).where(conditions).where(is_hidden:false) : Van.near(params.dig(:van, :city),10).where(is_hidden:false)
+    else 
+      @visible_vans = conditions.present? ? Van.where(conditions).where(is_hidden:false) : Van.where(is_hidden:false)
+    end 
+    
     if params[:tag_ids] != nil
        @visible_vans = @visible_vans.where(id:Tag.all.where(id:params[:tag_ids]).map{|tag|tag.vans}.flatten.uniq.map{|van|van.id})
-    end
-    if params[:start_date] && params[:end_date]
-      # @visible_vans = @visible_vans.where.not(id:Order.all.where(rental_id: Rental.all.where(start_date:params[:start_date])).map{|order| order.van_id})
+    end 
+    if params[:start_date] != "" && params[:end_date] != ""
       not_available_vans = @visible_vans.joins(:rentals).joins("INNER JOIN orders ON rentals.id = orders.rental_id").where("rentals.start_date >= ? AND rentals.start_date <= ? OR rentals.end_date >= ? AND rentals.end_date <= ?",
-         params[:start_date], params[:end_date], params[:start_date], params[:end_date])
+      params[:start_date], params[:end_date], params[:start_date], params[:end_date])
       @visible_vans = @visible_vans - not_available_vans
-    end
+    end  
+
     render :full_index
   end
+
+  def dates_filter
+    # Pour le radius, faire comme pour city mais s'assurer que l'info soit passer dans les deux defs. (LAURIE A DEJA ESSAYE INFO PAS SUR)
+    @visible_vans = Van.near(params.dig(:van, :city),10).where(is_hidden:false)
+
+    if params[:start_date] != "" && params[:end_date] != ""
+      not_available_vans = @visible_vans.joins(:rentals).joins("INNER JOIN orders ON rentals.id = orders.rental_id").where("rentals.start_date >= ? AND rentals.start_date <= ? OR rentals.end_date >= ? AND rentals.end_date <= ?",
+      params[:start_date], params[:end_date], params[:start_date], params[:end_date])
+      @visible_vans = @visible_vans - not_available_vans
+    end 
+
+    render :full_index
+    #redirect_to full_index_vans_path
+  end 
 
   private
 
