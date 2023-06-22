@@ -1,23 +1,42 @@
-<p>Hello la team,</p>
-  
-<p>Un nouveau van de notre flotte a été réservé !</p>
-  
-<h2>Détails de la réservation :</h2>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Réservation de van</title>
+  <link rel="stylesheet" href="van/index.css">
+  <link rel="stylesheet" href="application.css">
+  <link rel="stylesheet" href="viewsadmin.css">
+</head>
+<body>
+  <header>
+    <h1>Réservation de van</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Détails de la réservation :</h2>
+      <p><strong>Numéro de réservation :</strong> <%= @order.id %></p>
+      <p><strong>Date de début de location :</strong> <%= @order.start_date %></p>
+      <p><strong>Date de retour :</strong> <%= @order.end_date %></p>
+      <p><strong>Montant total :</strong> <%= @order.total_price %></p>
+    </section>
 
-<p><strong>Numéro de réservation :</strong> <%= @order.id %></p>
-<p><strong>Date de début de location :</strong> <%= @order.start_date %></p>
-<p><strong>Date de retour :</strong> <%= @order.end_date %></p>
-<p><strong>Montant total :</strong> <%= @order.total_price %></p>
+    <section>
+      <h2>Coordonnées de contact du client :</h2>
+      <p><strong>ID_utilisateur :</strong> <%@order.customer.id %></p>
+      <p><strong>Email :</strong> <%@order.customer.email %></p>
+    </section>
 
-<h2>Coordonnées de contact du client :</h2>
-<p><strong>ID_utilisateur :</strong> <%@order.customer.id %></p>
-<p><strong>Email :</strong> <%@order.customer.email %></p>
-
-<h2>Informations du van :</h2>
-<p><strong>Id_van :</strong> <%= @order.van.id %></p>
-<p><strong>Marque :</strong> <%= @order.van.brand %></p>
-<p><strong>Titre :</strong> <%= @order.van.title %></p>
-<p><strong>Plaque d'immatriculation :</strong> <%= @order.van.registration %></p>
-
-<p>A bientôt,</p>
-<p>L'équipe de CaraVan !</p>
+    <section>
+      <h2>Informations du van :</h2>
+      <p><strong>Id_van :</strong> <%= @order.van.id %></p>
+      <p><strong>Marque :</strong> <%= @order.van.brand %></p>
+      <p><strong>Titre :</strong> <%= @order.van.title %></p>
+      <p><strong>Plaque d'immatriculation :</strong> <%= @order.van.registration %></p>
+    </section>
+  </main>
+  <footer>
+    <p>A bientôt,</p>
+    <p>L'équipe de CaraVan !</p>
+  </footer>
+</body>
+</html>

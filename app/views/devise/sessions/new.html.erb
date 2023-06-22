@@ -1,27 +1,26 @@
 <div class="container">
   <%= devise_error_messages! %>
   <div class="row">
-    <div class="sol-sm-4 col-m-4 col-lg-4" style="display:flex; align-items:center">
+    <div class="col-sm-4 col-m-4 col-lg-4" style="display:flex; align-items:center">
       <h1>Connexion</h1>
     </div>
 
-    <div class="col-8"  style="margin-top: 60px;">
+    <div class="col-8" style="margin-top: 60px;">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
-          <%= f.label :email, class:" form-label mt-4" %><br />
+          <label for="email" class="form-label mt-4">Adresse email</label><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :Mot_de_passe, class:" form-label mt-4"%><br />
+          <label for="password" class="form-label mt-4">Mot de passe</label><br />
           <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
         </div>
-
 
         <% if devise_mapping.rememberable? %>
           <div class="form-group">
             <%= f.check_box :remember_me %>
-            <%= f.label :se_souvenir_de_moi %>
+            <%= label_tag :remember_me, "Se souvenir de moi" %>
           </div>
         <% end %>
 
