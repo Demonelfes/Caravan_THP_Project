@@ -14,22 +14,20 @@
     <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
         <% if current_user.is_admin? %>
-          <li class="nav-item ">
-              <%= link_to "Mon Profil", user_path(current_user), class: "btn btn-primary" %>
-              <%= link_to "Déconnexion", destroy_user_session_path, class: "btn btn-primary", data: { turbo_method: :delete } %>
-              <%= link_to "Dashboard", admins_vans_path, class: "btn btn-primary" %>
-            </div>
+          <li class="nav-item">
+            <a class="btn btn-primary" href="<%= user_path(current_user) %>">Mon Profil</a>
+            <a class="btn btn-primary" href="<%= destroy_user_session_path %>" data-turbo-method="delete">Déconnexion</a>
+            <a class="btn btn-primary" href="<%= admins_vans_path %>">Dashboard</a>
           </li>
         <% else %>
           <li class="nav-item">
-              <%= link_to "Mon Profil", user_path(current_user), class: "btn btn-primary" %>
-              <%= link_to "Déconnexion", destroy_user_session_path, class: "btn btn-primary", data: { turbo_method: :delete } %>
-            </div>
+            <a class="btn btn-primary" href="<%= user_path(current_user) %>">Mon Profil</a>
+            <a class="btn btn-primary" href="<%= destroy_user_session_path %>" data-turbo-method="delete">Déconnexion</a>
           </li>
         <% end %>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Connexion", new_user_session_path, class: "nav-link text-white"%>
+          <%= link_to "Connexion", new_user_session_path, class: "nav-link text-white" %>
         </li>
         <li class="nav-item">
           <%= link_to "Inscription", new_user_registration_path, class: "nav-link text-white", style: "margin-left:20px" %>

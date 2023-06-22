@@ -2,59 +2,60 @@
   <% flash.each do |category, msg| %>
     <% if category == "alert" %>
       <div class="alert alert-light text-center text-secondary" style='position: absolute; z-index: 9999; width: 80%; border:2px solid; border-color: red; margin-top:2px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);'>
-         <div class="row">
+        <div class="row">
           <div class="col-11">
-          <% if msg.class == Array %>
-          <% msg.map{|one_msg|one_msg.split("-").last.strip}.each do |one_msg|%>
-            <p class="mb-0"> <%=one_msg.to_s%> </p>
-          <% end%>
-        <% else %>
-          <%= msg %>
-        <% end %>
+            <% if msg.class == Array %>
+              <% msg.map { |one_msg| one_msg.split("-").last.strip }.each do |one_msg| %>
+                <p class="mb-0"><%= one_msg.to_s %></p>
+              <% end %>
+            <% else %>
+              <%= msg %>
+            <% end %>
           </div>
-           <div class="col-1">
-            <button type="button" class="btn btn-dark diasbled text-center" data-bs-dismiss="alert" style="height:30px; display:flex; align-items: center; background-color: grey;">X</button>
+          <div class="col-1">
+            <button type="button" class="btn btn-dark disabled text-center" data-bs-dismiss="alert" style="height:30px; display:flex; align-items: center; background-color: grey;">X</button>
           </div>
         </div>
-
-    </div>
+      </div>
     <% else %>
       <% if category == "info" %>
         <div class="alert alert-dismissible alert-light text-center text-primary" style='position: absolute; z-index: 9999; width: 80%; border:2px solid; border-color: green; margin-top:2px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);'>
-            <div class="row">
-          <div class="col-11">
-            <p class="mb-0"> <%= msg %> </p>
-          </div>
-           <div class="col-1">
-            <button type="button" class="btn btn-dark diasbled text-center" data-bs-dismiss="alert" style="height:30px; display:flex; align-items: center; background-color: grey;">X</button>
+          <div class="row">
+            <div class="col-11">
+              <p class="mb-0"><%= msg %></p>
+            </div>
+            <div class="col-1">
+              <button type="button" class="btn btn-dark disabled text-center" data-bs-dismiss="alert" style="height:30px; display:flex; align-items: center; background-color: grey;">X</button>
+            </div>
           </div>
         </div>
       <% else %>
         <% if category == "success" %>
           <div class="alert alert-dismissible alert-light text-center text-success" style='position: absolute; z-index: 9999; width: 80%; border:2px solid; border-color: green; margin-top:2px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);'>
+            <div class="row">
+              <div class="col-11">
+                <p class="mb-0"><%= msg %></p>
+              </div>
+              <div class="col-1">
+                <button type="button" class="btn btn-dark disabled text-center" data-bs-dismiss="alert" style="height:30px; display:flex; align-items: center; background-color: grey;">X</button>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <% if category == "notice" %>
+            <div class='alert alert-dismissible alert-light text-center text-primary' style='position: absolute; z-index: 9999; width: 80%; border:2px solid; border-color: green; margin-top:2px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);'>
               <div class="row">
-          <div class="col-11">
-            <p class="mb-0"> <%= msg %> </p>
-          </div>
-           <div class="col-1">
-            <button type="button" class="btn btn-dark diasbled text-center" data-bs-dismiss="alert" style="height:30px; display:flex; align-items: center; background-color: grey;">X</button>
-          </div>
-          </div>
-      <% else %>
-      <%if category == "notice"%>
-         <div class='alert alert-dismissible alert-light text-center text-primary' style='position: absolute; z-index: 9999; width: 80%; border:2px solid; border-color: green; margin-top:2px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);'>
-         <div class="row">
-          <div class="col-11">
-            <p class="mb-0"> <%= notice %> </p>
-          </div>
-           <div class="col-1">
-            <button type="button" class="btn btn-dark diasbled text-center" data-bs-dismiss="alert" style="height:30px; display:flex; align-items: center; background-color: grey;">X</button>
-          </div>
-        </div>
-         <% end %>
+                <div class="col-11">
+                  <p class="mb-0"><%= notice %></p>
+                </div>
+                <div class="col-1">
+                  <button type="button" class="btn btn-dark disabled text-center" data-bs-dismiss="alert" style="height:30px; display:flex; align-items: center; background-color: grey;">X</button>
+                </div>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
-      <%end%>
+    <% end %>
   <% end %>
 </div>
-
