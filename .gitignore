@@ -6,6 +6,8 @@
 
 .env
 /config/gcskey.json
+/node_modules/
+/package-lock.json
 
 # Ignore bundler config.
 /.bundle

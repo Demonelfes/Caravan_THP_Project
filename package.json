@@ -1,5 +1,10 @@
 {
   "dependencies": {
+    "react-map-gl": "^7.0.25"
+  }
+}
+{
+  "dependencies": {
     "react-map-gl": "^7.0.25",
     "slick-carousel": "^1.8.1",
     "stimulus-carousel": "^5.0.1",
