@@ -24,7 +24,7 @@ class VansController < ApplicationController
   end
 
   def update
-    @van = Van.find(params[:id])
+    @van = Van.friendly.find(params[:id])
     if @van.update(van_params.except(:tag_list))
       flash[:success] = "Van mis à jour avec succès."
 
@@ -48,7 +48,7 @@ class VansController < ApplicationController
   end
 
   def edit
-    @van = Van.find(params[:id])
+    @van = Van.friendly.find(params[:id])
   end
 
   def new
@@ -73,7 +73,7 @@ class VansController < ApplicationController
   end
 
   def hide_van
-    @van = Van.find(params[:id])
+    @van = Van.friendly.find(params[:id])
     @van.is_hidden = !@van.is_hidden
     @van.save
     flash[:info] = "Van supprimé avec succès."
@@ -112,7 +112,13 @@ class VansController < ApplicationController
 
   def dates_filter
     # Pour le radius, faire comme pour city mais s'assurer que l'info soit passer dans les deux defs. (LAURIE A DEJA ESSAYE INFO PAS SUR)
-    @visible_vans = Van.near(params.dig(:van, :city),10).where(is_hidden:false)
+    @visible_vans = Van.where(is_hidden:false)
+
+    if params.dig(:van, :city).present?
+      @visible_vans = Van.near(params.dig(:van, :city),10).where(is_hidden:false)
+    else 
+      @visible_vans = Van.where(is_hidden:false)
+    end 
 
     if params[:start_date] != "" && params[:end_date] != ""
       not_available_vans = @visible_vans.joins(:rentals).joins("INNER JOIN orders ON rentals.id = orders.rental_id").where("rentals.start_date >= ? AND rentals.start_date <= ? OR rentals.end_date >= ? AND rentals.end_date <= ?",
