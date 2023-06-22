@@ -1,40 +1,40 @@
-<nav class="navbar navbar-expand-lg bg-primary sticky-top" data-bs-theme="dark">
-  <a class="navbar-brand text-white stick" href="/caravan">
-    <%= image_tag('logo_caravan.png', alt: 'Logo CaraVan', class: 'bi me-2', width: '32px', height: 'auto') %>  CaraVan
-  </a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"><%= image_tag('logo_caravan.png', alt: 'Logo CaraVan', class: 'bi me-2', width: '32px', height: 'auto') %> </span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav me-auto">
-      <li class="nav-item">
-        <%= link_to "Home", root_path, class: "nav-link text-white" %>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <% if user_signed_in? %>
-        <% if current_user.is_admin? %>
-          <li class="nav-item ">
-              <%= link_to "Mon Profil", user_path(current_user), class: "btn btn-primary" %>
-              <%= link_to "Déconnexion", destroy_user_session_path, class: "btn btn-primary", data: { turbo_method: :delete } %>
-              <%= link_to "Dashboard", admins_vans_path, class: "btn btn-primary" %>
-            </div>
-          </li>
+<header>
+  <nav class="navbar navbar-expand-lg bg-primary sticky-top" data-bs-theme="dark">
+    <a class="navbar-brand text-white stick" href="/caravan">
+      <%= image_tag('logo_caravan.png', alt: 'Logo CaraVan', class: 'bi me-2', width: '32px', height: 'auto') %>  CaraVan
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"><%= image_tag('logo_caravan.png', alt: 'Logo CaraVan', class: 'bi me-2', width: '32px', height: 'auto') %> </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link text-white" %>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <% if current_user.is_admin? %>
+            <li class="nav-item">
+              <a class="btn btn-primary" href="<%= user_path(current_user) %>">Mon Profil</a>
+              <a class="btn btn-primary" href="<%= destroy_user_session_path %>" data-turbo-method="delete">Déconnexion</a>
+              <a class="btn btn-primary" href="<%= admins_vans_path %>">Dashboard</a>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a class="btn btn-primary" href="<%= user_path(current_user) %>">Mon Profil</a>
+              <a class="btn btn-primary" href="<%= destroy_user_session_path %>" data-turbo-method="delete">Déconnexion</a>
+            </li>
+          <% end %>
         <% else %>
           <li class="nav-item">
-              <%= link_to "Mon Profil", user_path(current_user), class: "btn btn-primary" %>
-              <%= link_to "Déconnexion", destroy_user_session_path, class: "btn btn-primary", data: { turbo_method: :delete } %>
-            </div>
+            <%= link_to "Connexion", new_user_session_path, class: "nav-link text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Inscription", new_user_registration_path, class: "nav-link text-white", style: "margin-left:20px" %>
           </li>
         <% end %>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Connexion", new_user_session_path, class: "nav-link text-white"%>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Inscription", new_user_registration_path, class: "nav-link text-white", style: "margin-left:20px" %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
+      </ul>
+    </div>
+  </nav>
+</header>

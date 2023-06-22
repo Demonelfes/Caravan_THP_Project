@@ -1,4 +1,4 @@
-<div class="container">
+<section class="container">
   <div class="row">
     <div class="col-4" style="display:flex; align-items:center">
       <h1>Renvoyer un lien de réinitialisation du mot de passe</h1>
@@ -8,17 +8,17 @@
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="field">
-          <%= f.label :email, class:" form-label mt-4" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class:"form-control" %>
+        <div class="form-group">
+          <%= f.label :email, class: "form-label mt-4" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-control" %>
         </div>
 
-        <div class="actions">
-          <%= f.submit "Renvoyer le lien de réinitialisation", class:"btn btn-primary" %>
+        <div class="form-actions">
+          <%= f.submit "Renvoyer le lien de réinitialisation", class: "btn btn-primary" %>
         </div>
       <% end %>
 
       <%= render "devise/shared/links" %>
     </div>
   </div>
-</div>
+</section>

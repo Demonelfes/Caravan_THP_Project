@@ -9,7 +9,7 @@
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 
         <div class="field">
-          <%= f.label :email, class:" form-label mt-4" %><br />
+          <label for="email" class="form-label mt-4">Adresse email</label><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
         </div>
 

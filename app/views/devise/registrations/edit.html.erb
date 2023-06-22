@@ -9,7 +9,7 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="form-group">
-          <%= f.label :email, class:" form-label mt-4" %><br />
+          <label for="email" class="form-label mt-4">Adresse email</label><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
         </div>
 
@@ -18,26 +18,26 @@
         <% end %>
 
         <div class="form-group">
-          <%= f.label :nouveau_mot_de_passe, class:" form-label mt-4" %> <i>(ne rien écrire, si tu ne souhaites pas le modifier)</i><br />
-          <%= f.password_field :password, autocomplete: "new-password", class:"form-control"%>
+          <label for="password" class="form-label mt-4">Nouveau mot de passe <i>(ne rien écrire, si tu ne souhaites pas le modifier)</i></label><br />
+          <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
           <% if @minimum_password_length %>
             <em><%= @minimum_password_length %> caractères minimum</em>
           <% end %>
         </div>
 
         <div class="form-group">
-          <%= f.label :confirmation_mot_de_passe, class:" form-label mt-4" %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" , class:"form-control"%>
+          <label for="password_confirmation" class="form-label mt-4">Confirmation du nouveau mot de passe</label><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" , class:"form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :mot_de_passe_actuel, class:" form-label mt-4" %> <i>(nous avons besoin de ton mot de passe actuel pour effectuer le changement)</i><br />
-          <%= f.password_field :current_password, autocomplete: "current-password",  class:"form-control"%>
+          <label for="current_password" class="form-label mt-4">Mot de passe actuel <i>(nous avons besoin de ton mot de passe actuel pour effectuer le changement)</i></label><br />
+          <%= f.password_field :current_password, autocomplete: "current-password",  class:"form-control" %>
         </div>
         <br>
 
         <div class="actions">
-          <%= f.submit "Modifier", class:"btn btn-secondary"%>
+          <%= f.submit "Modifier", class:"btn btn-secondary" %>
         </div>
       <% end %>
     </div>
@@ -47,10 +47,9 @@
       <h1>Supprimer mon compte</h1>
     </div>
     <div class="col-8">
-      <div >Mécontent ? <%= button_to "Supprimer mon compte",registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-secondary" %></div>
+      <div>Mécontent ? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-secondary" %></div>
       <br>
       <%= link_to "Retour", :back %>
-      </div>
     </div>
   </div>
 </div>

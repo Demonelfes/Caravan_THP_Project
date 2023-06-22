@@ -2,24 +2,25 @@
   <link rel="stylesheet" href="viewsadmin.css">
 </head>
 
-<div class="container">
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead class="bg-primary text-white">
-        <tr>
-          <th>Id</th>
-          <th>Modèle</th>
-          <th>Immatriculation</th>
-          <th>Ville</th>
-          <th>
-            <%= link_to "Ajouter",  new_admins_van_path , method: :post, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" }, class: "btn btn-primary" %>
-          </th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @vans.sort.reverse.each do |van| %>
-        <% next unless !van.is_van_pro %>
+<main>
+  <section class="container">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead class="bg-primary text-white">
+          <tr>
+            <th>Id</th>
+            <th>Modèle</th>
+            <th>Immatriculation</th>
+            <th>Ville</th>
+            <th>
+              <%= link_to "Ajouter", new_admins_van_path, method: :post, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" }, class: "btn btn-primary" %>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @vans.sort.reverse.each do |van| %>
+          <% next unless !van.is_van_pro %>
           <tr>
             <td><%= link_to van.id, van_path(van) %></td>
             <td><%= van.brand %></td>
@@ -28,13 +29,15 @@
             <td><%= button_to "Modifier", edit_admins_van_path(van), method: :get, class: "btn btn-primary" %></td>
             <td>
               <% if van.is_hidden == false %>
-                <%= button_to "Masquer", hide_van_admins_van_path(van), method: :post, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" }, class: "btn btn-danger" %>
+              <%= button_to "Masquer", hide_van_admins_van_path(van), method: :post, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" }, class: "btn btn-danger" %>
               <% else %>
-                <%= button_to "Montrer", hide_van_admins_van_path(van), method: :post, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" }, class: "btn btn-success" %>
+              <%= button_to "Montrer", hide_van_admins_van_path(van), method: :post, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" }, class: "btn btn-success" %>
               <% end %>
+            </td>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>

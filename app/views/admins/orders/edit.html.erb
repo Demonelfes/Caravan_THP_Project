@@ -1,37 +1,37 @@
-<div class="container">
+<main class="container mt-4">
   <div class="row justify-content-center">
-    <div class="col-lg-5">
-      <h1>Modifier le produit</h1>
+    <section class="col-lg-5">
+      <h2>Modifier la réservation</h2>
       
       <%= form_for([:admins, @order]) do |form| %>
 
         <div class="form-group">
-          <%= form.label :start_date, "Date de début" %>
+          <label for="start_date">Date de début</label>
           <%= form.datetime_local_field :start_date, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= form.label :end_date, "Date de fin" %>
+          <label for="end_date">Date de fin</label>
           <%= form.datetime_local_field :end_date, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= form.label :total_price, "Prix total" %>
+          <label for="total_price">Prix total</label>
           <%= form.number_field :total_price, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= form.label :customer_id, "ID du client" %>
+          <label for="customer_id">ID du client</label>
           <%= form.number_field :customer_id, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= form.label :van_id, "ID du van" %>
+          <label for="van_id">ID du van</label>
           <%= form.number_field :van_id, class: "form-control" %>
         </div>
 
         <%= form.submit "Modifier", class: "btn btn-primary" %>
       <% end %>
-    </div>
+    </section>
   </div>
-</div>
+</main>
