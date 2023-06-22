@@ -11,6 +11,7 @@ FactoryBot.define do
     bed_number {3}
     price_per_day {5}
     id {1}
+    slug {"youpi"}
     association :user, factory: :user
 
     after(:create) do |van|
