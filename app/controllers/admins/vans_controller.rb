@@ -6,11 +6,11 @@ class Admins::VansController < ApplicationController
   end
 
   def edit
-    @van = Van.find(params[:id])
+    @van = Van.friendly.find(params[:id])
   end
 
   def update
-    @van = Van.find(params[:id])
+    @van = Van.friendly.find(params[:id])
     if @van.update(van_params.except(:tag_list))
       flash[:success] = "Van modifié avec succès."
 
@@ -56,7 +56,7 @@ class Admins::VansController < ApplicationController
   end
 
   def hide_van
-    @van = Van.find(params[:id])
+    @van = Van.friendly.find(params[:id])
     @van.is_hidden = !@van.is_hidden
     @van.save
     flash[:info] = "Van masqué avec succès."

@@ -1,8 +1,8 @@
-<div class="container">
+<section class="container mt-4">
   <div class="row justify-content-center">
-    <div class="col-lg-5">
+    <article class="col-lg-5">
       <h1>Modifier le produit</h1>
-      
+
       <%= form_for([:admins, @user]) do |form| %>
 
         <div class="form-group">
@@ -22,6 +22,7 @@
 
         <%= form.submit "Modifier", class: "btn btn-primary" %>
       <% end %>
-    </div>
+    </article>
   </div>
-</div>
+</section>
+
