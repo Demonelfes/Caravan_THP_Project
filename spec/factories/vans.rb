@@ -10,6 +10,7 @@ FactoryBot.define do
     energy {"fuel"}
     bed_number {3}
     price_per_day {5}
+    id {1}
     association :user, factory: :user
 
     after(:create) do |van|

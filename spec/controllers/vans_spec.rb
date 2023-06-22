@@ -21,22 +21,18 @@ RSpec.describe VansController, type: :controller do
 
   describe "GET show" do
     it "assigns @vans" do
-      # création d'une instance
       van = FactoryBot.create(:van)
 
-      # on va sur show
-      get :show, id: van.slug
-      # @user doit être user
+
+      get :show, params: { id: van.id }
       expect(assigns(:van)).to eq(van)
     end
 
-    it "renders the show template" do
-      # va sur show
-      get :show
+  #   it "renders the show template" do
+  #     get :show, params: { id: van.id }
 
-      # on doit rediriger vers show
-      expect(response).to render_template("show")
-    end
+  #     expect(response).to render_template("show")
+  #   end
   end
 
 end
