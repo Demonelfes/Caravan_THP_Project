@@ -1,3 +1,94 @@
+<<<<<<< HEAD
+<%= form_for([:admins, @van]) do |form| %>
+
+  <div class="form-group">
+    <%= form.label :title, "Titre" %>
+    <%= form.text_field :title, placeholder: "entre 6 et 20 caractères", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description, "Description" %>
+    <%= form.text_area :description, placeholder: "entre 20 et 250 caractères", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :registration, "Immatriculation" %>
+    <%= form.text_field :registration, placeholder: "AA-123-BB", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :brand, "Marque" %>
+    <%= form.text_field :brand, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :city, "Ville" %>
+    <%= form.text_field :city, class: "form-control" %>
+  </div>
+
+  <div class="form-group form-check">
+    <%= form.check_box :is_manual_transmission, class: "form-check-input" %>
+    <%= form.label :is_manual_transmission, "Transmission manuelle", class: "form-check-label" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :year, "Année" %>
+    <%= form.number_field :year, class: "form-control", min: 1930, max: Time.now.year %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :energy, "Carburant" %>
+    <%= form.text_field :energy, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bed_number, "Nombre de lits" %>
+    <%= form.number_field :bed_number, class: "form-control", min: 1, max: 10 %>
+  </div>
+
+  <div class="form-group form-check">
+    <%= form.check_box :has_wc, class: "form-check-input" %>
+    <%= form.label :has_wc, "Toilettes", class: "form-check-label" %>
+  </div>
+
+  <div class="form-group form-check">
+    <%= form.check_box :has_fridge, class: "form-check-input" %>
+    <%= form.label :has_fridge, "Réfrigérateur", class: "form-check-label" %>
+  </div>
+
+  <div class="form-group form-check">
+    <%= form.check_box :has_shower, class: "form-check-input" %>
+    <%= form.label :has_shower, "Douche", class: "form-check-label" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :price_per_day, "Prix par jour" %>
+    <%= form.number_field :price_per_day, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :tags, "Tag(s) associé(s) au van :" %><br>
+    <%= form.collection_check_boxes :tag_list, Tag.all, :id, :title do |tag| %>
+      <span>
+        <% if @van.join_van_tags.find_by(tag_id:tag.value) == nil %>
+          <%= tag.check_box checked: false %>
+          <%= tag.label %>
+        <% else %>
+          <%= tag.check_box checked: true %>
+          <%= tag.label %>
+        <% end %>
+      </span>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :photos, "Photos" %>
+    <%= form.file_field :photos, class: "form-control" %>
+  </div>
+
+  <%= form.submit "Soumettre", class: "btn btn-primary" %>
+<% end %>
+=======
 <section>
   <%= form_for([:admins, @van]) do |form| %>
 
@@ -89,3 +180,4 @@
     <%= form.submit "Soumettre", class: "btn btn-primary" %>
   <% end %>
 </section>
+>>>>>>> 210846cc99e08e21ea0e38210ac69593c3dd78f8

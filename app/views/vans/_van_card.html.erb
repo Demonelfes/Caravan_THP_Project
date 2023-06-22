@@ -1,6 +1,6 @@
 <div class="card m-2 " style="width: 18rem;">
-  <%if van.photo.attached?%>
-      <%= image_tag van.photo.variant(resize_to_fill: [400, 400]), alt: "photo du van"%>
+  <%if van.photos.attached?%>
+      <%= image_tag van.photos[0].variant(resize_to_fill: [400, 400]), alt: "photos du van"%>
     <%else%>
       <%= image_tag("no-picture.png", alt: "Photo indisponible") %>
   <%end%>

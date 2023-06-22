@@ -23,18 +23,27 @@
 }
 
 .jumbotron h1 {
-  color: #d86b12;
+  color: white;
   font-size: min(6vw, 60px);
 }
 
 .jumbotron h2 {
-  color: #b7c75d;
+  color: white;
   font-size: min(4vw, 40px);
-  text-shadow: 1px 1px 2px #000, -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000;
+}
+
+.imp-jumbotron {
+  color: #d86b12;
+  font-size: min(4vw, 40px);
+}
+
+.flex-jumbotron {
+  color: #78C2AD;
 }
 
 .simple-calendar {
   font-size: 16px;
+  overflow-x: auto;
 }
 
 .day {}
