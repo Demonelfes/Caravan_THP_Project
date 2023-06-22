@@ -5,9 +5,9 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-4 col-lg-6" style=" margin-top: 3em;">
-      <div class="container">
-        <div class="row" style="width:500px;">
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div class="row">
+        <div class="col-12">
+          <div id="myCarousel" class="carousel slide mb-3" data-ride="carousel">
 
             <ol class="carousel-indicators">
             <% @van.photos.each.with_index do |image, i|%>
@@ -18,20 +18,17 @@
             <div class="carousel-inner">
               <% @van.photos.each.with_index do |photo, i| %>
               <div class="item <%= 'active' if i == 0 %>">
-                <%= image_tag(photo.variant(resize_to_fill: [500, 500]), alt: 'test', class: 'img-responsive') %>
+                <%= image_tag(photo.variant(resize_to_fill: [600, 600]), alt: 'test') %>
               </div>
               <%end%>
             </div>
 
-            <a class="left carousel-control text-justify text-center" href="#myCarousel" data-slide="prev">
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
             </a>
             <a class="right carousel-control" href="#myCarousel" data-slide="next">
             </a>
           </div>
-        </div>
-
-        <br>
-        
+        </div>        
         <div class="row">
           <div class="card border-primary mb-3" style="width:100%">
             <div class="card-body">
