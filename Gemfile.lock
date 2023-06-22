@@ -119,6 +119,7 @@ GEM
     ffi (1.15.5)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
+    geocoder (1.8.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
     google-apis-core (0.11.0)
@@ -179,6 +180,7 @@ GEM
       net-imap
       net-pop
       net-smtp
+    mapkick-rb (0.1.4)
     marcel (1.0.2)
     matrix (0.4.2)
     memoist (0.16.2)
@@ -348,10 +350,12 @@ DEPENDENCIES
   factory_bot_rails
   faker
   friendly_id (~> 5.4.0)
+  geocoder
   google-cloud-storage
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
+  mapkick-rb
   nyan-cat-formatter
   pg (~> 1.1)
   puma (~> 5.0)

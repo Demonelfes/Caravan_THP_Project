@@ -30,14 +30,12 @@ end
 10.times do
   random_photo = ["default_van1.jpg", "default_van2.jpg", "default_van3.jpg", "default_van4.jpg", "default_van5.jpg"].sample
   v = Van.create!(
-    title: Faker::Book.title.truncate(20),
+    title: Faker::FunnyName.name.truncate(20),
     description: Faker::Lorem.paragraph(sentence_count: rand(3..5)),
     city: Faker::Address.city,
     is_van_pro: [true, false].sample,
     is_hidden: false,
     energy: Faker::Vehicle.fuel_type.truncate(20),
-    # latitude:Faker::Address.latitude,
-    # longitude:Faker::Address.longitude,
     brand: Faker::Vehicle.make,
     is_manual_transmission: [true, false].sample,
     registration: generate_registration_plate,

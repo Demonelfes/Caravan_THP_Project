@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     collection do
       get 'full_index'
       get 'filter', to: 'vans#filter_vans'
+      get 'dates_filter', to: 'vans#dates_filter'
     end
     member do
       post 'hide_van'
