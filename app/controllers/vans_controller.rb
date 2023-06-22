@@ -94,18 +94,17 @@ class VansController < ApplicationController
 
     if params.dig(:van, :city).present?
       @visible_vans = conditions.present? ? Van.near(params.dig(:van, :city),10).where(conditions).where(is_hidden:false) : Van.near(params.dig(:van, :city),10).where(is_hidden:false)
-    else 
+    else
       @visible_vans = conditions.present? ? Van.where(conditions).where(is_hidden:false) : Van.where(is_hidden:false)
-    end 
-    
+    end
     if params[:tag_ids] != nil
        @visible_vans = @visible_vans.where(id:Tag.all.where(id:params[:tag_ids]).map{|tag|tag.vans}.flatten.uniq.map{|van|van.id})
-    end 
+    end
     if params[:start_date] != "" && params[:end_date] != ""
       not_available_vans = @visible_vans.joins(:rentals).joins("INNER JOIN orders ON rentals.id = orders.rental_id").where("rentals.start_date >= ? AND rentals.start_date <= ? OR rentals.end_date >= ? AND rentals.end_date <= ?",
       params[:start_date], params[:end_date], params[:start_date], params[:end_date])
       @visible_vans = @visible_vans - not_available_vans
-    end  
+    end
 
     render :full_index
   end
@@ -116,19 +115,19 @@ class VansController < ApplicationController
 
     if params.dig(:van, :city).present?
       @visible_vans = Van.near(params.dig(:van, :city),10).where(is_hidden:false)
-    else 
+    else
       @visible_vans = Van.where(is_hidden:false)
-    end 
+    end
 
     if params[:start_date] != "" && params[:end_date] != ""
       not_available_vans = @visible_vans.joins(:rentals).joins("INNER JOIN orders ON rentals.id = orders.rental_id").where("rentals.start_date >= ? AND rentals.start_date <= ? OR rentals.end_date >= ? AND rentals.end_date <= ?",
       params[:start_date], params[:end_date], params[:start_date], params[:end_date])
       @visible_vans = @visible_vans - not_available_vans
-    end 
+    end
 
     render :full_index
     #redirect_to full_index_vans_path
-  end 
+  end
 
   private
 

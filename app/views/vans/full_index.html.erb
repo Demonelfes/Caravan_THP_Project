@@ -6,7 +6,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="row-sm-12 col-md-2 col-lg-2">
+    <div class="row-sm-12 col-md-2 col-lg-2 mb-2">
       <%= render partial: 'vans/filter', locals: {start_date:params[:start_date], end_date: params[:end_date] }%>
     </div>
 
@@ -17,7 +17,7 @@
         </div>
 
         <div class="row justify-content-center m-3">
-          <%= js_map @visible_vans.map { |van| { latitude: van.latitude, longitude: van.longitude, tooltip: "#{van.title + "<br>"} #{link_to("Voir ce van", van_path(van)) }" }}, tooltips: { hover: false, html: true }, style: "mapbox://styles/mapbox/outdoors-v12" %>
+          <%= js_map @visible_vans.map {|van| { latitude: van.latitude, longitude: van.longitude, tooltip: "#{van.title + "<br>" + "Ville : #{van.city}<br>"} #{link_to("Voir ce van", van_path(van)) }" }}, tooltips: { hover: false, html: true }, style: "mapbox://styles/mapbox/outdoors-v12" %>
         </div>
 
         <div class="row justify-content-center">
