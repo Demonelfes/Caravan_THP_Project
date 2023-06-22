@@ -4,8 +4,8 @@
     <h4>Référence de l'annonce: <%= myvan.id %></h4>
     <div class="card-text row">
       <div class="col-md-4">
-        <%if myvan.photo.attached?%>
-          <%= image_tag myvan.photo.variant(resize_to_limit: [230, 230]), alt: 'Photo du van - ' + myvan.title %>
+        <%if myvan.photos.attached?%>
+          <%= image_tag myvan.photos[0].variant(resize_to_limit: [230, 230]), alt: 'Photo du van - ' + myvan.title %>
         <%else%>
           <%= image_tag("no-picture.png", alt: "Photo indisponible", class: "logo-image") %>
         <%end%>

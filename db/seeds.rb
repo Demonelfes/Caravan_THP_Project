@@ -47,7 +47,11 @@ end
     price_per_day: rand(100..1000),
     user_id: rand(User.first.id..User.last.id)
   )
-  v.photo.attach(io: File.open(File.join(Rails.root, "app/assets/images", random_photo)), filename: "Default")
+
+  3.times do
+    random_photo = ["default_van1.jpg", "default_van2.jpg", "default_van3.jpg", "default_van4.jpg", "default_van5.jpg"].sample
+    v.photos.attach(io: File.open(File.join(Rails.root, "app/assets/images", random_photo)), filename: "Default")
+  end
 
 end
 
