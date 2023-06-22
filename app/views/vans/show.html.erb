@@ -1,14 +1,37 @@
+<%= stylesheet_link_tag 'carousel', media: 'all' %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-4 col-lg-6" style=" margin-top: 3em;">
       <div class="container">
-        <div class="row d-flex justify-content-center", style="width:100%;">
-          <%if @van.photo.attached?%>
-            <%= image_tag @van.photo, alt: 'Photo du van - ' + @van.title, style: "width:80%; height:auto" %>
-          <%else%>
-            <%= image_tag("no-picture.png", alt: "Photo indisponible", class: "logo-image") %>
-          <%end%>
-        </div><br>
+        <div class="row" style="width:500px;">
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+            <% @van.photos.each.with_index do |image, i|%>
+              <li data-target="#myCarousel" data-slide-to="<%= i %>" class="<%= 'active' if i == 0 %>"></li>
+            <% end %>
+            </ol>
+
+            <div class="carousel-inner">
+              <% @van.photos.each.with_index do |photo, i| %>
+              <div class="item <%= 'active' if i == 0 %>">
+                <%= image_tag(photo.variant(resize_to_fill: [500, 500]), alt: 'test', class: 'img-responsive') %>
+              </div>
+              <%end%>
+            </div>
+
+            <a class="left carousel-control text-justify text-center" href="#myCarousel" data-slide="prev">
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            </a>
+          </div>
+        </div>
+
+        <br>
+        
         <div class="row">
           <div class="card border-primary mb-3" style="width:100%">
             <div class="card-body">
