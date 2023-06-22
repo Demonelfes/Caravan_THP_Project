@@ -1,28 +1,49 @@
-<p>Bonjour Madame, Monsieur,</p>
-  
-<p>Nous sommes ravis de vous informer que votre réservation pour un van a été confirmée avec succès.</p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmation de réservation de van - CaraVan</title>
+</head>
+<body>
+  <header>
+    <h1>Confirmation de réservation</h1>
+  </header>
+  <main>
+    <p>Bonjour Madame, Monsieur,</p>
+    
+    <p>Nous sommes ravis de vous informer que votre réservation pour un van a été confirmée avec succès.</p>
 
-<h2>Détails de la réservation :</h2>
+    <section>
+      <h2>Détails de la réservation :</h2>
 
-<p><strong>Numéro de réservation :</strong> <%= @order.id %></p>
-<p><strong>Date de début de location :</strong> <%= @order.start_date %></p>
-<p><strong>Date de retour :</strong> <%= @order.end_date %></p>
-<p><strong>Montant total :</strong> <%= @order.total_price %></p>
+      <p><strong>Numéro de réservation :</strong> <%= @order.id %></p>
+      <p><strong>Date de début de location :</strong> <%= @order.start_date %></p>
+      <p><strong>Date de retour :</strong> <%= @order.end_date %></p>
+      <p><strong>Montant total :</strong> <%= @order.total_price %></p>
+    </section>
 
-<h2>Informations du van :</h2>
-<p><strong>Marque :</strong> <%= @order.van.brand %></p>
-<p><strong>Titre :</strong> <%= @order.van.title %></p>
-<p><strong>Plaque d'immatriculation :</strong> <%= @order.van.registration %></p>
-<% if @order.van.is_van_pro == false %>
-  <p><strong>Type de van :</strong> Ce van appartient à un particulier.</p>
-<% else %>
-  <p><strong>Type de van :</strong> Ce van fait partie de la flotte de CaraVan.</p>
-<% end %>
+    <section>
+      <h2>Informations du van :</h2>
+      <p><strong>Marque :</strong> <%= @order.van.brand %></p>
+      <p><strong>Titre :</strong> <%= @order.van.title %></p>
+      <p><strong>Plaque d'immatriculation :</strong> <%= @order.van.registration %></p>
+      <% if @order.van.is_van_pro == false %>
+        <p><strong>Type de van :</strong> Ce van appartient à un particulier.</p>
+      <% else %>
+        <p><strong>Type de van :</strong> Ce van fait partie de la flotte de CaraVan.</p>
+      <% end %>
+    </section>
 
-<h2>Coordonnées de contact du propriétaire :</h2>
-<p><strong>Email :</strong> <%@order.owner.email %></p>
+    <section>
+      <h2>Coordonnées de contact du propriétaire :</h2>
+      <p><strong>Email :</strong> <%= @order.owner.email %></p>
+    </section>
 
-<p>Merci d'avoir choisi notre service de location de vans. Nous nous réjouissons de vous fournir une expérience de voyage inoubliable.</p>
+    <p>Merci d'avoir choisi notre service de location de vans. Nous nous réjouissons de vous fournir une expérience de voyage inoubliable.</p>
 
-<p>A bientôt,</p>
-<p>L'équipe de CaraVan !</p>
+    <p>A bientôt,</p>
+    <p>L'équipe de CaraVan !</p>
+  </main>
+</body>
+</html>

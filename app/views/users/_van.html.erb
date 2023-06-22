@@ -1,20 +1,20 @@
-<div class="card border-primary mb-3">
+<article class="card border-primary mb-3">
   <div class="card-body">
     <h2 class="card-title"><%= link_to myvan.title, van_path(myvan) %></h2>
     <h4>Référence de l'annonce: <%= myvan.id %></h4>
     <div class="card-text row">
       <div class="col-md-4">
-        <%if myvan.photos.attached?%>
+        <% if myvan.photos.attached? %>
           <%= image_tag myvan.photos[0].variant(resize_to_limit: [230, 230]), alt: 'Photo du van - ' + myvan.title %>
-        <%else%>
+        <% else %>
           <%= image_tag("no-picture.png", alt: "Photo indisponible", class: "logo-image") %>
-        <%end%>
+        <% end %>
       </div>
       <div class="col-md-4">
         <p>Ville: <%= myvan.city %></p>
         <p>Description: <%= myvan.description %></p>
         <p>Prix: <%= myvan.price_per_day %>€/jour</p>
-        </div>
+      </div>
       <div class="col-md-4">
         <%= link_to "Modifier l'annonce", edit_van_path(myvan), class: "btn btn-secondary" %>
         <br><br>
@@ -22,4 +22,4 @@
       </div>
     </div>
   </div>
-</div>
+</article>

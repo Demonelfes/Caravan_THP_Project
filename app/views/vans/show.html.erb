@@ -8,31 +8,28 @@
       <div class="row">
         <div class="col-12">
           <div id="myCarousel" class="carousel slide mb-3" data-ride="carousel">
-
             <ol class="carousel-indicators">
-            <% @van.photos.each.with_index do |image, i|%>
-              <li data-target="#myCarousel" data-slide-to="<%= i %>" class="<%= 'active' if i == 0 %>"></li>
-            <% end %>
+              <% @van.photos.each.with_index do |image, i| %>
+                <li data-target="#myCarousel" data-slide-to="<%= i %>" class="<%= 'active' if i == 0 %>"></li>
+              <% end %>
             </ol>
 
             <div class="carousel-inner">
               <% @van.photos.each.with_index do |photo, i| %>
-              <div class="item <%= 'active' if i == 0 %>">
-                <%= image_tag(photo.variant(resize_to_fill: [600, 600]), alt: 'test') %>
-              </div>
-              <%end%>
+                <div class="item <%= 'active' if i == 0 %>">
+                  <%= image_tag(photo.variant(resize_to_fill: [600, 600]), alt: 'test') %>
+                </div>
+              <% end %>
             </div>
 
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            </a>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev"></a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next"></a>
           </div>
-        </div>        
+        </div>
         <div class="row">
-          <div class="card border-primary mb-3" style="width:100%">
+          <article class="card border-primary mb-3" style="width:100%">
             <div class="card-body">
-              <h4 class="card-title"><%= @van.title%></h4>
+              <h4 class="card-title"><%= @van.title %></h4>
 
               <% if @van.tags.size != 0 %>
                 <p><%=@van.tags.map{|tag|"#"+tag.title}.join(" ") %></p>
@@ -40,47 +37,47 @@
 
               <div class="card-text">
                 <p>Ville : <%= @van.city %></p>
-                <p> Description : <%= @van.description %>
-                <p> Prix par jour : <%= @van.price_per_day %>
+                <p> Description : <%= @van.description %></p>
+                <p> Prix par jour : <%= @van.price_per_day %></p>
               </div>
             </div>
-          </div>
+          </article>
         </div>
-        <div class="row" >
-          <div class="card border-primary mb-3 mr-5" style="min-width: 15rem;">
-            <div class="card-header text-center">Caractéristiques
-            </div>
-            <div class="card-body">
-              <p class="card-text">
-              <p> marque : <%= @van.brand%> </p>
-              <p> immatriculation : <%= @van.registration%> </p>
-              <p> année : <%= @van.year %>
-              <p> carburant : <%= @van.energy%></p>
-            </div>
-          </div>
-          <div class="card border-primary mb-3" style="min-width: 15rem;">
-            <div class="card-header text-center">Options</div>
+        <div class="row">
+          <article class="card border-primary mb-3 mr-5" style="min-width: 15rem;">
+            <header class="card-header text-center">Caractéristiques</header>
             <div class="card-body">
               <div class="card-text">
-              <p> nombre de lits : <%= @van.bed_number%> </p>
-              <% if @van.has_wc == false%>
-                <p> wc : non </p>
-              <% else%>
-                <p> wc : oui </p>
-              <%end%>
-              <% if @van.has_fridge == false%>
-                <p> réfrigérateur : non </p>
-              <% else%>
-                <p> réfrigérateur : oui </p>
-              <%end%>
-              <% if @van.has_shower == false%>
-                <p> douche : non </p>
-              <% else%>
-                <p> douche : oui </p>
-              <%end%>
+                <p> marque : <%= @van.brand %></p>
+                <p> immatriculation : <%= @van.registration %></p>
+                <p> année : <%= @van.year %></p>
+                <p> carburant : <%= @van.energy %></p>
               </div>
             </div>
-          </div>
+          </article>
+          <article class="card border-primary mb-3" style="min-width: 15rem;">
+            <header class="card-header text-center">Options</header>
+            <div class="card-body">
+              <div class="card-text">
+                <p> nombre de lits : <%= @van.bed_number %></p>
+                <% if @van.has_wc == false %>
+                  <p> wc : non </p>
+                <% else %>
+                  <p> wc : oui </p>
+                <% end %>
+                <% if @van.has_fridge == false %>
+                  <p> réfrigérateur : non </p>
+                <% else %>
+                  <p> réfrigérateur : oui </p>
+                <% end %>
+                <% if @van.has_shower == false %>
+                  <p> douche : non </p>
+                <% else %>
+                  <p> douche : oui </p>
+                <% end %>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </div>
@@ -89,11 +86,11 @@
       <div class="container">
         <div class="row d-flex">
           <div class="col-sm-12 col-md-4 col-lg-6" style="margin-top: 3em; max-width: 100%;">
-            <%= render partial: 'vans/calendar'%>
+            <%= render partial: 'vans/calendar' %>
           </div>
         </div>
         <div class="row d-flex justify-content-center align-items-center">
-          <div class="col-sm-12 col-md-8 col-lg-6" >
+          <div class="col-sm-12 col-md-8 col-lg-6">
             <% if current_user %>
               <p class="text-secondary" style="width:80%">Dernière étape avant la réservation ! Vérifie que tes dates sont toujours disponibles :</p>
               <%= form_with(url: url_for(controller: 'rentals', action: 'create', rental_id: @van.id)) do |form| %>
@@ -113,19 +110,19 @@
               <div>
                 <% if @rental && @rental.valid? && params[:check_availability] == "1" %>
                   <br>
-                  <p> Le van est bien disponible du <span class="text-secondary"><%= @rental.start_date.strftime("%d/%m/%Y")%> </span> au <span class="text-secondary"><%= @rental.end_date.strftime("%d/%m/%Y")%></span> </p>
+                  <p> Le van est bien disponible du <span class="text-secondary"><%= @rental.start_date.strftime("%d/%m/%Y") %></span> au <span class="text-secondary"><%= @rental.end_date.strftime("%d/%m/%Y") %></span> </p>
                   <p> Coût total : <span class="text-secondary"><%= @rental.total_price %></span> euros </p>
                   <%= button_to "Réserver et payer", checkout_create_path(total: @rental.total_price), class: "btn btn-danger btn-block", data: {turbo: false} %>
                 <% elsif params[:check_availability] == "0" %>
-                <p> Le van n'est pas disponible à ces dates </p>
+                  <p> Le van n'est pas disponible à ces dates </p>
                 <% end %>
               </div>
-            <%else%>
+            <% else %>
               <br>
               <p class="text-secondary" style="width:100%; font-size: larger;"> Tu dois être connecté·e pour vérifier les disponibilités de ce van </p>
-              <%= link_to "Connexion", new_user_session_path, class: "btn btn-primary btn-block"%>
+              <%= link_to "Connexion", new_user_session_path, class: "btn btn-primary btn-block" %>
               <%= link_to "Inscription", new_user_registration_path, class: "btn btn-primary btn-block" %>
-            <%end%>
+            <% end %>
           </div>
         </div>
       </div>
