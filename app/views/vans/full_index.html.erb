@@ -3,7 +3,7 @@
 
 <%= render partial: 'layouts/small_banner'%>
 
-<main class="container">
+<div class="container">
   <div class="row">
     <aside class="col-sm-12 col-md-2 col-lg-2 mb-2">
       <%= render partial: 'vans/filter', locals: {start_date:params[:start_date], end_date: params[:end_date] }%>
@@ -35,4 +35,4 @@
   <div class="col-12 text-center mt-3">
     <%= link_to "Retour à la page d'accueil", vans_path, class:"btn btn-success btn-lg" %>
   </div>
-</main>
+</div>

@@ -246,10 +246,10 @@ RSpec.describe Van, type: :model do
       end
     end
 
-    describe "photo" do
-      it "should have an attached photo" do
+    describe "photos" do
+      it "should have many attached photo" do
         van = FactoryBot.create(:van)
-        expect(van.photo).to be_an_instance_of(ActiveStorage::Attached::One)
+        expect(van.photos).to be_an_instance_of(ActiveStorage::Attached::Many)
       end
     end
   end
