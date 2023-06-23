@@ -3,7 +3,6 @@ require "faker"
 def generate_registration_plate
   letters = ('A'..'Z').to_a
   digits = ('0'..'9').to_a
-  # Format AB-123-DE
   "#{letters.sample(2).join}-#{digits.sample(3).join}-#{letters.sample(2).join}"
 end
 
@@ -55,34 +54,16 @@ end
 
 end
 
-10.times do
+array_tags = ["vintage", "familial", "luxe", "camper", "confort", "tout-terrain"]
+6.times do |index|
   Tag.create!(
-    title: Faker::Verb.base
+    title: array_tags[index]
   )
 end
 
-7.times do
+6.times do
   JoinVanTag.create!(
     van_id:rand(Van.first.id..Van.last.id),
     tag_id:rand(Tag.first.id..Tag.last.id)
   )
 end
-
-5.times do |count| #à supprimer
-  Rental.create!(
-    start_date: Faker::Date.forward(days: 30),
-    end_date: Faker::Date.between(from: '2023-12-31', to: '2025-12-31'),
-    van_id: Van.find(count+Van.first.id).id,
-    customer_id: rand(User.first.id..User.last.id),
-    owner_id: rand(User.first.id..User.last.id),
-    total_price: rand(500..5000),
-  )
-end
-
-# 1.times do
-#   Review.create!(
-#     order_id:rand(Order.first.id..Order.last.id),
-#     content: Faker::Quote.famous_last_words,
-#     rating: rand(1..5)
-#   )
-# end

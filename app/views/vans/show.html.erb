@@ -17,7 +17,7 @@
             <div class="carousel-inner">
               <% @van.photos.each.with_index do |photo, i| %>
                 <div class="item <%= 'active' if i == 0 %>">
-                  <%= image_tag(photo.variant(resize_to_fill: [600, 600]), alt: 'test') %>
+                  <%= image_tag(photo.variant(resize_to_fill: [600, 600]), alt: 'Photos du van - ' + @van.title) %>
                 </div>
               <% end %>
             </div>

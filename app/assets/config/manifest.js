@@ -3,5 +3,4 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 //= link index.js
-//= link van/index.css
-//= link van/full_index.css
+//= link_directory ../stylesheets/van .css

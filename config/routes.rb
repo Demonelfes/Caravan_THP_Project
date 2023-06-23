@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :vans, except: [:destroy] do
     collection do
-      get 'full_index'
+      get 'full_index', to: 'vans#full_index'
       get 'filter', to: 'vans#filter_vans'
       get 'dates_filter', to: 'vans#dates_filter'
     end
