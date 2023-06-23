@@ -28,9 +28,9 @@
           <div class="text-center">
             <h2> Vans pro </h2>
           </div>
-            <% 1.times do %>
-              <% current_user.vans.each do |van| %>
-                <%= render partial: 'admins/vans/vanspro', locals: { myvan: van } %>
+          <% 1.times do %>
+            <% current_user.vans.each do |van| %>
+              <%= render partial: 'admins/vans/vanspro', locals: { myvan: van } %>
               <% break %>
             <% end %>
           <% end %>
@@ -41,9 +41,9 @@
           <div class="text-center">
             <h2> Vans particuliers </h2>
           </div>
-            <% 1.times do %>
-              <% Van.all.where(is_van_pro: false).each do |van| %>
-                <%= render partial: 'admins/vans/vanspart', locals: { myvan: van } %>
+          <% 1.times do %>
+            <% Van.all.where(is_van_pro: false).each do |van| %>
+              <%= render partial: 'admins/vans/vanspart', locals: { myvan: van } %>
               <% break %>
             <% end %>
           <% end %>
@@ -53,9 +53,9 @@
           <div class="text-center">
             <h2> Réservations </h2>
           </div>
-            <% 1.times do %>
-              <% Van.all.each do |van| %>
-                <%= render partial: 'admins/orders/orders', locals: { myvan: van } %>
+          <% 1.times do %>
+            <% Van.all.each do |van| %>
+              <%= render partial: 'admins/orders/orders', locals: { myvan: van } %>
               <% break %>
             <% end %>
           <% end %>
@@ -65,9 +65,9 @@
           <div class="text-center">
             <h2> Utilisateurs </h2>
           </div>
-            <% 1.times do %>
-              <% Van.all.each do |van| %>
-                <%= render partial: 'admins/users/users', locals: { myvan: van } %>
+          <% 1.times do %>
+            <% Van.all.each do |van| %>
+              <%= render partial: 'admins/users/users', locals: { myvan: van } %>
               <% break %>
             <% end %>
           <% end %>
@@ -76,4 +76,3 @@
     </div>
   </div>
 </div>
-

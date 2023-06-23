@@ -83,15 +83,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_095014) do
     t.index ["van_id"], name: "index_rentals_on_van_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.bigint "order_id"
-    t.text "content"
-    t.integer "rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_reviews_on_order_id"
-  end
-
   create_table "tags", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false

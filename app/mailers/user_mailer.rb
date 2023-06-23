@@ -6,14 +6,14 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Bienvenue chez nous !')
   end
 
-  def order_confirmation_to_owner_email(user, order)
+  def order_confirmation_to_owner_email(order)
     @order = order
     @user = order.owner
 
     mail(to: @user.email, subject: 'Nouvelle réservation sur votre van')
   end
 
-  def order_confirmation_to_customer_email(user, order)
+  def order_confirmation_to_customer_email(order)
     @order = order
     @user = order.customer
 

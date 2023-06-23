@@ -1,4 +1,7 @@
 class Admins::VansController < ApplicationController
+  before_action :authenticate_user!
+  before_action :require_admin
+  
   def index
     @orders = Order.all
     @users = User.all
@@ -50,7 +53,7 @@ class Admins::VansController < ApplicationController
 
       redirect_to admins_vans_path
     else
-      flash[:alert] = @van.errors.full_messages.join(", ")
+      flash[:alert] = @van.errors.full_messages
       redirect_to new_admins_van_path
     end
   end
@@ -64,8 +67,15 @@ class Admins::VansController < ApplicationController
   end
 
   private
-
+  
   def van_params
-    params.require(:van).permit(:title, :is_hidden,:description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day, :photo, tag_list:[])
+    params.require(:van).permit(:title, :is_hidden,:description, :registration, :brand, :city, :is_manual_transmission, :year, :energy, :bed_number, :has_wc, :has_fridge, :has_shower, :price_per_day, photos:[], tag_list:[])
+  end
+  
+  def require_admin
+    unless current_user && current_user.is_admin?
+      flash[:alert] = "Accès non autorisé"
+      redirect_to root_path
+    end
   end
 end

@@ -10,7 +10,7 @@
     <h1>Réservation effectuée pour votre van</h1>
   </header>
   <main>
-    <p>Bonjour Madame, Monsieur,</p>
+    <p>Bonjour,</p>
     
     <p>Nous sommes heureux de vous informer qu'une réservation a été effectuée pour votre van.</p>
     
@@ -20,7 +20,7 @@
       <p><strong>Numéro de réservation :</strong> <%= @order.id %></p>
       <p><strong>Date de début de location :</strong> <%= @order.start_date %></p>
       <p><strong>Date de retour :</strong> <%= @order.end_date %></p>
-      <p><strong>Montant total :</strong> <%= @order.total_price %></p>
+      <p><strong>Montant total :</strong> <%= @order.total_price %> euros </p>
     </section>
 
     <section>

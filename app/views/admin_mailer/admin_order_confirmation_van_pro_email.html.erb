@@ -9,7 +9,8 @@
 </head>
 <body>
   <header>
-    <h1>Réservation de van</h1>
+    <h2>Hello la team,</h2>
+    <h1>Un nouveau van de notre flotte a été réservé !</h1>   
   </header>
   <main>
     <section>
@@ -17,7 +18,7 @@
       <p><strong>Numéro de réservation :</strong> <%= @order.id %></p>
       <p><strong>Date de début de location :</strong> <%= @order.start_date %></p>
       <p><strong>Date de retour :</strong> <%= @order.end_date %></p>
-      <p><strong>Montant total :</strong> <%= @order.total_price %></p>
+      <p><strong>Montant total :</strong> <%= @order.total_price %> euros</p>
     </section>
 
     <section>
@@ -30,7 +31,7 @@
       <h2>Informations du van :</h2>
       <p><strong>Id_van :</strong> <%= @order.van.id %></p>
       <p><strong>Marque :</strong> <%= @order.van.brand %></p>
-      <p><strong>Titre :</strong> <%= @order.van.title %></p>
+      <p><strong>Titre de l'annonce :</strong> <%= @order.van.title %></p>
       <p><strong>Plaque d'immatriculation :</strong> <%= @order.van.registration %></p>
     </section>
   </main>

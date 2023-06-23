@@ -1,4 +1,4 @@
-Bonjour Madame, Monsieur,
+Bonjour,
   
 Nous sommes ravis de vous informer que votre réservation pour un van a été confirmée avec succès.
 
@@ -7,11 +7,11 @@ Détails de la réservation :
 Numéro de réservation : <%= @order.id %>
 Date de début de location : <%= @order.start_date %>
 Date de retour : <%= @order.end_date %>
-Montant total : <%= @order.total_price %>
+Montant total : <%= @order.total_price %> euros
 
 Informations du van :
 Marque : <%= @order.van.brand %>
-Titre : <%= @order.van.title %>
+Titre de l'annonce : <%= @order.van.title %>
 Plaque d'immatriculation : <%= @order.van.registration %>
 <% if @order.van.is_van_pro == false %>
   Type de van : Ce van appartient à un particulier.

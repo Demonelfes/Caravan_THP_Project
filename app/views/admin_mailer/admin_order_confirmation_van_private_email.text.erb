@@ -7,7 +7,7 @@ Détails de la réservation :
 Numéro de réservation : <%= @order.id %>
 Date de début de location : <%= @order.start_date %>
 Date de retour : <%= @order.end_date %>
-Montant total : <%= @order.total_price %>
+Montant total : <%= @order.total_price %> euros
 
 Coordonnées de contact du client :
 ID_utilisateur :</strong> <%@order.customer.id %>
@@ -20,7 +20,7 @@ Email :</strong> <%@order.owner.email %>
 Informations du van :
 Id_van :</strong> <%= @order.van.id %>
 Marque :</strong> <%= @order.van.brand %>
-Titre :</strong> <%= @order.van.title %>
+Titre de l'annonce :</strong> <%= @order.van.title %>
 Plaque d'immatriculation :</strong> <%= @order.van.registration %>
 
 A bientôt,

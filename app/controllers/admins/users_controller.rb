@@ -1,4 +1,7 @@
 class Admins::UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :require_admin
+
   def edit
     @user = User.friendly.find(params[:id])
   end 
@@ -16,5 +19,12 @@ class Admins::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:user_id, :created_at,:email, :is_admin)
+  end
+  
+  def require_admin
+    unless current_user && current_user.is_admin?
+      flash[:alert] = "Accès non autorisé"
+      redirect_to root_path
+    end
   end
 end

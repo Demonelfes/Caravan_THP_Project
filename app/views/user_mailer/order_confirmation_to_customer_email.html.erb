@@ -10,7 +10,7 @@
     <h1>Confirmation de réservation</h1>
   </header>
   <main>
-    <p>Bonjour Madame, Monsieur,</p>
+    <p>Bonjour,</p>
     
     <p>Nous sommes ravis de vous informer que votre réservation pour un van a été confirmée avec succès.</p>
 
@@ -20,13 +20,13 @@
       <p><strong>Numéro de réservation :</strong> <%= @order.id %></p>
       <p><strong>Date de début de location :</strong> <%= @order.start_date %></p>
       <p><strong>Date de retour :</strong> <%= @order.end_date %></p>
-      <p><strong>Montant total :</strong> <%= @order.total_price %></p>
+      <p><strong>Montant total :</strong> <%= @order.total_price %> euros </p>
     </section>
 
     <section>
       <h2>Informations du van :</h2>
       <p><strong>Marque :</strong> <%= @order.van.brand %></p>
-      <p><strong>Titre :</strong> <%= @order.van.title %></p>
+      <p><strong>Titre de l'annonce :</strong> <%= @order.van.title %></p>
       <p><strong>Plaque d'immatriculation :</strong> <%= @order.van.registration %></p>
       <% if @order.van.is_van_pro == false %>
         <p><strong>Type de van :</strong> Ce van appartient à un particulier.</p>

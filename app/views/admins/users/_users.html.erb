@@ -22,9 +22,9 @@
             <td><%= user.created_at.strftime('%Y-%m-%d')[0..9] %></td>
             <td>
               <% if user.is_admin %>
-                  admin
+                admin
               <% else %>
-                  user
+                user
               <% end %>
             </td>
             <td><%= button_to "Modifier", edit_admins_user_path(user), method: :get, class: "btn btn-primary" %></td>

@@ -1,4 +1,7 @@
 class Admins::OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :require_admin
+
   def edit
     @order = Order.find(params[:id])
   end
@@ -16,5 +19,12 @@ class Admins::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:rental_id)
+  end
+  
+  def require_admin
+    unless current_user && current_user.is_admin?
+      flash[:alert] = "Accès non autorisé"
+      redirect_to root_path
+    end
   end
 end

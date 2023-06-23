@@ -1,4 +1,5 @@
 class VansController < ApplicationController
+  
   def index
     @visible_vans = Van.all.where(is_hidden:false)
     @vans = Van.all
@@ -110,7 +111,6 @@ class VansController < ApplicationController
   end
 
   def dates_filter
-    # Pour le radius, faire comme pour city mais s'assurer que l'info soit passer dans les deux defs. (LAURIE A DEJA ESSAYE INFO PAS SUR)
     @visible_vans = Van.where(is_hidden:false)
 
     if params.dig(:van, :city).present?
@@ -126,7 +126,6 @@ class VansController < ApplicationController
     end
 
     render :full_index
-    #redirect_to full_index_vans_path
   end
 
   private

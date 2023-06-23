@@ -6,7 +6,6 @@ def generate_registration_plate
   "#{letters.sample(2).join}-#{digits.sample(3).join}-#{letters.sample(2).join}"
 end
 
-Review.destroy_all
 Order.destroy_all
 Rental.destroy_all
 JoinVanTag.destroy_all
@@ -26,12 +25,15 @@ User.create!(
     password: "123456")
 end
 
-10.times do
-  random_photo = ["default_van1.jpg", "default_van2.jpg", "default_van3.jpg", "default_van4.jpg", "default_van5.jpg"].sample
+array_cities = ["Marseille", "Lyon","Toulouse","Nice","Nantes","Strasbourg","Montpellier","Bordeaux","Lille","Rennes","Reims","Saint-Étienne","Toulon","Le Havre","Clermont-Ferrand","Limoges","Nîmes","Aix-en-Provence","Perpignan"]
+random_photo = ["default_van1.jpg", "default_van2.jpg", "default_van3.jpg", "default_van4.jpg", "default_van5.jpg"]
+  
+
+10.times do |i|
   v = Van.create!(
     title: Faker::FunnyName.name.truncate(20),
     description: Faker::Lorem.paragraph(sentence_count: rand(3..5)),
-    city: Faker::Address.city,
+    city: array_cities[i],
     is_van_pro: [true, false].sample,
     is_hidden: false,
     energy: Faker::Vehicle.fuel_type.truncate(20),
