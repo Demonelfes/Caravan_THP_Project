@@ -1,35 +1,33 @@
 <%= render partial: 'layouts/banner' %>
-<head>
-  <%= stylesheet_link_tag 'van/index', media: 'all' %>
-</head>
+<%= stylesheet_link_tag 'van/index', media: 'all' %>
 
-<section class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center">
   <article class="logo-card">
     <%= image_tag("flexible.png", alt: "Logo Flexibilité", class: "logo-image") %>
-    <p class="logo-text">Flexible</p>
+    <h5 class="logo-text">Flexible</h5>
     <p class="hover-text">Partez où vous voulez, quand vous voulez, avec le van que vous voulez ! </p>
   </article>
   <article class="logo-card">
     <%= image_tag("fiable.png", alt: "Logo Fiable", class: "logo-image") %>
-    <p class="logo-text">Fiable</p>
+    <h5 class="logo-text">Fiable</h5>
     <p class="hover-text">Nous assurons un suivi constant des vans mis à votre disposition, pour garantir votre sécurité et votre confort.</p>
   </article>
   <article class="logo-card">
     <%= image_tag("fonctionnel.png", alt: "Logo Fonctionnel", class: "logo-image") %>
-    <p class="logo-text">Fonctionnel</p>
+    <h5 class="logo-text">Fonctionnel</h5>
     <p class="hover-text">Mettez votre van en location, ou choisissez un van à louer parmi notre flotte ou celle de nos utilisateurs. </p>
   </article>
   <article class="logo-card">
     <%= image_tag("fun.png", alt: "Logo Fun", class: "logo-image") %>
-    <p class="logo-text">Fun</p>
+    <h5 class="logo-text">Fun</h5>
     <p class="hover-text">Partez à l'aventure avec CaraVan sans avoir à acheter un véhicule. Un max de fun pour un minimum de dépense !  </p>
   </article>
   <article class="logo-card">
     <%= image_tag("france.png", alt: "Logo France", class: "logo-image") %>
-    <p class="logo-text">Français</p>
+    <h5 class="logo-text">Français</h5>
     <p class="hover-text">CaraVan est une application entièrement développée en France !</p>
   </article>
-</section>
+</div>
 
 <section class="container mt-3">
   <div class="row justify-content-center">
