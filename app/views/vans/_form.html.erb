@@ -75,9 +75,6 @@
       <%= form.collection_check_boxes :tag_list, Tag.all, :id, :title do |tag| %>
         <span>
           <% if @van.join_van_tags.find_by(tag_id:tag.value) == nil %>
-            <% "X"*20 %>
-            <% puts @van.join_van_tags.find_by(tag_id:tag.value) %>
-            <% "X"*20 %>
             <%= tag.check_box checked: false %>
             <%= tag.label %>
           <% else %>

@@ -4,11 +4,11 @@
       <div class="row d-flex justify-content-center text-white">
         <div class="col-lg-3 col-md-12 col-sm-12">
           <%= label_tag 'order_start_date', 'Date de départ' %>
-          <%= date_field_tag 'start_date', params[:start_date], class: 'form-control search-slt', placeholder: 'Début de disponiblité' %>
+          <%= date_field_tag 'start_date', params[:start_date], class: 'form-control search-slt'%>
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12">
           <%= label_tag 'order_end_date', 'Date de retour' %>
-          <%= date_field_tag 'end_date', params[:end_date], class: 'form-control search-slt', placeholder: 'Fin de disponibilité' %>
+          <%= date_field_tag 'end_date', params[:end_date], class: 'form-control search-slt'%>
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12">
           <%= label_tag 'van_city', 'Ville (rayon : 10 km)' %>

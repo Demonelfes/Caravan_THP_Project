@@ -42,11 +42,11 @@
     </div>
     <div class="form-group">
       <%= label_tag 'van_brand', 'Marque' %>
-      <%= text_field_tag 'van[brand]', params.dig(:van, :brand), prompt: 'Marque', placeholder: "Volkswagen, Renault...", class: 'form-control' %>
+      <%= text_field_tag 'van[brand]', params.dig(:van, :brand), placeholder: "Volkswagen, Renault...", class: 'form-control' %>
     </div>
     <div class="form-group" style="display:none">
       <%= label_tag 'van_city', 'Ville' %>
-      <%= text_field_tag 'van[city]', params.dig(:van, :city), prompt: 'Ville', placeholder: "Paris, Montpellier, Vallon...", class: 'form-control' %>
+      <%= text_field_tag 'van[city]', params.dig(:van, :city), placeholder: "Paris, Montpellier, Vallon...", class: 'form-control' %>
     </div>
     <%= submit_tag 'Filtrer', class: 'btn btn-primary ml-3' %>
   <% end %>
