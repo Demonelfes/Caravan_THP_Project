@@ -1,7 +1,9 @@
 <%= render partial: 'layouts/banner' %>
 <head>
-  <link rel="stylesheet" href="index.css">
+  <%= stylesheet_link_tag 'van/index', media: 'all' %>
 </head>
+
+<%= image_tag Van.first.photos[0].variant(resize_to_fill: [400, 400]), alt: 'Photo du van - '%>
 
 <section class="container d-flex justify-content-center">
   <article class="logo-card">
