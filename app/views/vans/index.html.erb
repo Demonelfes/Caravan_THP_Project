@@ -1,54 +1,55 @@
-<%= render partial: 'layouts/banner'%>
+<%= render partial: 'layouts/banner' %>
 <head>
   <link rel="stylesheet" href="index.css">
 </head>
 
-<div class="container d-flex justify-content-center">
-  <div class="logo-card">
+<section class="container d-flex justify-content-center">
+  <article class="logo-card">
     <%= image_tag("flexible.png", alt: "Logo Flexibilité", class: "logo-image") %>
     <p class="logo-text">Flexible</p>
     <p class="hover-text">Partez où vous voulez, quand vous voulez, avec le van que vous voulez ! </p>
-  </div>
-  <div class="logo-card">
+  </article>
+  <article class="logo-card">
     <%= image_tag("fiable.png", alt: "Logo Fiable", class: "logo-image") %>
     <p class="logo-text">Fiable</p>
     <p class="hover-text">Nous assurons un suivi constant des vans mis à votre disposition, pour garantir votre sécurité et votre confort.</p>
-  </div>
-  <div class="logo-card">
+  </article>
+  <article class="logo-card">
     <%= image_tag("fonctionnel.png", alt: "Logo Fonctionnel", class: "logo-image") %>
     <p class="logo-text">Fonctionnel</p>
     <p class="hover-text">Mettez votre van en location, ou choisissez un van à louer parmi notre flotte ou celle de nos utilisateurs. </p>
-  </div>
-    <div class="logo-card">
+  </article>
+  <article class="logo-card">
     <%= image_tag("fun.png", alt: "Logo Fun", class: "logo-image") %>
     <p class="logo-text">Fun</p>
     <p class="hover-text">Partez à l'aventure avec CaraVan sans avoir à acheter un véhicule. Un max de fun pour un minimum de dépense !  </p>
-  </div>
-  <div class="logo-card">
+  </article>
+  <article class="logo-card">
     <%= image_tag("france.png", alt: "Logo France", class: "logo-image") %>
     <p class="logo-text">Français</p>
     <p class="hover-text">CaraVan est une application entièrement développée en France !</p>
-  </div>
-</div>
+  </article>
+</section>
 
-<div class="container">
+<section class="container mt-3">
   <div class="row justify-content-center">
-    <% if @visible_vans.count <= 6%>
+    <% if @visible_vans.count <= 6 %>
       <% @visible_vans.sort_by(&:updated_at).reverse.each do |van| %>
         <div class="col-sm-12 col-md-6 col-lg-4" style="display:contents">
-            <%= render partial: 'vans/van_card', locals: { van: van}  %>
+            <%= render partial: 'vans/van_card', locals: { van: van } %>
         </div>
-      <%end%>
+      <% end %>
     <% else %>
       <% @visible_vans[@visible_vans.length-6..@visible_vans.length].sort_by(&:updated_at).reverse.each do |van| %>
         <div class="col-sm-12 col-md-6 col-lg-4" style="display:contents">
-            <%= render partial: 'vans/van_card', locals: { van: van}  %>
+            <%= render partial: 'vans/van_card', locals: { van: van } %>
         </div>
       <% end %>
-    <%end%>
+    <% end %>
     <div class="col-12 text-center mt-3">
       <%= link_to "Voir plus de vans", full_index_vans_path, class:"btn btn-success btn-lg" %>
     </div>
   </div>
-</div>
+</section>
+
 <%= javascript_include_tag 'index' %>

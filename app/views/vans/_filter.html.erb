@@ -1,61 +1,74 @@
-<div class="container">
-
-    <%= form_tag(filter_vans_path, method: :get, locals: {start_date:params[:start_date], end_date: params[:end_date] }) do %>
-      <label>Tags</label>
+<div class="container mt-4 pr-3">
+  <form action="<%= filter_vans_path %>" method="get">
+    <fieldset>
+      <legend>Tags</legend>
       <hr>
       <% Tag.all.each do |tag| %>
-        <%= check_box_tag "tag_ids[]", tag.id %>
-        <%= tag.title.capitalize %>
-        <br>
+        <div>
+          <input type="checkbox" id="tag_<%= tag.id %>" name="tag_ids[]" value="<%= tag.id %>">
+          <label for="tag_<%= tag.id %>"><%= tag.title.capitalize %></label>
+        </div>
       <% end %>
       <hr>
-     <label>Filtres</label>
-     <hr>
-      <div class="form-check">
-        <%= check_box_tag 'has_fridge', 1, params[:has_fridge], class: 'form-check-input' %>
-        <%= label_tag 'has_fridge', 'Réfrigérateur', class: 'form-check-label' %>
+    </fieldset>
+    <fieldset>
+      <legend>Filtres</legend>
+      <hr>
+      <div>
+        <input type="checkbox" id="has_fridge" name="has_fridge" value="1" <%= 'checked' if params[:has_fridge] %>>
+        <label for="has_fridge">Réfrigérateur</label>
       </div>
-      <div class="form-check">
-        <%= check_box_tag 'has_wc', 1, params[:has_wc], class: 'form-check-input' %>
-        <%= label_tag 'has_wc', 'WC', class: 'form-check-label' %>
+      <div>
+        <input type="checkbox" id="has_wc" name="has_wc" value="1" <%= 'checked' if params[:has_wc] %>>
+        <label for="has_wc">WC</label>
       </div>
-      <div class="form-check">
-        <%= check_box_tag 'has_shower', 1, params[:has_shower], class: 'form-check-input' %>
-        <%= label_tag 'has_shower', 'Douche', class: 'form-check-label' %>
+      <div>
+        <input type="checkbox" id="has_shower" name="has_shower" value="1" <%= 'checked' if params[:has_shower] %>>
+        <label for="has_shower">Douche</label>
       </div>
-      <div class="form-check mb-2">
-        <%= check_box_tag 'is_manual_transmission', 1, params[:is_manual_transmission], class: 'form-check-input' %>
-        <%= label_tag 'is_manual_transmission', 'Transmission manuelle', class: 'form-check-label' %>
+      <div>
+        <input type="checkbox" id="is_manual_transmission" name="is_manual_transmission" value="1" <%= 'checked' if params[:is_manual_transmission] %>>
+        <label for="is_manual_transmission">Transmission manuelle</label>
       </div>
-     <div class="form-group">
-        <%= label_tag 'van_year', 'Année' %>
-        <%= select_tag 'van[year]', options_for_select((1930..Date.today.year).to_a.reverse, params.dig(:van, :year)), prompt: 'Année', class: 'form-control' %>
+    </fieldset>
+    <div class="form-group">
+      <label for="van_year">Année</label>
+      <select id="van_year" name="van[year]">
+        <option value="" selected disabled>Année</option>
+        <% (1930..Date.today.year).to_a.reverse.each do |year| %>
+          <option value="<%= year %>" <%= 'selected' if params.dig(:van, :year) == year.to_s %>><%= year %></option>
+        <% end %>
+      </select>
     </div>
     <div class="form-group">
-        <%= label_tag 'van_bed_number', 'Nombre de lit(s)' %>
-        <%= select_tag 'van[bed_number]', options_for_select((1..10).to_a, params.dig(:van, :bed_number)), prompt: 'Nombre de lit(s)', class: 'form-control' %>
+      <label for="van_bed_number">Nombre de lit(s)</label>
+      <select id="van_bed_number" name="van[bed_number]">
+        <option value="" selected disabled>Nombre de lit(s)</option>
+        <% (1..10).each do |bed_number| %>
+          <option value="<%= bed_number %>" <%= 'selected' if params.dig(:van, :bed_number) == bed_number.to_s %>>
+            <%= bed_number %>
+          </option>
+        <% end %>
+      </select>
     </div>
-     <div class="form-group">
-        <%= label_tag 'van_brand', 'Marque' %>
-        <%= text_field_tag 'van[brand]', params.dig(:van, :brand), prompt: 'Marque', placeholder: "Volkswagen, Renault...", class: 'form-control' %>
+    <div class="form-group">
+      <label for="van_brand">Marque</label>
+      <input type="text" id="van_brand" name="van[brand]" value="<%= params.dig(:van, :brand) %>" placeholder="Volkswagen, Renault...">
     </div>
-     <div class="form-group" style="display:none;">
-        <%= label_tag 'van_city', 'Ville' %>
-        <%= text_field_tag 'van[city]', params.dig(:van, :city), prompt: 'Ville', placeholder: "Paris, Montpellier, Vallon...", class: 'form-control' %>
-    </div>
-
     <div class="form-group" style="display:none;">
-        <%= label_tag 'radius', 'Rayon (km)' %>
-        <%= number_field_tag 'radius', params.dig(:van, :radius), prompt: 'Rayon (km)', placeholder: "10", class: 'form-control' %>
+      <label for="van_city">Ville</label>
+      <input type="text" id="van_city" name="van[city]" value="<%= params.dig(:van, :city) %>" placeholder="Paris, Montpellier, Vallon...">
     </div>
-
-    <div class="form-group" style="display:none">
-        <%= label_tag 'order_start_date', 'Début de disponiblité' %>
-        <%= date_field_tag 'start_date', params[:start_date], class: 'form-control' %>
-        <%= label_tag 'order_end_date', 'Fin de disponibilité' %>
-        <%= date_field_tag 'end_date', params[:end_date], class: 'form-control' %>
+    <div class="form-group" style="display:none;">
+      <label for="radius">Rayon (km)</label>
+      <input type="number" id="radius" name="van[radius]" value="<%= params.dig(:van, :radius) %>" placeholder="10">
     </div>
-
-        <%= submit_tag 'Filtrer', class: 'btn btn-primary ml-3'%>
-    <% end %>
+    <div class="form-group" style="display:none;">
+      <label for="order_start_date">Début de disponiblité</label>
+      <input type="date" id="order_start_date" name="start_date" value="<%= params[:start_date] %>">
+      <label for="order_end_date">Fin de disponibilité</label>
+      <input type="date" id="order_end_date" name="end_date" value="<%= params[:end_date] %>">
+    </div>
+    <button type="submit" class="btn btn-primary ml-3">Filtrer</button>
+  </form>
 </div>

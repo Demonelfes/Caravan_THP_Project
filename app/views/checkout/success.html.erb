@@ -1,9 +1,8 @@
-<main>
-  <section class="container text-center my-5">
-    <h1>Succès</h1>
-    <p>Nous avons bien reçu votre paiement de <%= number_to_currency((@payment_intent.amount_received / 100), unit: "€", separator: ",", delimiter: "", format: "%n %u") %>.</p>
-    <p>Le statut de votre paiement est : accepté.</p>
+<section class="container text-center my-5">
+  <h1>Succès</h1>
+  <p>Nous avons bien reçu votre paiement de <%= number_to_currency((@payment_intent.amount_received / 100), unit: "€", separator: ",", delimiter: "", format: "%n %u") %>.</p>
+  <p>Le statut de votre paiement est : accepté.</p>
 
-    <%= link_to "Retour au profil", user_path(current_user.id), class:"btn btn-primary" %>
-  </section>
-</main>
+  <%= link_to "Retour au profil", user_path(current_user.id), class:"btn btn-primary" %>
+</section>
+
