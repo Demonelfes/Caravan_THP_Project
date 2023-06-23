@@ -19,7 +19,7 @@ RSpec.describe "Create Van", type: :feature do
     fill_in 'Carburant', with: 'essence'
     fill_in 'Nombre de lits', with: '3'
     fill_in 'Prix par jour', with: '300'
-    attach_file 'Photo', Rails.root.join('app', 'assets', 'images', 'default_van.jpg')
+    attach_file 'Photos', Rails.root.join('app', 'assets', 'images', 'default_van1.jpg')
 
     # Cliquer sur le bouton Soumettre
     click_button 'Soumettre'
