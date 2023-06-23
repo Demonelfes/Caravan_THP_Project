@@ -1,18 +1,37 @@
-<p>Bonjour Madame, Monsieur,</p>
-  
-<p>Nous sommes heureux de vous informer qu'une réservation a été effectuée pour votre van.</p>
-  
-<h2>Détails de la réservation :</h2>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réservation effectuée pour votre van - CaraVan</title>
+</head>
+<body>
+  <header>
+    <h1>Réservation effectuée pour votre van</h1>
+  </header>
+  <main>
+    <p>Bonjour Madame, Monsieur,</p>
+    
+    <p>Nous sommes heureux de vous informer qu'une réservation a été effectuée pour votre van.</p>
+    
+    <section>
+      <h2>Détails de la réservation :</h2>
 
-<p><strong>Numéro de réservation :</strong> <%= @order.id %></p>
-<p><strong>Date de début de location :</strong> <%= @order.start_date %></p>
-<p><strong>Date de retour :</strong> <%= @order.end_date %></p>
-<p><strong>Montant total :</strong> <%= @order.total_price %></p>
+      <p><strong>Numéro de réservation :</strong> <%= @order.id %></p>
+      <p><strong>Date de début de location :</strong> <%= @order.start_date %></p>
+      <p><strong>Date de retour :</strong> <%= @order.end_date %></p>
+      <p><strong>Montant total :</strong> <%= @order.total_price %></p>
+    </section>
 
-<h2>Coordonnées de contact du client :</h2>
-<p><strong>Email :</strong> <%@order.customer.email %></p>
+    <section>
+      <h2>Coordonnées de contact du client :</h2>
+      <p><strong>Email :</strong> <%@order.customer.email %></p>
+    </section>
 
-<p>Nous vous remercions de votre confiance et de votre participation à notre service de location de vans.</p>
-  
-<p>A bientôt,</p>
-<p>L'équipe de CaraVan !</p>
+    <p>Nous vous remercions de votre confiance et de votre participation à notre service de location de vans.</p>
+    
+    <p>A bientôt,</p>
+    <p>L'équipe de CaraVan !</p>
+  </main>
+</body>
+</html>

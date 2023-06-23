@@ -4,19 +4,19 @@
 
 <%= render partial: 'layouts/small_banner'%>
 
-<div class="container">
+<main class="container">
   <div class="row">
-    <div class="row-sm-12 col-md-2 col-lg-2 mb-2">
+    <aside class="col-sm-12 col-md-2 col-lg-2 mb-2">
       <%= render partial: 'vans/filter', locals: {start_date:params[:start_date], end_date: params[:end_date] }%>
-    </div>
+    </aside>
 
-    <div class="col-sm-12 col-md-6 col-lg-10">
+    <section class="col-sm-12 col-md-6 col-lg-10">
       <div class="container">
         <div class="row justify-content-center">
           <%= render partial: 'vans/dates_filter'%>
         </div>
 
-        <div class="row justify-content-center m-3">
+        <div class="row justify-content-center m-3 mt-4">
           <%= js_map @visible_vans.map {|van| { latitude: van.latitude, longitude: van.longitude, tooltip: "#{van.title + "<br>" + "Ville : #{van.city}<br>"} #{link_to("Voir ce van", van_path(van)) }" }}, tooltips: { hover: false, html: true }, style: "mapbox://styles/mapbox/outdoors-v12" %>
         </div>
 
@@ -26,16 +26,14 @@
               <div class="col-sm-12 col-md-6 col-lg-3" style="display:contents;">
                 <%= render partial: 'vans/van_card', locals: { van: van}  %>
               </div>
-            <%end%>
+            <% end %>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
-</div>
 
   <div class="col-12 text-center mt-3">
     <%= link_to "Retour à la page d'accueil", vans_path, class:"btn btn-success btn-lg" %>
   </div>
-</div>
-
+</main>
