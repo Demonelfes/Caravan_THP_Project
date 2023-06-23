@@ -6,7 +6,7 @@ RSpec.describe "User logs out", type: :feature do
 
     visit new_user_session_path
 
-    fill_in 'Email', with: 'user@example.com'
+    fill_in 'user_email', with: 'user@example.com'
     fill_in 'user_password', with: 'password'
     click_button "Se connecter"
 

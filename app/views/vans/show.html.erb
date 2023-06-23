@@ -7,24 +7,28 @@
     <div class="col-sm-12 col-md-4 col-lg-6" style=" margin-top: 3em;">
       <div class="row">
         <div class="col-12">
-          <div id="myCarousel" class="carousel slide mb-3" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <% @van.photos.each.with_index do |image, i| %>
-                <li data-target="#myCarousel" data-slide-to="<%= i %>" class="<%= 'active' if i == 0 %>"></li>
-              <% end %>
-            </ol>
+          <% if @van.photos.attached? %>
+            <div id="myCarousel" class="carousel slide mb-3" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <% @van.photos.each.with_index do |image, i| %>
+                  <li data-target="#myCarousel" data-slide-to="<%= i %>" class="<%= 'active' if i == 0 %>"></li>
+                <% end %>
+              </ol>
 
-            <div class="carousel-inner">
-              <% @van.photos.each.with_index do |photo, i| %>
-                <div class="item <%= 'active' if i == 0 %>">
-                  <%= image_tag(photo.variant(resize_to_fill: [600, 600]), alt: 'Photos du van - ' + @van.title) %>
-                </div>
-              <% end %>
+              <div class="carousel-inner">
+                <% @van.photos.each.with_index do |photo, i| %>
+                  <div class="item <%= 'active' if i == 0 %>">
+                    <%= image_tag(photo.variant(resize_to_fill: [600, 600]), alt: 'Photos du van - ' + @van.title) %>
+                  </div>
+                <% end %>
+              </div>
+
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev"></a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next"></a>
             </div>
-
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev"></a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next"></a>
-          </div>
+          <% else %>
+            <%= image_tag("no-picture.png", alt: "Photo indisponible", width: 500, height: 500) %>
+          <% end %>
         </div>
         <div class="row">
           <div class="col-12">
