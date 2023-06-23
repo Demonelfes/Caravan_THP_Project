@@ -13,7 +13,6 @@
           <th scope="col">Date de débût</th>
           <th scope="col">Date de fin</th>
           <th scope="col">Montant total</th>
-          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +24,6 @@
             <td><%= order.start_date.strftime('%Y-%m-%d')[0..9] %></td>
             <td><%= order.end_date.strftime('%Y-%m-%d')[0..9] %></td>
             <td><%= order.total_price %></td>
-            <td><%= button_to "Modifier", edit_admins_order_path(order), method: :get, class: "btn btn-primary" %></td>
           </tr>
         <% end %>
       </tbody>

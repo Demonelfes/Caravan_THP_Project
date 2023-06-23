@@ -10,7 +10,7 @@ module DeviseHelper
           <p class="mb-0"> #{messages}</p>
         </div>
      <div class="col-1">
-      <button type="button" class="btn btn-dark diasbled text-center" data-bs-dismiss="alert" style="height:30px; display:flex; align-items: center; background-color: grey;">X</button>
+      <button type="button" class="btn btn-dark text-center" data-bs-dismiss="alert" style="height:30px; display:flex; align-items: center; background-color: grey;">X</button>
         </div>
     </div>
     </div>
