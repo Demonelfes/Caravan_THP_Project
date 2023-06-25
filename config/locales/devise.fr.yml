@@ -73,8 +73,8 @@ fr:
           confirmation: "La confirmation n'est pas identique."
           attributes:
             email:
-              taken: "déjà utilisée."
+              taken: "est déjà utilisée."
             password:
-              too_short: "trop court."
+              too_short: "est trop court."
             password_confirmation:
               confirmation: ": la confirmation n'est pas identique."
