@@ -21,6 +21,7 @@ fr:
       user:
         email: "Email"
         password: "Le mot de passe"
+        password_confirmation: "Confirmation de mot de passe"
 
   bonjour: "Bonjour monde"
   simple_calendar:
